@@ -1,7 +1,0 @@
-streamlit
-plotly
-pandas
-numpy
-biopython
-blast
-scipy
