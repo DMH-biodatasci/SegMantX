@@ -1,0 +1,111 @@
+#!/usr/bin/env python3
+
+"""
+SegMantX.py: A tool to chain local alignment hits.
+
+Installation: Please follow the guideline on our github page.
+ """
+__author__ = "Dustin M. Hanke, Tal Dagan"
+__version__ = "1.1.0"
+__maintainer__ = "Dustin M. Hanke"
+__email__ = "dhanke@ifam.uni-kiel.de"
+
+
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)
+
+try:
+    from sys import argv, stderr
+    from modules import *
+
+
+except ModuleNotFoundError as err:
+    stderr.write(f"SegMantX encountered an error: {str(err)}.\n"
+                 f"If you are a conda user, please enable the SegMantX environment with the following command:\n"
+                 f"conda activate SegMantX\n"
+                 f"If you are not a conda user, please check that you have installed the required dependencies.\n")
+    exit()
+
+except ImportError as err:
+    stderr.write(f"SegMantX encountered an error: {str(err)}.\n"
+                 f"Please check that no files are missing from the /modules folder.\n")
+    exit()
+
+menu_string = "SegMantX.py [ chain_self_alignments | chain_sequence_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation ]"
+errorMessage = f"Options: {menu_string}\n"
+
+try:
+    module = argv[1]
+except IndexError:
+    stderr.write(errorMessage)
+    exit()
+    
+print(r"""
+ _____           ___  ___            _  __   __ 
+/  ___|          |  \/  |           | | \ \ / / 
+\ `--.  ___  __ _| .  . | __ _ _ __ | |_ \ V /  
+ `--. \/ _ \/ _` | |\/| |/ _` | '_ \| __|/   \  
+/\__/ /  __/ (_| | |  | | (_| | | | | |_/ /^\ \ 
+\____/ \___|\__, \_|  |_/\__,_|_| |_|\__\/   \/ 
+             __/ |                              
+            |___/                                                                                                          
+""")
+
+print_citation = False
+try:
+    if module == "chain_self_alignments":
+        chain_self_alignments.main()
+        print_citation = True
+
+    elif module == "chain_alignments": 
+        chain_alignments.main()
+        print_citation = True
+
+    elif module == "visualize_chains":
+        print_citation = True
+        visualize_chains.main()
+
+    elif module == "fetch_nucleotide_chains": 
+        print_citation = True
+        fetch_nucleotide_chains.main()
+        
+    elif module == "generate_alignments": 
+        print_citation = True
+        generate_alignments.main()
+
+    elif module == "test_modules": 
+        test_modules.main()
+
+    elif module == "help":
+        stderr.write("""
+Modules:
+\t * SegMantX.py generate_alignments: Computes alignments for chaining modules.
+\t * SegMantX.py chain_self_alignments: Chains local alignments from self-sequence alignment (e.g., duplication detection).
+\t * SegMantX.py chain_alignments: Chains local alignments between two sequences.
+\t * SegMantX.py visualize_chains: Generates a dotplot to visualize yielded chains for a sequence.
+\t * SegMantX.py fetch_nucleotide_chains: Extracts nucleotide sequences from chained alignments (FASTA format).
+\t * SegMantX.py test_modules: Executes all modules on a test dataset and verifies their outputs.
+""")
+
+    elif module == "version":
+        print(f"SegMantX version {__version__}")
+
+    elif module == "citation":
+        print(f"Authors "
+              f"SegMantX: Title. Journal. DOI "
+              f"GitHub repository: LINK")
+        
+    else:
+        stderr.write(errorMessage)
+        exit()
+
+
+except KeyboardInterrupt:
+    print("\n")
+    print("SegMantX process cancelled by user. Exiting now.")
+    exit()
+
+### Citation 
+if print_citation:
+    print("\nReport any unsolved bugs or issues to the GitHub page of SegMantX.")
+    print("Please cite: DOIXXX")

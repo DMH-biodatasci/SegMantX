@@ -1,0 +1,39 @@
+########################
+## Test commands file ##
+########################
+
+###################
+## 1. Alignments ##
+###################
+
+python3 SegMantX.py generate_alignments -q tests/NZ_CP051709.1.fasta -b tests/NZ_CP051709.1.blast.x7 -a tests/NZ_CP051709.1.alignment_coordinates.tsv -Q -SA
+python3 SegMantX.py generate_alignments  -q tests/NZ_AP022172.1.fasta -b tests/NZ_AP022172.1.blast.x7 -a tests/NZ_AP022172.1.alignment_coordinates.tsv -Q -SA
+python3 SegMantX.py generate_alignments  -q tests/NC_018218.1.fasta -b tests/NC_018218.1.blast.x7 -a tests/NC_018218.1.alignment_coordinates.tsv -SA -T 4 -W 28
+python3 SegMantX.py generate_alignments  -q tests/NZ_CP018634.1.fasta -s tests/NZ_CP022004.1.fasta -b tests/NZ_CP018634.1_vs_NZ_CP022004.1.blast.x7 -a tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv -Q -S 
+
+#################
+## 2. Chaining ##
+#################
+
+python3 SegMantX.py chain_self_alignments -i tests/NZ_CP051709.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NZ_CP051709.1.fasta -Q -o tests/NZ_CP051709.1.chains.tsv
+python3 SegMantX.py chain_self_alignments -i tests/NZ_AP022172.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NZ_AP022172.1.fasta -Q -o tests/NZ_AP022172.1.chains.tsv
+python3 SegMantX.py chain_self_alignments -i tests/NC_018218.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NC_018218.1.fasta -o tests/NC_018218.1.chains.tsv
+python3 SegMantX.py chain_alignments -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv -fq tests/NZ_CP018634.1.fasta -fs tests/NZ_CP022004.1.fasta -G 5000 -SG 1 -Q -S -ml 100 -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv
+
+#############################################
+## 3. Fetch chains as nucleotide sequences ##
+#############################################
+
+python3 SegMantX.py fetch_nucleotide_chains -i tests/NZ_CP051709.1.chains.tsv -fq tests/NZ_CP051709.1.fasta -o tests/NZ_CP051709.1.chains.fasta
+python3 SegMantX.py fetch_nucleotide_chains -i tests/NZ_AP022172.1.chains.tsv -fq tests/NZ_AP022172.1.fasta -o tests/NZ_AP022172.1.chains.fasta
+python3 SegMantX.py fetch_nucleotide_chains -i tests/NC_018218.1.chains.tsv -fq tests/NC_018218.1.fasta -o tests/NC_018218.1.chains.fasta
+python3 SegMantX.py fetch_nucleotide_chains -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv -fq tests/NZ_CP018634.1.fasta  -fs tests/NZ_CP022004.1.fasta -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.fasta
+
+####################
+## 4. Visualizing ##
+####################
+
+python3 SegMantX.py visualize_chains -i tests/NZ_CP051709.1.chains.tsv -S kbp -o tests/NZ_CP051709.1.html -fq tests/NZ_CP051709.1.fasta -QIS
+python3 SegMantX.py visualize_chains -i tests/NZ_AP022172.1.chains.tsv -S kbp -o tests/NZ_AP022172.1.html -fq  tests/NZ_AP022172.1.fasta --query_is_subject -gf tests/NZ_AP022172.1.gbk
+python3 SegMantX.py visualize_chains -i tests/NC_018218.1.chains.tsv -S kbp -o tests/NC_018218.1.html -fq  tests/NC_018218.1.fasta -QIS
+python3 SegMantX.py visualize_chains -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv -S kbp -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.html -fq tests/NZ_CP018634.1.fasta -fs tests/NZ_CP022004.1.fasta 
