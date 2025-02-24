@@ -1,54 +1,7 @@
-altair @ file:///home/conda/feedstock_root/build_artifacts/altair-split_1734244716962/work
-attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1737819173731/work
-biopython @ file:///home/conda/feedstock_root/build_artifacts/biopython_1737241734339/work
-blinker @ file:///home/conda/feedstock_root/build_artifacts/blinker_1731096409132/work
-Bottleneck @ file:///home/conda/feedstock_root/build_artifacts/bottleneck_1729268867833/work
-Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1725267488082/work
-cachetools @ file:///home/conda/feedstock_root/build_artifacts/cachetools_1740094013202/work
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1739515848642/work/certifi
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1735929714516/work
-click @ file:///home/conda/feedstock_root/build_artifacts/click_1734858813237/work
-gitdb @ file:///tmp/build/80754af9/gitdb_1617117951232/work
-GitPython @ file:///home/conda/feedstock_root/build_artifacts/gitpython_1735929639977/work
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1733211830134/work
-importlib_metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1737420181517/work
-importlib_resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1736252299705/work
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1734823942230/work
-jsonschema @ file:///home/conda/feedstock_root/build_artifacts/jsonschema_1733472696581/work
-jsonschema-specifications @ file:///tmp/tmpk0f344m9/src
-markdown-it-py @ file:///home/conda/feedstock_root/build_artifacts/markdown-it-py_1733250460757/work
-MarkupSafe @ file:///home/conda/feedstock_root/build_artifacts/markupsafe_1733219680183/work
-mdurl @ file:///home/conda/feedstock_root/build_artifacts/mdurl_1733255585584/work
-narwhals @ file:///home/conda/feedstock_root/build_artifacts/narwhals_1739851660861/work
-numexpr @ file:///home/conda/feedstock_root/build_artifacts/numexpr_1732612810402/work
-numpy @ file:///home/conda/feedstock_root/build_artifacts/numpy_1739425582012/work/dist/numpy-2.2.3-cp313-cp313-linux_x86_64.whl#sha256=554cd4f0a07dab06413547bc6579bac9be0b9c5f5bb952191ad69f390fabdf07
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1733203243479/work
-pandas @ file:///croot/pandas_1732735089971/work/dist/pandas-2.2.3-cp313-cp313-linux_x86_64.whl#sha256=248baa16b8f7b48e3a9c0e641fba9a72bce9c95c0dddf7c9a7547016b61fe3fb
-pillow @ file:///home/conda/feedstock_root/build_artifacts/pillow_1735929688808/work
-pkgutil_resolve_name @ file:///home/conda/feedstock_root/build_artifacts/pkgutil-resolve-name_1733344503739/work
-plotly @ file:///opt/conda/envs/env/conda-bld/plotly_1738091316609/work/packages/python/plotly/dist/plotly-6.0.0.tar.gz#sha256=0b7834e43d05901cd1945fec77e668f6f07505ff4658f1a07632bdb7a0e8ec91
-protobuf @ file:///home/conda/feedstock_root/build_artifacts/protobuf_1731365432676/work/bazel-bin/python/dist/protobuf-5.28.3-cp313-abi3-linux_x86_64.whl#sha256=00ff2fe36aece116fda79213f134e1f3a58fbf7a12ef239d9b616c2568bc3fb8
-pyarrow==19.0.1
-pydeck @ file:///home/conda/feedstock_root/build_artifacts/pydeck_1738346561094/work
-Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1736243443484/work
-PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1733217236728/work
-python-dateutil @ file:///work/perseverance-python-buildout/croot/python-dateutil_1728385355105/work
-pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1738317518727/work
-PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1737454647378/work
-referencing @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_referencing_1737836872/work
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1733217035951/work
-rich @ file:///home/conda/feedstock_root/build_artifacts/rich_1733342254348/work/dist
-rpds-py @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_rpds-py_1740153260/work
-scipy @ file:///croot/scipy_1737122901252/work/dist/scipy-1.15.1-cp313-cp313-linux_x86_64.whl#sha256=9a6cb470e3034bc3b01601dcb811fde25b29ba3a740ad9d37162f7db43ace477
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1733380938961/work
-smmap @ file:///home/conda/feedstock_root/build_artifacts/smmap_1733236438249/work
-streamlit @ file:///home/conda/feedstock_root/build_artifacts/streamlit_1740115121145/work
-tenacity @ file:///home/conda/feedstock_root/build_artifacts/tenacity_1733649050774/work
-toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1734091811753/work
-tornado @ file:///home/conda/feedstock_root/build_artifacts/tornado_1732615881993/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1733188668063/work
-tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1737541069190/work
-tzlocal @ file:///home/conda/feedstock_root/build_artifacts/tzlocal_1739472001606/work
-urllib3 @ file:///croot/urllib3_1737133630106/work
-watchdog @ file:///home/conda/feedstock_root/build_artifacts/watchdog_1730492879209/work
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1732827521216/work
+streamlit
+plotly
+pandas
+numpy
+biopython
+blast
+scipy
