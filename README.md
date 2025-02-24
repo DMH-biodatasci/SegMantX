@@ -1,7 +1,10 @@
 # SegMantX
 
-**SegMantX** is a bioinformatics tool to chain local alignments. Initially, designed towards detection of DNA duplications in genomic sequences, it also provides a module to chain local alignments between two different sequences (e.g., for sequence comparisons). 
-SegMantX has been tested mostly using BLASTn local alignments as seeds for chaining, although, alternative inputs for the chaining modules from different alignment approaches are also possible. Resulting chains can be visualized or fetched as nucleotide sequences. SegMantX provides a python-based command line tool and an app including a graphical user interface based on Streamlit. 
+**SegMantX** is a bioinformatics tool designed for chaining local alignments. Originally developed for detecting DNA duplications in genomic sequences, SegMantX also includes a module for chaining local alignments between two different sequences, enabling sequence comparisons.
+
+The tool has been primarily tested using BLASTn local alignments as seed data for the chaining process, though it supports alternative inputs from various alignment methods. The resulting chains can be visualized or retrieved as nucleotide sequences.
+
+SegMantX's utilities are available as a Python-based command-line tool as well as a user-friendly graphical interface app powered by Streamlit.
 
 ## Citation
 If you use SegMantX in your research, please cite:
@@ -34,24 +37,45 @@ conda activate SegMantX
 
 ## Usage
 
-### 🧩 SegMantX Modules  
+### 🧩 SegMantX Module Overview  
 
-Briefly, **SegMantX** is organized into modules:  
+**SegMantX** is organized into modules. The main modules are:
 
-Main modules:
-- **generate_alignments.py**: Computes alignments via BLASTn for the chaining modules.  
-- **chain_self_alignments.py**: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).  
-- **chain_alignments.py**: Chains local alignments between two sequences (e.g., towards sequence comparisons).  
-- **visualize_chains.py**: Generates a **segmentplot** (i.e., segments of chaining results) to visualize yielded chains for a sequence.
-- **fetch_nucleotide_chains.py**: Extracts nucleotide sequences using the chained alignments and saves them as a **FASTA file**.
+```bash
+#1. Computes alignments via BLASTn for the chaining modules.
+python3 SegMantX.py generate_alignments.py [options] ...
+
+#2. Chains local alignments from self-sequence alignment (e.g., towards duplication detection). 
+python3 SegMantX.py chain_self_alignments.py [options] ...
+
+#3. Chains local alignments between two sequences (e.g., towards sequence comparisons) 
+python3 SegMantX.py chain_alignments.py [options] ...
+
+#4. Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence.
+python3 SegMantX.py visualize_chains.py [options] ...
+
+#5. Extracts nucleotide sequences using the chained alignment coordinates and saves them as a FASTA file.
+python3 SegMantX.py fetch_nucleotide_chains.py [options] ...
+```
 
 Additional module:
-- **test_modules.py**: Downloads a test dataset and verifies the modules. 
+
+```bash
+# Downloads a test dataset and verifies the modules. 
+python3 SegMantX.py test_modules.py 
+```
 
 Addtional SegMantX options:
-- **help**: python3 SegMantX.py help - print out of module overview. 
-- **help**: python3 SegMantX.py version - print out of SegMantX's version. 
-- **help**: python3 SegMantX.py citation - print out of DOI. 
+```bash
+# Print out of module overview.  
+python3 SegMantX.py help
+
+# Print out of SegMantX's version. 
+python3 SegMantX.py version 
+
+# Print out of SegMantX's related DOI.
+python3 SegMantX.py version 
+```
 
 ### ✅ 1. Verify Installation & Test SegMantX's Modules
 Check if the installation was successful by running:
@@ -69,7 +93,7 @@ python SegMantX.py -h
 
 Run a SegMantX module with the following command to display usage and parameters:
 ```bash
-python SegMantX.py [module] -h
+python SegMantX.py [module] -h 
 # e.g., python SegMantX.py generate_alignments.py -h
 ```
 
@@ -147,25 +171,13 @@ streamlit run app.py
 Briefly, the app provides a graphical user interface to SegMantX's main modules via the following pages:
 
 App pages:
-- **Landing page**: Contains a brief description of the SegMantX app. 
-- **Generate alignments**: Graphical user interface to apply **generate_alignments.py** 
-- **Self-alignment chaining**: Graphical user interface to apply **chain_self_alignments.py**  
-- **Alignment chaining**: Graphical user interface to apply **chain_alignments.py**  
-- **Visualize chains**: Graphical user interface to apply **visualize_chains.py**  
-- **Fetch chains**: Graphical user interface to apply **fetch_nucleotide_chains.py**  
-
-### 📡 SegMantX as an Online Resource  
-Note: The online version of **SegMantX** is provided as a **free Streamlit deployment**. While this allows easy access without local installation, please keep in mind the following limitations:  
-
-- **Limited Computational Resources**: The free Streamlit Cloud version provides **only 1 CPU core and 1GB RAM**, which may not be sufficient for large-scale data processing.  
-- **File Size Limits**: The maximum upload size is limited (can be increased but still limited).  
-- **Session Timeouts**: Apps may **shut down due to inactivity** or **crash when handling large datasets**.  
-- **No Guaranteed Maintenance**: This deployment is provided **as is**, and we do not ensure continuous uptime or long-term support.  
-- **Better for Small Datasets**: For large-scale processing, it is **highly recommended to install SegMantX locally** using the provided Conda environment.  
-
-🔗 **Website:** *[Insert your Streamlit app URL here]*  
-
-
+1. **Landing page**: Contains a brief description of the SegMantX app. 
+2. **Generate alignments**: Graphical user interface to apply **generate_alignments.py** 
+3. **Self-alignment chaining**: Graphical user interface to apply **chain_self_alignments.py**  
+4. **Alignment chaining**: Graphical users interface to apply **chain_alignments.py**  
+5. **Visualize chains**: Graphical user interface to apply **visualize_chains.py**  
+6. **Fetch chains**: Graphical user interface to apply **fetch_nucleotide_chains.py**  
+ 
 ## Contact
 For questions, support, or bug report, open an issue.
 
