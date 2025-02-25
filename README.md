@@ -1,4 +1,6 @@
-![SegMantX ASCII](segmantx_ASCII.png)
+<p align="center">
+  <img src="segmantx_ASCII.png" alt="SegMantX ASCII">
+</p>
 
 **SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. However, SegMantX provides also utilities for chaining local alignments between two different sequences, for example, for sequence comparisons.
 
