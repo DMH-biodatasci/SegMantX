@@ -394,7 +394,7 @@ def visualize_chains_page():
     st.sidebar.header("Parameters for segmentplot visualization")
     
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from self-alignment chaining or alignment chaining page", [False, True])
-    if "chaining_result" in st.session_state:
+    if use_session_data and "chaining_result" in st.session_state:
         st.sidebar.header("Note, that recent results loaded in memory of this session from self-alignment chaining or alignment chaining page will be used. The most recent chaining results will be used.")
         chaining_data = st.session_state["chaining_result"]
     else:
@@ -454,7 +454,9 @@ def visualize_chains_page():
                     genbank=genbank_name,
                     scale = scale,
                     query_is_subject=True,
-                    output_file=output_file
+                    output_file=output_file,
+                    width=800, 
+                    height=600
                 )
             elif duplication_or_comparison == "Alignment chaining of two sequences":
                 fig = visualize_chains.segmentplot_of_chains(
@@ -467,6 +469,8 @@ def visualize_chains_page():
                     scale = scale,
                     query_is_subject=False,
                     output_file=output_file,
+                    width=800, 
+                    height=600
                 )
             
             with open("plot.html", "r") as f:

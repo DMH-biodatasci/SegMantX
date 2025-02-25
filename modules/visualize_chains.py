@@ -99,7 +99,7 @@ def choose_scaling_value(scale):
     else:
         return 1, 'Query sequence [bp]', 'Subject sequence [bp]'
 
-def create_segmentplot_for_chains(chained_hits, genbank_df=pd.DataFrame(), scale='kbp', seq_len_query=None, seq_len_subject=None, fasta_file_query=None, fasta_file_subject=None, query_is_subject=False):
+def create_segmentplot_for_chains(chained_hits, genbank_df=pd.DataFrame(), scale='kbp', seq_len_query=None, seq_len_subject=None, fasta_file_query=None, fasta_file_subject=None, query_is_subject=False, width=1400, height=800):
     '''
     Main function for creating the segmentation plot as interactive plot
     '''
@@ -120,8 +120,8 @@ def create_segmentplot_for_chains(chained_hits, genbank_df=pd.DataFrame(), scale
         color_continuous_scale='Viridis_r',  
         range_color=[0, 100],  
         labels={'mean_percent_identity[%]': 'mean_percent_identity[%]'},
-        width=800,
-        height=600,
+        width=width,
+        height=height,
         opacity=0,
         hover_data={
             'ID': True,
@@ -211,8 +211,8 @@ def create_segmentplot_for_chains(chained_hits, genbank_df=pd.DataFrame(), scale
         paper_bgcolor='white',  
         xaxis=dict(range=[0, seq_len_query], showgrid=False, gridcolor='lightgrey'),  
         yaxis=dict(range=[min_yaxis_value, seq_len_subject], showgrid=False, gridcolor='lightgrey'),
-        width=800,  
-        height=600,
+        width=width,  
+        height=height,
         template='simple_white'
     )
     return fig
@@ -234,7 +234,7 @@ def ensure_presence_of_seq_len_values(chained_hits, seq_len_query=None, seq_len_
         seq_len_subject = max(chained_hits["s.start"].to_list()+chained_hits["s.end"].to_list())
     return seq_len_query, seq_len_subject
 
-def segmentplot_of_chains(chained_hits, seq_len_query=None, seq_len_subject=None, genbank=None, scale='kbp', output_file='', fasta_file_query=None, fasta_file_subject=None, query_is_subject=False):
+def segmentplot_of_chains(chained_hits, seq_len_query=None, seq_len_subject=None, genbank=None, scale='kbp', output_file='', fasta_file_query=None, fasta_file_subject=None, query_is_subject=False, width=1400, height=800):
     '''
     Visualizes chained hits by creating a dotplot like interactive graph.
     '''
@@ -258,7 +258,7 @@ def segmentplot_of_chains(chained_hits, seq_len_query=None, seq_len_subject=None
         lambda x: color_scale[int(x / 100 * (len(color_scale) - 1))]
     )
 
-    plt = create_segmentplot_for_chains(chained_hits, genbank_df, scale, seq_len_query, seq_len_subject, fasta_file_query, fasta_file_subject)
+    plt = create_segmentplot_for_chains(chained_hits, genbank_df, scale, seq_len_query, seq_len_subject, fasta_file_query, fasta_file_subject, width=1400, height=800)
 
     if not output_file == '':
         plt.write_html(output_file)
