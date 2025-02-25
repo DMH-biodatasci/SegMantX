@@ -471,7 +471,7 @@ def visualize_chains_page():
             
             with open("plot.html", "r") as f:
                 html_content = f.read()
-            st.components.v1.html(html_content, width=1400, height=800)
+            st.components.v1.html(html_content, width=800, height=600)
             
             st.download_button(
                 label="Download plot as HTML",

@@ -211,8 +211,8 @@ def create_segmentplot_for_chains(chained_hits, genbank_df=pd.DataFrame(), scale
         paper_bgcolor='white',  
         xaxis=dict(range=[0, seq_len_query], showgrid=False, gridcolor='lightgrey'),  
         yaxis=dict(range=[min_yaxis_value, seq_len_subject], showgrid=False, gridcolor='lightgrey'),
-        width=1400,  
-        height=800,
+        width=800,  
+        height=600,
         template='simple_white'
     )
     return fig
