@@ -210,7 +210,9 @@ python3 SegMantX.py visualize_chains --input_file  tests/NZ_CP018634.1_vs_NZ_CP0
 Output of visualization module:
 | (Default) output filename | Description |
 |:----------:|:-----------:|
-| plot.html | An interactive visualization (segment plot) of chains that can be opened in any web browser. |  
+| plot.html | An interactive visualization (segment plot) of chains that can be opened in any web browser. | 
+
+![Example Plot](example_plot.png)
 
 
 #### Get chains as nucleotide sequences
