@@ -279,8 +279,8 @@ def main():
     parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length.")
     parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length.")
     parser.add_argument("-QIS", "--query_is_subject", action="store_true", help="Specify this flag if the query sequence is identical to the subject sequence (i.e., chaining result from self-alignment).")
-    parser.add_argument("-W", "--width", type=int, default=800, help="Specifies the figure width.")
-    parser.add_argument("-H", "--height", type=int, default=600, help="Specifies the figure height")
+    parser.add_argument("-W", "--width", type=int, default=1400, help="Specifies the figure width.")
+    parser.add_argument("-H", "--height", type=int, default=800, help="Specifies the figure height")
     
     args = parser.parse_args()
       

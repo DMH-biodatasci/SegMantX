@@ -91,7 +91,7 @@ Note, the syntax using SegMantX via Docker will change, for example:
 docker run -it --rm segmantx test_modules
 ```
 
-To save output files to localhost:
+To save output files to localhost, modify your commands such as:
 ```bash
 docker run -it --rm -v /path/to/host:/data segmantx generate_alignments \
   --query_file /path/to/host/query_file \
