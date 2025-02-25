@@ -38,12 +38,13 @@ def fetch_genbank(accession_number):
 
 def main():   
     fasta_test_data = ["NZ_CP051709.1", "NZ_AP022172.1", "NC_018218.1", "NZ_CP018634.1", "NZ_CP022004.1"]  # Internal IDs: 4029, 461, ztritici, 10635, 10567
-    response = input("Do you want to download the test data? Please enter 'yes' or 'no': ").strip().lower()
-    if response == 'yes':               
-        for accession in fasta_test_data:              
-            fetch_fasta(accession)
-            if accession == "NZ_AP022172.1":
-                fetch_genbank(accession)
+    #response = input("Do you want to download the test data? Please enter 'yes' or 'no': ").strip().lower()
+    #response == 'yes'
+    #if response == 'yes':               
+    for accession in fasta_test_data:              
+        fetch_fasta(accession)
+        if accession == "NZ_AP022172.1":
+            fetch_genbank(accession)
                 
     with open("test_commands.txt", "r") as f:
         cmd_lines = f.readlines()

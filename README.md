@@ -1,10 +1,17 @@
 # SegMantX
 
-**SegMantX** is a bioinformatics tool designed for chaining local alignments. Originally developed for detecting DNA duplications in genomic sequences, SegMantX also includes a module for chaining local alignments between two different sequences, enabling sequence comparisons.
+**SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. However, **SegMantX** also utilities for chaining local alignments between two different sequences, for example, for sequence comparisons.
 
-The tool has been primarily tested using BLASTn local alignments as seed data for the chaining process, though it supports alternative inputs from various alignment methods. The resulting chains can be visualized or retrieved as nucleotide sequences.
+**SegMantX** workflow integrates BLASTn to compute local alignments as seeds for the chaining process. Nonetheless, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
-SegMantX's utilities are available as a Python-based command-line tool as well as a user-friendly graphical interface app powered by Streamlit.
+| Query start | Query end | Subject start | Subject end | Percent sequence identity |
+|:----------:|:-----------:| :----------:|:-----------:| :----------:|:-----------:|
+| 133470 | 147930 | 64534 | 78969 | 95.1 | 
+| 329875 | 330416 | 326586 | 327127 | 93 | 
+
+Note, that for the duplication detection the data corresponds to a self-alignment (i.e., query = subject sequence).
+
+SegMantX is available as a Python-based command-line tool as well as a user-friendly graphical interface app.
 
 ## Citation
 If you use SegMantX in your research, please cite:
@@ -19,21 +26,70 @@ To install SegMantX, follow these steps:
 Ensure you have Anaconda or Miniconda installed. 
 
 ### Installation Steps
+
+### 1. Platform-independent installation
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX.yml 
-
-#Otherwise, specify the platform:
-conda env create -f SegMantX_test.yml --platform linux-64 #On Linux and Windows
-conda env create -f SegMantX_test.yml --platform linux-aarch64 #Alternatively, linux-aarch64 on Linux
-conda env create -f SegMantX_test.yml --platform osx-64 #On MacOS
-
+conda env create -f SegMantX.yml
 conda activate SegMantX
 ```
+
+### 2. Installation using a linux platform
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/SegMantX.git
+cd SegMantX
+
+# Create and activate a new conda environment from the provided .yml file
+conda env create -f SegMantX_test.yml --platform linux-64
+# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda activate SegMantX
+```
+
+### 3. Installation using a MacOS platform
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/SegMantX.git
+cd SegMantX
+
+# Create and activate a new conda environment from the provided .yml file
+conda env create -f SegMantX_test.yml --platform osx-64
+# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda activate SegMantX
+```
+
+### 4. Installation on Windows
+Recommended prerequisites: 
+For running SegMantX on Windows, we recommend to install the Windows Subsystem for Linux (WSL).
+Afterwards, SegMantX can be installed via the subsystem:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/SegMantX.git
+cd SegMantX
+
+# Create and activate a new conda environment from the provided .yml file
+conda env create -f SegMantX_test.yml --platform linux-64
+# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda activate SegMantX
+```
+
+### 5. Docker
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/SegMantX.git
+cd SegMantX
+
+# Create and activate a new conda environment from the provided .yml file
+conda env create -f SegMantX_test.yml --platform linux-64
+# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda activate SegMantX
+```
+
 
 ## Usage
 
