@@ -145,8 +145,8 @@ def generate_alignments_page():
             
             st.download_button(
                 label="Download local alignment hits as .tsv file.",
-                data=alignment_df.to_html(),
-                file_name=alignments_output,
+                data=alignment_df,
+                file_name=coordinates_output,
                 mime="text/html"
             )
             
@@ -205,14 +205,14 @@ def self_alignment_chaining_page():
                 min_len=min_len,
                 blast_outfmt7=blast_outfmt7,
                 fasta_file=fasta_file.name,
-                output_file=output
+                output_file=output_file
             )
             st.dataframe(chaining_df, use_container_width=True)
             st.session_state["chaining_result"] = chaining_df
             
             st.download_button(
                 label="Download chaining results as .tsv file.",
-                data=chaining_df.to_html(),
+                data=chaining_df,
                 file_name=output_file,
                 mime="text/html"
             )
@@ -288,7 +288,7 @@ def alignment_chaining_page():
             
             st.download_button(
                 label="Download chaining results as .tsv file.",
-                data=chaining_df.to_html(),
+                data=chaining_df,
                 file_name=output_file,
                 mime="text/html"
             )

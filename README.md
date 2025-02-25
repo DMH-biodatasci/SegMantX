@@ -20,7 +20,7 @@ If you use SegMantX in your research, please cite:
 > **Dustin M Hanke, Tal Dagan**, "Title of Paper," *Journal Name*, Year, DOI: [DOI link]
 
 ## 📥 Installation
-SegMantX can be installed using conda or is available via Docker.  
+SegMantX can be installed using conda (recommended) or is available via Docker.  
 
 ### Prerequisites
 - Miniconda or
