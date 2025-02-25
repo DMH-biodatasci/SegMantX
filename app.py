@@ -454,9 +454,7 @@ def visualize_chains_page():
                     genbank=genbank_name,
                     scale = scale,
                     query_is_subject=True,
-                    output_file=output_file,
-                    width=800, 
-                    height=600
+                    output_file=output_file
                 )
             elif duplication_or_comparison == "Alignment chaining of two sequences":
                 fig = visualize_chains.segmentplot_of_chains(
@@ -468,9 +466,7 @@ def visualize_chains_page():
                     genbank=genbank_name,
                     scale = scale,
                     query_is_subject=False,
-                    output_file=output_file,
-                    width=800, 
-                    height=600
+                    output_file=output_file
                 )
             
             with open("plot.html", "r") as f:

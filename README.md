@@ -5,10 +5,10 @@
 SegMantX workflow integrates BLASTn to compute local alignments as seeds for the chaining process. Nonetheless, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
 | Query start | Query end | Subject start | Subject end | Percent sequence identity |
-|:----------:|:-----------:| :----------:|:-----------:| :----------:|:-----------:|
-| 133470 | 147930 | 64534 | 78969 | 95.1 | 
-| ... | ... | ... | ... | ... | 
-| 329875 | 330416 | 326586 | 327127 | 93 | 
+|:-----------:|:---------:|:-------------:|:-----------:|:-------------------------:|
+| 133470      | 147930    | 64534         | 78969       | 95.1                      |
+| ...         | ...       | ...           | ...         | ...                       |
+| 329875      | 330416    | 326586         | 327127     | 93                        |
 
 Note, that for the duplication detection the data corresponds to a self-alignment (i.e., query = subject sequence).
 
