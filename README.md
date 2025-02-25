@@ -142,7 +142,7 @@ python3 SegMantX.py help
 python3 SegMantX.py version 
 
 # Print out of SegMantX's related DOI.
-python3 SegMantX.py version 
+python3 SegMantX.py citation 
 ```
 
 ### ✅ 1. Verify Installation & Test SegMantX's Modules
