@@ -142,12 +142,13 @@ def generate_alignments_page():
             st.dataframe(alignment_df_with_headers, use_container_width=True)
             
             st.session_state["alignment_result"] = alignment_df
+            tsv_data = alignment_df_with_headers.to_csv(sep='\t', index=False)
             
             st.download_button(
                 label="Download local alignment hits as .tsv file.",
-                data=alignment_df,
+                data=tsv_data,
                 file_name=coordinates_output,
-                mime="text/html"
+                mime="text/tab-separated-values"
             )
             
             try:
@@ -210,11 +211,13 @@ def self_alignment_chaining_page():
             st.dataframe(chaining_df, use_container_width=True)
             st.session_state["chaining_result"] = chaining_df
             
+            tsv_data = chaining_df.to_csv(sep='\t', index=False)
+            
             st.download_button(
                 label="Download chaining results as .tsv file.",
-                data=chaining_df,
+                data=tsv_data,
                 file_name=output_file,
-                mime="text/html"
+                mime="text/tab-separated-values"
             )
         
             try:
@@ -286,11 +289,13 @@ def alignment_chaining_page():
             st.dataframe(chaining_df, use_container_width=True)
             st.session_state["chaining_result"] = chaining_df
             
+            tsv_data = chaining_df.to_csv(sep='\t', index=False)
+            
             st.download_button(
                 label="Download chaining results as .tsv file.",
-                data=chaining_df,
+                data=tsv_data,
                 file_name=output_file,
-                mime="text/html"
+                mime="text/tab-separated-values"
             )
             
             try:
