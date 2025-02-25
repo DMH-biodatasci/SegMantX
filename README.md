@@ -237,6 +237,8 @@ streamlit run app.py
 or via Docker:
 ```bash
 docker build -f Dockerfile_SegMantX_App -t segmantx_app .
+docker run -p 8501:8501 segmantx_app
+# Open a browser and navigate to: http://localhost:8501
 ```
 
 Briefly, the app provides a graphical user interface to SegMantX's main modules via the following pages:

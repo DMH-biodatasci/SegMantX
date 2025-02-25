@@ -142,6 +142,14 @@ def generate_alignments_page():
             st.dataframe(alignment_df_with_headers, use_container_width=True)
             
             st.session_state["alignment_result"] = alignment_df
+            
+            st.download_button(
+                label="Download local alignment hits as .tsv file.",
+                data=alignment_df.to_html(),
+                file_name=alignments_output,
+                mime="text/html"
+            )
+            
             try:
                 os.remove(query_fasta_file.name)
             except UnboundLocalError:
@@ -176,7 +184,7 @@ def self_alignment_chaining_page():
     fasta_file = st.sidebar.file_uploader("Upload fasta file of query", type=["fasta"])
     replicon_size = st.sidebar.number_input("Sequence length of query (optional, if fasta file is provided)", min_value=0, value=0)
     min_len = st.sidebar.number_input("Minimum alignment hit length", min_value=0, value=200)
-    output = st.sidebar.text_input("Export chained alignments to:", value='chaining_output.tsv')
+    output_file = st.sidebar.text_input("Export chained alignments to:", value='chaining_output.tsv')
     
     check_value = check_input(alignment_coordinate_file)
     
@@ -201,6 +209,14 @@ def self_alignment_chaining_page():
             )
             st.dataframe(chaining_df, use_container_width=True)
             st.session_state["chaining_result"] = chaining_df
+            
+            st.download_button(
+                label="Download chaining results as .tsv file.",
+                data=chaining_df.to_html(),
+                file_name=output_file,
+                mime="text/html"
+            )
+        
             try:
                 os.remove(fasta_file.name)
             except UnboundLocalError:
@@ -269,6 +285,14 @@ def alignment_chaining_page():
 
             st.dataframe(chaining_df, use_container_width=True)
             st.session_state["chaining_result"] = chaining_df
+            
+            st.download_button(
+                label="Download chaining results as .tsv file.",
+                data=chaining_df.to_html(),
+                file_name=output_file,
+                mime="text/html"
+            )
+            
             try:
                 os.remove(fasta_file_query.name)
             except UnboundLocalError:
@@ -442,9 +466,7 @@ def visualize_chains_page():
             
             with open("plot.html", "r") as f:
                 html_content = f.read()
-            st.components.v1.html(html_content, width=800, height=600)
-            
-            #st.plotly_chart(fig, width=800, height=600)
+            st.components.v1.html(html_content, width=1400, height=800)
             
             st.download_button(
                 label="Download plot as HTML",
