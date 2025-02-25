@@ -7,6 +7,7 @@
 | Query start | Query end | Subject start | Subject end | Percent sequence identity |
 |:----------:|:-----------:| :----------:|:-----------:| :----------:|:-----------:|
 | 133470 | 147930 | 64534 | 78969 | 95.1 | 
+| ... | ... | ... | ... | ... | 
 | 329875 | 330416 | 326586 | 327127 | 93 | 
 
 Note, that for the duplication detection the data corresponds to a self-alignment (i.e., query = subject sequence).
@@ -19,13 +20,13 @@ If you use SegMantX in your research, please cite:
 > **Dustin M Hanke, Tal Dagan**, "Title of Paper," *Journal Name*, Year, DOI: [DOI link]
 
 ## 📥 Installation
-
-To install SegMantX, follow these steps:
+SegMantX can be installed using conda or is available via Docker.  
 
 ### Prerequisites
-Ensure you have Anaconda or Miniconda installed. 
+- Miniconda or
+- Docker
 
-### Installation Steps
+### Suggested installations
 
 ### 1. Platform-independent installation
 ```bash
@@ -58,7 +59,6 @@ cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
 conda env create -f SegMantX_test.yml --platform osx-64
-# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
 conda activate SegMantX
 ```
 
@@ -83,13 +83,23 @@ conda activate SegMantX
 # Clone the repository
 git clone https://github.com/yourusername/SegMantX.git
 cd SegMantX
-
-# Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX_test.yml --platform linux-64
-# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
-conda activate SegMantX
+docker build -f Dockerfile_SegMantX -t segmantx .
 ```
 
+Note, the syntax using SegMantX via Docker will change, for example:
+```bash
+docker run -it --rm segmantx test_modules
+```
+
+To save output files to localhost:
+```bash
+docker run -it --rm -v /path/to/host:/data segmantx generate_alignments \
+  --query_file /path/to/host/query_file \
+  --blast_output_file /path/to/host/blast_output_file \
+  --alignment_hits_file /path/to/host/alignment_hits_output_file \
+  --is_query_circular \
+  --self_sequence_alignment
+```
 
 ## Usage
 
@@ -222,6 +232,11 @@ Output of visualization module:
 Run the SegMantX app with the following command:
 ```bash
 streamlit run app.py
+```
+
+or via Docker:
+```bash
+docker build -f Dockerfile_SegMantX_App -t segmantx_app .
 ```
 
 Briefly, the app provides a graphical user interface to SegMantX's main modules via the following pages:

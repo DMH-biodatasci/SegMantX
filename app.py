@@ -471,7 +471,7 @@ def visualize_chains_page():
                 except UnboundLocalError:
                     pass
                 except FileNotFoundError:
-                pass
+                    pass
 
 ##########################
 ## Main page navigation ##
