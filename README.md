@@ -4,6 +4,10 @@
 
 **SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. However, SegMantX provides also utilities for chaining local alignments between two different sequences, for example, for sequence comparisons.
 
+<p align="center">
+  <img src="pipeline_figure.png" alt="Pipeline">
+</p>
+
 SegMantX workflow integrates BLASTn to compute local alignments as seeds for the chaining process. Nonetheless, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
 | Query start | Query end | Subject start | Subject end | Percent sequence identity |
