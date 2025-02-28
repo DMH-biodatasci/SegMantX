@@ -37,7 +37,7 @@ SegMantX can be installed using conda (recommended) or is available via Docker.
 ### 1. Platform-independent installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SegMantX.git
+git clone https://github.com/DMH-biodatasci/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
@@ -52,8 +52,8 @@ git clone https://github.com/yourusername/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX_test.yml --platform linux-64
-# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda env create -f SegMantX.yml --platform linux-64
+# Alternatively: conda env create -f SegMantX.yml --platform linux-aarch64
 conda activate SegMantX
 ```
 
@@ -64,7 +64,7 @@ git clone https://github.com/yourusername/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX_test.yml --platform osx-64
+conda env create -f SegMantX.yml --platform osx-64
 conda activate SegMantX
 ```
 
@@ -79,8 +79,8 @@ git clone https://github.com/yourusername/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX_test.yml --platform linux-64
-# Alternatively: conda env create -f SegMantX_test.yml --platform linux-aarch64
+conda env create -f SegMantX.yml --platform linux-64
+# Alternatively: conda env create -f SegMantX.yml --platform linux-aarch64
 conda activate SegMantX
 ```
 
@@ -115,26 +115,26 @@ docker run -it --rm -v /path/to/host:/data segmantx generate_alignments \
 
 ```bash
 #1. Computes alignments via BLASTn for the chaining modules.
-python3 SegMantX.py generate_alignments.py [options] ...
+python3 SegMantX.py generate_alignments [options] ...
 
 #2. Chains local alignments from self-sequence alignment (e.g., towards duplication detection). 
-python3 SegMantX.py chain_self_alignments.py [options] ...
+python3 SegMantX.py chain_self_alignments [options] ...
 
 #3. Chains local alignments between two sequences (e.g., towards sequence comparisons) 
-python3 SegMantX.py chain_alignments.py [options] ...
+python3 SegMantX.py chain_alignments [options] ...
 
 #4. Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence.
-python3 SegMantX.py visualize_chains.py [options] ...
+python3 SegMantX.py visualize_chains [options] ...
 
 #5. Extracts nucleotide sequences using the chained alignment coordinates and saves them as a FASTA file.
-python3 SegMantX.py fetch_nucleotide_chains.py [options] ...
+python3 SegMantX.py fetch_nucleotide_chains [options] ...
 ```
 
 Additional module:
 
 ```bash
 # Downloads a test dataset and verifies the modules. 
-python3 SegMantX.py test_modules.py 
+python3 SegMantX.py test_modules
 ```
 
 Addtional SegMantX options:
@@ -166,7 +166,7 @@ python SegMantX.py -h
 Run a SegMantX module with the following command to display usage and parameters:
 ```bash
 python SegMantX.py [module] -h 
-# e.g., python SegMantX.py generate_alignments.py -h
+# e.g., python SegMantX.py generate_alignments -h
 ```
 
 #### Generate alignments
