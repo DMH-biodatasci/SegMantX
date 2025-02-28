@@ -48,7 +48,7 @@ conda activate SegMantX
 ### 2. Installation using a linux platform
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SegMantX.git
+git clone https://github.com/DMH-biodatasci/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
@@ -60,7 +60,7 @@ conda activate SegMantX
 ### 3. Installation using a MacOS platform
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SegMantX.git
+git clone https://github.com/DMH-biodatasci/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
@@ -75,7 +75,7 @@ Afterwards, SegMantX can be installed via the subsystem:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SegMantX.git
+git clone https://github.com/DMH-biodatasci/SegMantX.git
 cd SegMantX
 
 # Create and activate a new conda environment from the provided .yml file
@@ -87,7 +87,7 @@ conda activate SegMantX
 ### 5. Docker
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/SegMantX.git
+git clone https://github.com/DMH-biodatasci/SegMantX.git
 cd SegMantX
 docker build -f Dockerfile_SegMantX -t segmantx .
 ```
