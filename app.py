@@ -28,10 +28,56 @@ def check_input(input_file):
         return True
     elif input_file:
         return True
-    
-def show_manual():
+
+def show_manual_generate_alignments():
     """Displays the manual when an error occurs."""
-    st.error("An error occurred! Please check the input files and parameters.")
+    st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+    st.markdown("""
+    ### **User Manual**
+    - Purpose: Select 'Duplication detection' to compute a self-sequence alignment or 'Sequence comparison' to perform an alignment between two sequences
+    - 'Duplication detection' requires a sequence in FASTA-format
+    - 'Sequence comparison' requires two sequences in FASTA-format (i.e., query and subject sequence)
+    - Select the sequence topology of your sequences. Choosing the correct topology ensures that alignment hits on circular sequences are correctly chained, even when they appear fragmented due to the linear representation in FASTA files. This may be important, when working with plasmids or viral genomes, where alignments may be discontinuous due to their linear sequence format in FASTA files.
+    - E-value: The sE-value in BLAST estimates the number of random alignments that would be expected by chance in a database search. It helps filter out low-confidence matches and retain only biologically relevant seeds for chaining. For example: High specificity: 1e-10 (Strict, fewer but highly reliable seeds) vs. Balanced approach: 1e-5 (good mix of sensitivity and specificity) vs. Higher sensitivity: 1e-1 (More seeds, but may introduce noise - not recommended!)
+    - Word size: The word size in BLAST defines the length of the initial exact match (seed) required for an alignment to be extended. It acts as a seed detection threshold and influences sensitivity and speed. For example: Word size = 7-11  for short sequences (More sensitive, detects weak matches) vs. Word size = 20-30  for longer genomic sequences (Faster, focuses on strong matches)
+    - Threads: Threads refer to the number of CPU cores used to parallelize BLAST computations. Increasing the number of threads allows BLAST to process multiple alignment tasks simultaneously, improving speed and efficiency.
+    - Export BLAST output format 7 to: Saves the BLAST output in format 7 from the alignment computation.
+    - Export main alignment hit data to: Saves the alignment hit data required for chaining (i.e., tab-delimited file containing five columns: Query start, Query end, Subject start, Subject end, Perc. sequence identity)
+    """)
+    
+def show_manual_self_alignment_chaining():
+    """Displays the manual when an error occurs."""
+    st.error("An ERROR occured. Please check the manual for this module.")
+    st.markdown("""
+    ### **User Manual**
+    - Ensure you have uploaded the correct FASTA file.
+    - Check that all mandatory parameters are provided.
+    - If the issue persists, restart the application.
+    """)
+    
+def show_manual_alignment_chaining():
+    """Displays the manual when an error occurs."""
+    st.error("An ERROR occured. Please check the manual for this module.")
+    st.markdown("""
+    ### **User Manual**
+    - Ensure you have uploaded the correct FASTA file.
+    - Check that all mandatory parameters are provided.
+    - If the issue persists, restart the application.
+    """)
+    
+def show_manual_fetch_nucleotide_chains():
+    """Displays the manual when an error occurs."""
+    st.error("An ERROR occured. Please check the manual for this module.")
+    st.markdown("""
+    ### **User Manual**
+    - Ensure you have uploaded the correct FASTA file.
+    - Check that all mandatory parameters are provided.
+    - If the issue persists, restart the application.
+    """)
+    
+def show_manual_visualize_chains():
+    """Displays the manual when an error occurs."""
+    st.error("An ERROR occured. Please check the manual for this module.")
     st.markdown("""
     ### **User Manual**
     - Ensure you have uploaded the correct FASTA file.
@@ -93,6 +139,7 @@ def generate_alignments_page():
     Function to provide a page for the 'generate_alignments.py' script of SegMantX.
     '''
     st.title("Generate alignment files for chaining")
+    show_manual_generate_alignments()
     st.sidebar.header("Parameters for alignment computation:")
     duplication_or_comparison = st.sidebar.selectbox("Purpose", ["Duplication detection", "Sequence comparison"])
     st.sidebar.write("Note, that 'duplication detection' computes a self-sequence alignment and 'sequence comparison' performs alignments among two sequences.")
@@ -234,19 +281,16 @@ def self_alignment_chaining_page():
                         data=tsv_data,
                         file_name=output_file,
                         mime="text/tab-separated-values"
-                    )  
+                    )
+                try:
+                    os.remove(fasta_file.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
             except Exception as e:
-                st.error(f"Unexpected error: {e}")
-                show_manual() 
+                show_manual_self_alignment_chaining() 
         
-            try:
-                os.remove(fasta_file.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-
-
 
 def alignment_chaining_page():
     '''
@@ -322,22 +366,21 @@ def alignment_chaining_page():
                         file_name=output_file,
                         mime="text/tab-separated-values"
                     )
+                try:
+                    os.remove(fasta_file_query.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+                try:
+                    os.remove(fasta_file_subject.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
                 
             except Exception as e:
-                show_manual() 
-                
-            try:
-                os.remove(fasta_file_query.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-            try:
-                os.remove(fasta_file_subject.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
+                show_manual_alignment_chaining() 
                  
 
 def fetch_chains_as_sequences_page():
@@ -377,40 +420,43 @@ def fetch_chains_as_sequences_page():
     
     if st.sidebar.button("Fetch nucleotide sequences"):
         if check_value:
-            if duplication_or_comparison == "Self-alignment chaining":
-                sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
-                                                        fasta_file=fasta_file_query.name, 
-                                                        output_fasta=output_file)
-            elif duplication_or_comparison == "Alignment chaining of two sequences":
-                sequences = fetch_nucleotide_chains.get_chained_sequences_from_two_sequences(chained_hits=alignment_coordinate_file, 
-                                                        fasta_file_query=fasta_file_query.name, 
-                                                        fasta_file_subject=fasta_file_subject.name, 
-                                                        output_fasta=output_file)
-                
-            # Old feature - visualizing the whole fasta file is too memory intensive
-            #if sequences != None:
-            #    seq_file = load_fasta(sequences)
-            #    st.text_area("FASTA Content", seq_file, height=600)
-            
-            st.download_button(
-                label="Download FASTA file",
-                data=seq_file.encode('utf-8'),
-                file_name=output_file,
-                mime='text/plain'
-            )
+            try:
+                if duplication_or_comparison == "Self-alignment chaining":
+                    sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
+                                                            fasta_file=fasta_file_query.name, 
+                                                            output_fasta=output_file)
+                elif duplication_or_comparison == "Alignment chaining of two sequences":
+                    sequences = fetch_nucleotide_chains.get_chained_sequences_from_two_sequences(chained_hits=alignment_coordinate_file, 
+                                                            fasta_file_query=fasta_file_query.name, 
+                                                            fasta_file_subject=fasta_file_subject.name, 
+                                                            output_fasta=output_file)
 
-            try:
-                os.remove(fasta_file_query.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-            try:
-                os.remove(fasta_file_subject.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
+                # Old feature - visualizing the whole fasta file is too memory intensive
+                #if sequences != None:
+                #    seq_file = load_fasta(sequences)
+                #    st.text_area("FASTA Content", seq_file, height=600)
+
+                st.download_button(
+                    label="Download FASTA file",
+                    data=seq_file.encode('utf-8'),
+                    file_name=output_file,
+                    mime='text/plain'
+                )
+
+                try:
+                    os.remove(fasta_file_query.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+                try:
+                    os.remove(fasta_file_subject.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+            except Exception as e:
+                show_manual_fetch_nucleotide_chains() 
             
 
 def visualize_chains_page():
@@ -473,64 +519,67 @@ def visualize_chains_page():
         
     
     if st.sidebar.button("Visualize chains"):
-        if check_input(chaining_data):
-            if duplication_or_comparison == "Self-alignment chaining":
-                fig = visualize_chains.segmentplot_of_chains(
-                    chained_hits=chaining_data,
-                    fasta_file_query=fasta_file_query.name,
-                    seq_len_query=seq_len_query,
-                    genbank=genbank_name,
-                    scale = scale,
-                    query_is_subject=True,
-                    output_file=output_file,
-                    width=800,
-                    height=600
+        try:
+            if check_input(chaining_data):
+                if duplication_or_comparison == "Self-alignment chaining":
+                    fig = visualize_chains.segmentplot_of_chains(
+                        chained_hits=chaining_data,
+                        fasta_file_query=fasta_file_query.name,
+                        seq_len_query=seq_len_query,
+                        genbank=genbank_name,
+                        scale = scale,
+                        query_is_subject=True,
+                        output_file=output_file,
+                        width=800,
+                        height=600
+                    )
+                elif duplication_or_comparison == "Alignment chaining of two sequences":
+                    fig = visualize_chains.segmentplot_of_chains(
+                        chained_hits=chaining_data,
+                        fasta_file_query=fasta_file_query.name,
+                        seq_len_query=seq_len_query,
+                        fasta_file_subject=fasta_file_subject.name,
+                        seq_len_subject=seq_len_subject,
+                        genbank=genbank_name,
+                        scale = scale,
+                        query_is_subject=False,
+                        output_file=output_file,
+                        width=800,
+                        height=600
+                    )
+
+                with open("plot.html", "r") as f:
+                    html_content = f.read()
+                st.components.v1.html(html_content, width=800, height=600)
+
+                st.download_button(
+                    label="Download plot as HTML",
+                    data=fig.to_html(),
+                    file_name=output_file,
+                    mime="text/html"
                 )
-            elif duplication_or_comparison == "Alignment chaining of two sequences":
-                fig = visualize_chains.segmentplot_of_chains(
-                    chained_hits=chaining_data,
-                    fasta_file_query=fasta_file_query.name,
-                    seq_len_query=seq_len_query,
-                    fasta_file_subject=fasta_file_subject.name,
-                    seq_len_subject=seq_len_subject,
-                    genbank=genbank_name,
-                    scale = scale,
-                    query_is_subject=False,
-                    output_file=output_file,
-                    width=800,
-                    height=600
-                )
-            
-            with open("plot.html", "r") as f:
-                html_content = f.read()
-            st.components.v1.html(html_content, width=800, height=600)
-            
-            st.download_button(
-                label="Download plot as HTML",
-                data=fig.to_html(),
-                file_name=output_file,
-                mime="text/html"
-            )
-    
-            try:
-                os.remove(fasta_file_query.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-            try:
-                os.remove(fasta_file_subject.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-            if genbank_name != None:
+
                 try:
-                    os.remove(genbank_name)
+                    os.remove(fasta_file_query.name)
                 except UnboundLocalError:
                     pass
                 except FileNotFoundError:
                     pass
+                try:
+                    os.remove(fasta_file_subject.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+                if genbank_name != None:
+                    try:
+                        os.remove(genbank_name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+        except Exception as e:
+            show_manual_visualize_chains
 
 ##########################
 ## Main page navigation ##
