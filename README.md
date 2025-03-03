@@ -132,10 +132,10 @@ python SegMantX.py test_modules
 </p>
 
 1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
-2. Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
-3. Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
+2. Chain self-alignments: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
+3. Chaing alignments: Chains local alignments between two sequences (e.g., towards sequence comparisons).
 4. Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
-5. Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
+5. Fetch nucleotide chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
 
 The main modules are called up as follows:
 ```bash

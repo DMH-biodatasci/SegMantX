@@ -79,6 +79,8 @@ def show_manual_generate_alignments():
         - **Percentage sequence identity**
         
     ### **Step 6. Click the 'Generate alignments for chaining' button to run it.**
+    - A table containing the results will appear
+    - The data will be downloaded automatically
     """)
     
 def show_manual_self_alignment_chaining():
@@ -86,10 +88,58 @@ def show_manual_self_alignment_chaining():
     Displays the manual when an error occurs.
     '''
     st.markdown("""
-    ### **User Guidance**
-    - Ensure you have uploaded the correct FASTA file.
-    - Check that all mandatory parameters are provided.
-    - If the issue persists, restart the application.
+    ## **User guidance**
+    - Use the sidebar menu to upload required files, modify parameters and change output filenames.
+    
+    ### **Step 1. Select True/False for 'Use output loaded in memory from generate alignments page'**
+    - True: The input loaded in memory from the generate alignments page will be used as input (no data upload required).
+    - False: The input data/file for the self-alignment chaining needs to be uploaded by the user.
+    - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
+    - Some conditional unnecessary parameters may disappear from the page if 'True' is selected.
+    
+    ### **Step 2. Select / Upload alignment data file :**
+    - Select an alignment data file from your local computer. 
+    - This step is necessary if False was selected in **Step 1**
+    - The alignment (or seed) data file from your local computer should fulfill the following requirements:
+        1. A tab-delimited file 
+        2. Five columns containing: Query start, Query end, Subject start, Subject end, Percentage sequence identity
+    - Alternatively, a BLAST output format 7 file can be used as input - Set 'Input file is BLAST output format 7' to True!
+    
+    ### **Step 3. Set True/False for 'Input file is BLAST output format 7':**
+    - False: if the input data is a tab-delimited file containing five columns (see **Step 2**).
+    - True: if the input data is a BLAST output format 7 file.
+    
+    ### **Step 4. Select the sequence topology of your sequence:**
+    - Choosing the correct sequence topology ensures that alignment hits on **circular sequences** (such as most plasmids or viral genomes) are correctly chained, even when fragmented due to their linear representation in FASTA files.  
+    - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
+    - IMPORTANT: If this option is set to True, it becomes mandatory to provide either the FASTA sequence or the sequence length itself.
+    
+    ### **Step 4. Adjust parameters:**
+    
+    #### Max. gap size [bp]:
+    - Maximum gap size between alignment hits for chaining
+    
+    #### Scaled gap:
+    - Minimum scaled gap between alignment hits for chaining
+    
+    #### Upload fasta file of query:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Automatic sequence length extraction from FASTA file if 'Circular sequence topology' has been set to True
+    - Alternatively, you may provide the sequence length itself.
+    
+    #### Sequence length of query:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Alternatively, you may provide the FASTA file of the query sequence to determine the sequence length for the module.
+    
+    #### Minimum alignment hit length:
+    - Minium length of alignment hits to consider them as seeds for chaining
+    
+    ### **Step 5. Choose filenames for your output files:**
+    - **Export chained alignments to**: Choose a filename to save the tab-delimited output table of the chaining procedure.
+
+    ### **Step 6. Click the 'Run self-sequence alignment chaining' button to run it.**
+    - A table containing the results will appear
+    - The data will be downloaded automatically
     """)
     
 def show_manual_alignment_chaining():
@@ -97,10 +147,58 @@ def show_manual_alignment_chaining():
     Displays the manual when an error occurs.
     '''
     st.markdown("""
-    ### **User Guidance**
-    - Ensure you have uploaded the correct FASTA file.
-    - Check that all mandatory parameters are provided.
-    - If the issue persists, restart the application.
+    ## **User guidance**
+    - Use the sidebar menu to upload required files, modify parameters and change output filenames.
+    
+    ### **Step 1. Select True/False for 'Use output loaded in memory from generate alignments page'**
+    - True: The input loaded in memory from the generate alignments page will be used as input (no data upload required).
+    - False: The input data/file for the alignment chaining needs to be uploaded by the user.
+    - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
+    - Some conditional unnecessary parameters may disappear from the page if 'True' is selected.
+    
+    ### **Step 2. Select / Upload alignment data file :**
+    - Select an alignment data file from your local computer. 
+    - This step is necessary if False was selected in **Step 1**
+    - The alignment (or seed) data file from your local computer should fulfill the following requirements:
+        1. A tab-delimited file 
+        2. Five columns containing: Query start, Query end, Subject start, Subject end, Percentage sequence identity
+    - Alternatively, a BLAST output format 7 file can be used as input - Set 'Input file is BLAST output format 7' to True!
+    
+    ### **Step 3. Set True/False for 'Input file is BLAST output format 7':**
+    - False: if the input data is a tab-delimited file containing five columns (see **Step 2**).
+    - True: if the input data is a BLAST output format 7 file.
+    
+    ### **Step 4. Select the sequence topology of your sequences:**
+    - Choosing the correct sequence topology ensures that alignment hits on **circular sequences** (such as most plasmids or viral genomes) are correctly chained, even when fragmented due to their linear representation in FASTA files.  
+    - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
+    - IMPORTANT: If this option is set to True, it becomes mandatory to provide either the FASTA sequence or the sequence length itself for the corresponding sequence (i.e., query and/or subject sequences).
+    
+    ### **Step 4. Adjust parameters:**
+    
+    #### Max. gap size [bp]:
+    - Maximum gap size between alignment hits for chaining
+    
+    #### Scaled gap:
+    - Minimum scaled gap between alignment hits for chaining
+    
+    #### Upload fasta file of query & subject:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Automatic sequence length extraction from FASTA file(s) if 'Circular sequence topology' has been set to True
+    - Alternatively, you may provide the sequence lengths themselves.
+    
+    #### Sequence length of query & subject:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Alternatively, you may provide the FASTA file of the query (& subject) sequence to determine the sequence length for the module.
+    
+    #### Minimum alignment hit length:
+    - Minium length of alignment hits to consider them as seeds for chaining
+    
+    ### **Step 5. Choose filenames for your output files:**
+    - **Export chained alignments to**: Choose a filename to save the tab-delimited output table of the chaining procedure.
+
+    ### **Step 6. Click the 'Run sequence alignment chaining' button to run it.**
+    - A table containing the results will appear
+    - The data will be downloaded automatically
     """)
     
 def show_manual_fetch_nucleotide_chains():
@@ -164,7 +262,7 @@ def landing_page():
     2. Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
     3. Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
     4. Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
-    5. Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
+    5. Fetch chains as sequences: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
     """
     )
     
