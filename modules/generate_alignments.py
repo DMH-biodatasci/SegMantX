@@ -186,7 +186,7 @@ def main():
             word_size = args.word_size
         )
     
-    print("Total time to compute local alignments: {}".format(round(time.time()-start, 2)))    
+    print("Total time to run module generate_alignments.py: {}".format(round(time.time()-start, 2)))    
     
     return 
 

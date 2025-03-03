@@ -226,9 +226,15 @@ def chain_self_sequence_alignment(input_file=None, max_gap=5000, scaled_gap=1, s
         alignment_coordinate_data = input_file
     # Checks and uses the input file format
     elif not blast_outfmt7:
-        alignment_coordinate_data = pd.read_csv(input_file, sep='\t', header=None)
+        try:
+            alignment_coordinate_data = pd.read_csv(input_file, sep='\t', header=None)
+        except pd.errors.ParserError as e:
+            return print("The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
     else:
-        alignment_coordinate_data = pd.read_csv(input_file, sep='\t', comment='#', header=None)[[6,7,8,9,2]]
+        try:
+            alignment_coordinate_data = pd.read_csv(input_file, sep='\t', comment='#', header=None)[[6,7,8,9,2]]
+        except KeyError:
+            return print("The input data is not in the correct format (i.e., it is not in BLAST output format 7). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
 
     ################################################
     ## 1. Convert local alignment hit coordinates ##
@@ -239,7 +245,10 @@ def chain_self_sequence_alignment(input_file=None, max_gap=5000, scaled_gap=1, s
     # Remove diagonal hits (i.e., q.start == s.start and q.end == s.end) - these are hits resulting from performing BLAST on a sequence to itself
     alignment_coordinate_data = alignment_coordinate_data[(alignment_coordinate_data.iloc[:, 0] != alignment_coordinate_data.iloc[:, 2]) & 
                                       (alignment_coordinate_data.iloc[:, 1] != alignment_coordinate_data.iloc[:, 3])]
-    alignment_coordinate_data.columns = ['q.start', 'q.end', 's.start', 's.end', 'identity']
+    try:
+        alignment_coordinate_data.columns = ['q.start', 'q.end', 's.start', 's.end', 'identity']
+    except ValueError:
+        return print("ERROR: The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity or BLAST output format7). Please the --blast_outfmt7 flag or ensure the correct input data format.")
     # If no hits except diagonal, return a message
     if alignment_coordinate_data.empty:
         empty_df = pd.DataFrame()
@@ -378,7 +387,7 @@ def main():
         fasta_file=args.fasta_file 
     )
     
-    print("Total time to chain self-alignment: {}".format(round(time.time()-start, 2)))  
+    print("Total time to run module chain_self_alignments.py: {}".format(round(time.time()-start, 2)))  
     
     return 
 

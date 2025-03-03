@@ -313,7 +313,7 @@ def main():
         height=args.height
     )
     
-    print("Time to create plot: {}".format(time.time()-start))
+    print("Time to run module visualize_chains.py: {}".format(time.time()-start))
     print("\n")
     print("Warning: Chains originating from sequences that are characterized by a circular sequence topology may appear with a steep slope. These chains may look abnormal by visual inspection.")
     return 

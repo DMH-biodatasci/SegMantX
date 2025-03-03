@@ -181,15 +181,25 @@ def chain_sequence_alignment(input_file, max_gap=5000, scaled_gap=1, seq_len_que
     if isinstance(input_file, pd.DataFrame):
         alignment_coordinate_data = input_file
     elif not blast_outfmt7:
-        alignment_coordinate_data = pd.read_csv(input_file, sep='\t', header=None)
+        try:
+            alignment_coordinate_data = pd.read_csv(input_file, sep='\t', header=None)
+        except pd.errors.ParserError as e:
+            return print("ERROR: The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
     else:
-        alignment_coordinate_data = pd.read_csv(input_file, sep='\t', comment='#', header=None)[[6,7,8,9,2]]
+        try:
+            alignment_coordinate_data = pd.read_csv(input_file, sep='\t', comment='#', header=None)[[6,7,8,9,2]]
+        except KeyError:
+            return print("ERROR: The input data is not in the correct format (i.e., it is not in BLAST output format 7). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
     
     ################################################
     ## 1. Convert local alignment hit coordinates ##
     ################################################
     
-    alignment_coordinate_data.columns = ['q.start', 'q.end', 's.start', 's.end', 'identity']
+    try:
+        alignment_coordinate_data.columns = ['q.start', 'q.end', 's.start', 's.end', 'identity']
+    except ValueError:
+        return print("ERROR: The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity or BLAST output format7). Please the --blast_outfmt7 flag or ensure the correct input data format.")
+       
     # If no hits except diagonal, return a message
     if alignment_coordinate_data.empty:
         return "No local alignment hits! Please inspect if the input data is appropiate for chaining."
@@ -322,7 +332,7 @@ def main():
         fasta_file_subject=args.fasta_file_subject
     )
     
-    print("Total time to chain alignments: {}".format(round(time.time()-start, 2))) 
+    print("Total time to run module chain_alignments.py: {}".format(round(time.time()-start, 2))) 
     return 
 
 if __name__ == "__main__":

@@ -208,17 +208,21 @@ def self_alignment_chaining_page():
                 fasta_file=fasta_file.name,
                 output_file=output_file
             )
-            st.dataframe(chaining_df, use_container_width=True)
-            st.session_state["chaining_result"] = chaining_df
             
-            tsv_data = chaining_df.to_csv(sep='\t', index=False)
-            
-            st.download_button(
-                label="Download chaining results as .tsv file.",
-                data=tsv_data,
-                file_name=output_file,
-                mime="text/tab-separated-values"
-            )
+            if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+            else:
+                st.dataframe(chaining_df, use_container_width=True)
+                st.session_state["chaining_result"] = chaining_df
+
+                tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                st.download_button(
+                    label="Download chaining results as .tsv file.",
+                    data=tsv_data,
+                    file_name=output_file,
+                    mime="text/tab-separated-values"
+                )
         
             try:
                 os.remove(fasta_file.name)
@@ -285,18 +289,21 @@ def alignment_chaining_page():
                 fasta_file_subject=fasta_file_subject.name,
                 output_file=output_file
             )
+            
+            if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+            else:
+                st.dataframe(chaining_df, use_container_width=True)
+                st.session_state["chaining_result"] = chaining_df
 
-            st.dataframe(chaining_df, use_container_width=True)
-            st.session_state["chaining_result"] = chaining_df
-            
-            tsv_data = chaining_df.to_csv(sep='\t', index=False)
-            
-            st.download_button(
-                label="Download chaining results as .tsv file.",
-                data=tsv_data,
-                file_name=output_file,
-                mime="text/tab-separated-values"
-            )
+                tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                st.download_button(
+                    label="Download chaining results as .tsv file.",
+                    data=tsv_data,
+                    file_name=output_file,
+                    mime="text/tab-separated-values"
+                )
             
             try:
                 os.remove(fasta_file_query.name)

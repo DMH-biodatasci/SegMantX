@@ -191,7 +191,7 @@ def main():
         print("Alternatively, indicate the fasta files for the query (--fasta_file_query) and subject (--fasta_file_subject) sequences.")
         print("For help type: python3 segmentation.py fetch_nucleotide_chains --help")
 
-    print("Total time to fetch chains as nucleotide sequences: {}".format(time.time()-start))
+    print("Total time to run module fetch_nucleotide_chains.py: {}".format(time.time()-start))
     return 
 
 if __name__ == "__main__":
