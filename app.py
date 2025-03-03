@@ -30,56 +30,89 @@ def check_input(input_file):
         return True
 
 def show_manual_generate_alignments():
-    """Displays the manual when an error occurs."""
-    st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+    '''
+    Displays the manual when an error occurs.
+    '''
     st.markdown("""
-    ### **User Manual**
-    - Purpose: Select 'Duplication detection' to compute a self-sequence alignment or 'Sequence comparison' to perform an alignment between two sequences
-    - 'Duplication detection' requires a sequence in FASTA-format
-    - 'Sequence comparison' requires two sequences in FASTA-format (i.e., query and subject sequence)
-    - Select the sequence topology of your sequences. Choosing the correct topology ensures that alignment hits on circular sequences are correctly chained, even when they appear fragmented due to the linear representation in FASTA files. This may be important, when working with plasmids or viral genomes, where alignments may be discontinuous due to their linear sequence format in FASTA files.
-    - E-value: The sE-value in BLAST estimates the number of random alignments that would be expected by chance in a database search. It helps filter out low-confidence matches and retain only biologically relevant seeds for chaining. For example: High specificity: 1e-10 (Strict, fewer but highly reliable seeds) vs. Balanced approach: 1e-5 (good mix of sensitivity and specificity) vs. Higher sensitivity: 1e-1 (More seeds, but may introduce noise - not recommended!)
-    - Word size: The word size in BLAST defines the length of the initial exact match (seed) required for an alignment to be extended. It acts as a seed detection threshold and influences sensitivity and speed. For example: Word size = 7-11  for short sequences (More sensitive, detects weak matches) vs. Word size = 20-30  for longer genomic sequences (Faster, focuses on strong matches)
-    - Threads: Threads refer to the number of CPU cores used to parallelize BLAST computations. Increasing the number of threads allows BLAST to process multiple alignment tasks simultaneously, improving speed and efficiency.
-    - Export BLAST output format 7 to: Saves the BLAST output in format 7 from the alignment computation.
-    - Export main alignment hit data to: Saves the alignment hit data required for chaining (i.e., tab-delimited file containing five columns: Query start, Query end, Subject start, Subject end, Perc. sequence identity)
+    ### **User guidance for alignment generation**
+    
+    #### **Step 1. Select the purpose:**
+    - **'Duplication detection'**: Computes a self-sequence alignment. The output of the self-sequence alignment may be passed to the self-alignment chaining module to detect duplications. 
+    - **'Sequence comparison'**: Performs an alignment between two sequences (query and subject). The output of the sequence alignment between two sequences may be passed to the alignment chaining module to compare sequences.
+    
+    #### **Step 2. Select / Upload FASTA file(s):**
+    - **'Duplication detection' **requires a** single sequence in FASTA format**.
+    - **'Sequence comparison' **requires** two sequences in FASTA format** (query and subject).
+    
+    #### **Step 3. Select the sequence topology of your sequences:**
+    - Choosing the correct sequence topology ensures that alignment hits on **circular sequences** (such as most plasmids or viral genomes) are correctly chained, even when fragmented due to their linear representation in FASTA files.  
+    - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
+    
+    #### **Step 4. Adjust optional parameters:**
+    - The **E-value** in BLAST estimates the number of random alignments expected by chance. It helps filter low-confidence matches and retains biologically relevant seeds for chaining.
+    - Example E-value settings:  
+        - High specificity: `1e-10` (Fewer, more reliable seeds)  
+        - Balanced approach: `1e-5` (Good balance of sensitivity and specificity)  
+        - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously)
+    
+    - The **word size** defines the length of the initial exact match (seed) required for alignment extension.
+    - Choose a higher word size to speed up the alignment generation and chaining on larger sequences.
+    - Example word size settings:  
+        - For short sequences (e.g., plasmids): `Word size = 7-11` (More sensitive, detects weak matches)  
+        - For longer genomic sequences (e.g., chromosomes): `Word size = 20-30` (Faster, focuses on strong matches)
+        
+    - **Threads** refer to the number of CPU cores used to parallelize BLAST computations.
+    - More threads allow for faster processing by handling multiple alignment tasks simultaneously, improving overall speed and efficiency.
+    
+    #### **Step 5. Adjust optional parameters:**
+    - **Export BLAST output (Format 7)**: Saves the alignment computation results in **BLAST output format 7**.
+    - **Export main alignment hit data**: Saves the alignment hit data required for chaining, stored in a **tab-delimited file** with the following five columns:
+        - **Query start**
+        - **Query end**
+        - **Subject start**
+        - **Subject end**
+        - **Percentage sequence identity**
     """)
     
 def show_manual_self_alignment_chaining():
-    """Displays the manual when an error occurs."""
-    st.error("An ERROR occured. Please check the manual for this module.")
+    '''
+    Displays the manual when an error occurs.
+    '''
     st.markdown("""
-    ### **User Manual**
+    ### **User Guidance**
     - Ensure you have uploaded the correct FASTA file.
     - Check that all mandatory parameters are provided.
     - If the issue persists, restart the application.
     """)
     
 def show_manual_alignment_chaining():
-    """Displays the manual when an error occurs."""
-    st.error("An ERROR occured. Please check the manual for this module.")
+    '''
+    Displays the manual when an error occurs.
+    '''
     st.markdown("""
-    ### **User Manual**
+    ### **User Guidance**
     - Ensure you have uploaded the correct FASTA file.
     - Check that all mandatory parameters are provided.
     - If the issue persists, restart the application.
     """)
     
 def show_manual_fetch_nucleotide_chains():
-    """Displays the manual when an error occurs."""
-    st.error("An ERROR occured. Please check the manual for this module.")
+    '''
+    Displays the manual when an error occurs.
+    '''
     st.markdown("""
-    ### **User Manual**
+    ### **User Guidance**
     - Ensure you have uploaded the correct FASTA file.
     - Check that all mandatory parameters are provided.
     - If the issue persists, restart the application.
     """)
     
 def show_manual_visualize_chains():
-    """Displays the manual when an error occurs."""
-    st.error("An ERROR occured. Please check the manual for this module.")
+    '''
+    Displays the manual when an error occurs.
+    '''
     st.markdown("""
-    ### **User Manual**
+    ### **User Guidance**
     - Ensure you have uploaded the correct FASTA file.
     - Check that all mandatory parameters are provided.
     - If the issue persists, restart the application.
@@ -169,57 +202,61 @@ def generate_alignments_page():
         pass
     
     if st.sidebar.button("Generate alignments for chaining"):
-        if query_fasta_file:
-            if duplication_or_comparison == 'Duplication detection':
-                alignment_df = generate_alignments.blastn_self_sequence_alignment(
-                    query=query_fasta_file.name,
-                    blast_output=blast_output,
-                    alignments_output=coordinates_output,
-                    is_circular=is_query_circular,
-                    evalue=evalue,
-                    min_identity_percentage=perc_identity,
-                    threads=threads,
-                    word_size=word_size
+        try:
+            if query_fasta_file:
+                if duplication_or_comparison == 'Duplication detection':
+                    alignment_df = generate_alignments.blastn_self_sequence_alignment(
+                        query=query_fasta_file.name,
+                        blast_output=blast_output,
+                        alignments_output=coordinates_output,
+                        is_circular=is_query_circular,
+                        evalue=evalue,
+                        min_identity_percentage=perc_identity,
+                        threads=threads,
+                        word_size=word_size
+                    )
+                elif duplication_or_comparison == "Sequence comparison":
+                    alignment_df = generate_alignments.blastn_sequence_alignment(
+                        query=query_fasta_file.name, 
+                        subject=subject_fasta_file.name, 
+                        blast_output=blast_output, 
+                        alignments_output=coordinates_output,
+                        is_query_circular=is_query_circular,
+                        is_subject_circular=is_subject_circular,
+                        evalue=evalue,
+                        min_identity_percentage=perc_identity,
+                        threads=threads,
+                        word_size=word_size
+                    )
+                alignment_df_with_headers = alignment_df.copy(deep=True)
+                alignment_df_with_headers.columns = ['Query start [bp]', 'Query end [bp]', 'Subject start [bp]', 'Subject end [bp]', 'Perc. identity [%]']
+                st.dataframe(alignment_df_with_headers, use_container_width=True)
+
+                st.session_state["alignment_result"] = alignment_df
+                tsv_data = alignment_df_with_headers.to_csv(sep='\t', index=False)
+
+                st.download_button(
+                    label="Download local alignment hits as .tsv file.",
+                    data=tsv_data,
+                    file_name=coordinates_output,
+                    mime="text/tab-separated-values"
                 )
-            elif duplication_or_comparison == "Sequence comparison":
-                alignment_df = generate_alignments.blastn_sequence_alignment(
-                    query=query_fasta_file.name, 
-                    subject=subject_fasta_file.name, 
-                    blast_output=blast_output, 
-                    alignments_output=coordinates_output,
-                    is_query_circular=is_query_circular,
-                    is_subject_circular=is_subject_circular,
-                    evalue=evalue,
-                    min_identity_percentage=perc_identity,
-                    threads=threads,
-                    word_size=word_size
-                )
-            alignment_df_with_headers = alignment_df.copy(deep=True)
-            alignment_df_with_headers.columns = ['Query start [bp]', 'Query end [bp]', 'Subject start [bp]', 'Subject end [bp]', 'Perc. identity [%]']
-            st.dataframe(alignment_df_with_headers, use_container_width=True)
-            
-            st.session_state["alignment_result"] = alignment_df
-            tsv_data = alignment_df_with_headers.to_csv(sep='\t', index=False)
-            
-            st.download_button(
-                label="Download local alignment hits as .tsv file.",
-                data=tsv_data,
-                file_name=coordinates_output,
-                mime="text/tab-separated-values"
-            )
-            
-            try:
-                os.remove(query_fasta_file.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
-            try:
-                os.remove(subject_fasta_file.name)
-            except UnboundLocalError:
-                pass
-            except FileNotFoundError:
-                pass
+
+                try:
+                    os.remove(query_fasta_file.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+                try:
+                    os.remove(subject_fasta_file.name)
+                except UnboundLocalError:
+                    pass
+                except FileNotFoundError:
+                    pass
+        except Exception as e:
+            st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+            show_manual_generate_alignments()
 
             
 def self_alignment_chaining_page():
@@ -289,6 +326,7 @@ def self_alignment_chaining_page():
                 except FileNotFoundError:
                     pass
             except Exception as e:
+                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
                 show_manual_self_alignment_chaining() 
         
 
@@ -380,6 +418,7 @@ def alignment_chaining_page():
                     pass
                 
             except Exception as e:
+                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
                 show_manual_alignment_chaining() 
                  
 
@@ -456,6 +495,7 @@ def fetch_chains_as_sequences_page():
                 except FileNotFoundError:
                     pass
             except Exception as e:
+                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
                 show_manual_fetch_nucleotide_chains() 
             
 
@@ -579,6 +619,7 @@ def visualize_chains_page():
                     except FileNotFoundError:
                         pass
         except Exception as e:
+            st.error("An ERROR occured. Please check the manual for the module generate alignments.")
             show_manual_visualize_chains
 
 ##########################
