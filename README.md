@@ -7,6 +7,7 @@
 <p align="center">
   <img src="pipeline_figure.png" alt="Pipeline">
 </p>
+Read the caption of this Figure here: ###
 
 SegMantX workflow integrates BLASTn to compute local alignments as seeds for the chaining process. Nonetheless, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
@@ -36,7 +37,7 @@ Before getting started, ensure you have one of the following environments set up
 
 Note, that the syntax for running SegMantX from the terminal changes using Docker.
 
-### Suggested installations
+### Suggested installation procedures
 
 ### 1. Installation on linux
 ```bash

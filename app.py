@@ -241,14 +241,8 @@ def landing_page():
     )
     
     st.write(
-        "SegMantX embeds BLASTn to generate local alignments as seeds for the chaining process. It's possible to skip the recommended alignment generation step based on BLASTn if the user provides alternative input data as seeds for the chaining process organized in a tab-delimited file containing the following five columns:"
+        "SegMantX embeds BLASTn to generate local alignments as seeds for the chaining process. It's possible to skip the recommended alignment generation step based on BLASTn if the user provides alternative input data as seeds for the chaining process organized in a tab-delimited file containing the following five columns: Query start, Query end, Subject start, Subject end, Percentage sequence identity."
     )
-    st.markdown("""
-        - **Query start**
-        - **Query end**
-        - **Subject start**
-        - **Subject end**
-        - **Percentage sequence identity**""")
     
     st.write(
         "Briefly, SegMantX is organised into five modules and has a recommended workflow:"
@@ -378,6 +372,7 @@ def self_alignment_chaining_page():
     '''
     st.title("Chaining self-sequence alignment")
     st.write("This module may be used towards duplication detection.")
+    show_manual_self_alignment_chaining()
     st.sidebar.header("Parameters for self-sequence alignment chaining:")
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from generate alignments page", [False, True])
     if use_session_data and "alignment_result" in st.session_state:
@@ -449,6 +444,7 @@ def alignment_chaining_page():
     '''
     st.title("Chaining sequence alignment between two sequences")
     st.write("This module may be used towards sequence comparisons.")
+    show_manual_alignment_chaining()
     st.sidebar.header("Parameters for chaining alignments between two sequences:")
     
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from generate alignments page", [False, True])
