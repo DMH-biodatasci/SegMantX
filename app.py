@@ -78,8 +78,7 @@ def show_manual_generate_alignments():
         - **Subject end**
         - **Percentage sequence identity**
         
-    ### **Step 6. Click the 'Generate alignments for chaining' button:**
-    
+    ### **Step 6. Click the 'Generate alignments for chaining' button to run it.**
     """)
     
 def show_manual_self_alignment_chaining():
