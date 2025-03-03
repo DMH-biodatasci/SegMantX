@@ -34,39 +34,43 @@ def show_manual_generate_alignments():
     Displays the manual when an error occurs.
     '''
     st.markdown("""
-    ### **User guidance for alignment generation**
+    ## **User guidance**
     
-    #### **Step 1. Select the purpose:**
+    ### **Step 1. Select the purpose:**
     - **'Duplication detection'**: Computes a self-sequence alignment. The output of the self-sequence alignment may be passed to the self-alignment chaining module to detect duplications. 
     - **'Sequence comparison'**: Performs an alignment between two sequences (query and subject). The output of the sequence alignment between two sequences may be passed to the alignment chaining module to compare sequences.
     
-    #### **Step 2. Select / Upload FASTA file(s):**
-    - **'Duplication detection' **requires a** single sequence in FASTA format**.
-    - **'Sequence comparison' **requires** two sequences in FASTA format** (query and subject).
+    ### **Step 2. Select / Upload FASTA file(s):**
+    - **'Duplication detection'** requires a single sequence in FASTA format.
+    - **'Sequence comparison'** requires two sequences in FASTA format (query and subject).
     
-    #### **Step 3. Select the sequence topology of your sequences:**
+    ### **Step 3. Select the sequence topology of your sequences:**
     - Choosing the correct sequence topology ensures that alignment hits on **circular sequences** (such as most plasmids or viral genomes) are correctly chained, even when fragmented due to their linear representation in FASTA files.  
     - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
     
-    #### **Step 4. Adjust optional parameters:**
+    ### **Step 4. Adjust optional parameters:**
+    
+    #### E-value (Controls Alignment Sensitivity):
     - The **E-value** in BLAST estimates the number of random alignments expected by chance. It helps filter low-confidence matches and retains biologically relevant seeds for chaining.
     - Example E-value settings:  
         - High specificity: `1e-10` (Fewer, more reliable seeds)  
         - Balanced approach: `1e-5` (Good balance of sensitivity and specificity)  
         - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously)
     
+    #### Word Size (Defines the Seed Length):
     - The **word size** defines the length of the initial exact match (seed) required for alignment extension.
     - Choose a higher word size to speed up the alignment generation and chaining on larger sequences.
     - Example word size settings:  
         - For short sequences (e.g., plasmids): `Word size = 7-11` (More sensitive, detects weak matches)  
         - For longer genomic sequences (e.g., chromosomes): `Word size = 20-30` (Faster, focuses on strong matches)
-        
+    
+    #### Threads:
     - **Threads** refer to the number of CPU cores used to parallelize BLAST computations.
     - More threads allow for faster processing by handling multiple alignment tasks simultaneously, improving overall speed and efficiency.
     
-    #### **Step 5. Adjust optional parameters:**
-    - **Export BLAST output (Format 7)**: Saves the alignment computation results in **BLAST output format 7**.
-    - **Export main alignment hit data**: Saves the alignment hit data required for chaining, stored in a **tab-delimited file** with the following five columns:
+    ### **Step 5. Choose filenames for your output files:**
+    - **Export BLAST output (Format 7)**: Choose a filename for the alignment computation results in **BLAST output format 7**.
+    - **Export main alignment hit data**: Choose a filename for the main alignment hit data used by the chaining modules. The data is stored in a **tab-delimited file** with the following five columns:
         - **Query start**
         - **Query end**
         - **Subject start**
@@ -132,31 +136,39 @@ def landing_page():
     
     st.write(
         "SegMantX is a bioinformatics tool designed to support a user-friendly chaining of local sequence alignments. "
-        "This app simplifies the chaining process by a graphical user interface."
+        "This app simplifies the chaining process by providing a graphical user interface."
     )
     
     st.write(
-        "SegMantX embeds BLASTn to generate local alignments as seeds for the chaining process. Skipping the computation of alignments (i.e., seeds) enables to use alternative seed inputs for the chaining process."
+        "SegMantX embeds BLASTn to generate local alignments as seeds for the chaining process. It's possible to skip the recommended alignment generation step based on BLASTn if the user provides alternative input data as seeds for the chaining process organized in a tab-delimited file containing the following five columns:"
     )
+    st.markdown("""
+        - **Query start**
+        - **Query end**
+        - **Subject start**
+        - **Subject end**
+        - **Percentage sequence identity**""")
     
     st.write(
-        "Briefly, SegMantX is organised into five modules:"
+        "Briefly, SegMantX is organised into five modules and has a recommended workflow:"
     )
+    
+    st.image("workflow.png", caption="Workflow iamge", use_column_width=True)
     
     st.markdown(
     """
-    - Generate alignments: Computes alignments for chaining modules.
-    - Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., duplication detection).
-    - Alignment chaining: Chains local alignments between two sequences (e.g., sequence comparisons).
-    - Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence.
-    - Fetch chains: Extracts nucleotide sequences using the chained alignments and saves as fasta file.
+    - Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
+    - Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
+    - Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
+    - Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
+    - Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
     """
     )
     
     st.markdown("**Get started by navigating through the menu on the left!**")
     
     st.write(
-        "For further details visit:"
+        "For further details visit also:"
     )
     
     st.markdown(
