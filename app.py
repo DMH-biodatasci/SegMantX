@@ -35,6 +35,7 @@ def show_manual_generate_alignments():
     '''
     st.markdown("""
     ## **User guidance**
+    - Use the sidebar menu to upload required files, modify parameters and change output filenames.
     
     ### **Step 1. Select the purpose:**
     - **'Duplication detection'**: Computes a self-sequence alignment. The output of the self-sequence alignment may be passed to the self-alignment chaining module to detect duplications. 
@@ -76,6 +77,9 @@ def show_manual_generate_alignments():
         - **Subject start**
         - **Subject end**
         - **Percentage sequence identity**
+        
+    ### **Step 6. Click the 'Generate alignments for chaining' button:**
+    
     """)
     
 def show_manual_self_alignment_chaining():

@@ -29,23 +29,16 @@ If you use SegMantX in your research, please cite:
 SegMantX can be installed using conda (recommended) or is available via Docker.  
 
 ### Prerequisites
-- Miniconda or
-- Docker
+Before getting started, ensure you have one of the following environments set up:
+
+- Miniconda (Recommended) – Provides a lightweight Python environment with package management.
+- Docker (Alternative) – Allows running the application in an isolated container without direct dependencies.
+
+Note, that the syntax for running SegMantX from the terminal changes using Docker.
 
 ### Suggested installations
 
-### 1. Platform-independent installation
-```bash
-# Clone the repository
-git clone https://github.com/DMH-biodatasci/SegMantX.git
-cd SegMantX
-
-# Create and activate a new conda environment from the provided .yml file
-conda env create -f SegMantX.yml
-conda activate SegMantX
-```
-
-### 2. Installation using a linux platform
+### 1. Installation on linux
 ```bash
 # Clone the repository
 git clone https://github.com/DMH-biodatasci/SegMantX.git
@@ -57,7 +50,7 @@ conda env create -f SegMantX.yml --platform linux-64
 conda activate SegMantX
 ```
 
-### 3. Installation using a MacOS platform
+### 2. Installation on MacOS
 ```bash
 # Clone the repository
 git clone https://github.com/DMH-biodatasci/SegMantX.git
@@ -68,7 +61,7 @@ conda env create -f SegMantX.yml --platform osx-64
 conda activate SegMantX
 ```
 
-### 4. Installation on Windows
+### 3. Installation on Windows
 Recommended prerequisites: 
 For running SegMantX on Windows, we recommend to install the Windows Subsystem for Linux (WSL).
 Afterwards, SegMantX can be installed via the subsystem:
@@ -84,7 +77,21 @@ conda env create -f SegMantX.yml --platform linux-64
 conda activate SegMantX
 ```
 
-### 5. Docker
+### 4. Alternative: Platform-independent installation
+This may cause issues during the installation on some platforms due to package availability on some operating systems and chip architectures.
+```bash
+# Clone the repository
+git clone https://github.com/DMH-biodatasci/SegMantX.git
+cd SegMantX
+
+# Create and activate a new conda environment from the provided .yml file
+conda env create -f SegMantX.yml
+conda activate SegMantX
+```
+
+### 5. Alternative installation: Docker
+This suggested installation via Docker ensures the availability of SegMantX.
+However, it is less recommended as the syntax for running SegMantX changes, it is less user-friendly and requires some knowledge about Docker.
 ```bash
 # Clone the repository
 git clone https://github.com/DMH-biodatasci/SegMantX.git
@@ -92,9 +99,10 @@ cd SegMantX
 docker build -f Dockerfile_SegMantX -t segmantx .
 ```
 
-Note, the syntax using SegMantX via Docker will change, for example:
+Modify the syntax using SegMantX via, for example:
 ```bash
 docker run -it --rm segmantx test_modules
+# Instead of: python3 SegMantX.py test_modules
 ```
 
 To save output files to localhost, modify your commands such as:
@@ -105,14 +113,31 @@ docker run -it --rm -v /path/to/host:/data segmantx generate_alignments \
   --alignment_hits_file /path/to/host/alignment_hits_output_file \
   --is_query_circular \
   --self_sequence_alignment
+  
+#Instead of: python3 SegMantX.py generate_alignments --query_file /path/to/host/query_file --blast_output_file /path/to/host/blast_output_file --alignment_hits_file /path/to/host/alignment_hits_output_file --is_query_circular --self_sequence_alignment
 ```
 
-## Usage
+## ✅ Verify Installation & Test SegMantX's Modules
+Check if the installation was successful by running:
+```bash
+python SegMantX.py test_modules
+```
 
-### 🧩 SegMantX Module Overview  
+## 🧩 SegMantX Workflow & Module Overview
 
-**SegMantX** is organized into modules. The main modules are:
+**SegMantX** is organized into modules. The suggested workflow:
 
+<p align="center">
+  <img src="workflow.png" alt="Pipeline">
+</p>
+
+1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
+2. Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
+3. Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
+4. Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
+5. Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
+
+The main modules are called up as follows:
 ```bash
 #1. Computes alignments via BLASTn for the chaining modules.
 python3 SegMantX.py generate_alignments [options] ...
@@ -149,12 +174,7 @@ python3 SegMantX.py version
 python3 SegMantX.py citation 
 ```
 
-### ✅ 1. Verify Installation & Test SegMantX's Modules
-Check if the installation was successful by running:
-```bash
-python SegMantX.py test_modules
-#Confirm to download the test dataset with 'yes'
-```
+## Usage
 
 ### SegMantX as command-line tool
 
@@ -166,14 +186,15 @@ python SegMantX.py -h
 Run a SegMantX module with the following command to display usage and parameters:
 ```bash
 python SegMantX.py [module] -h 
+# The following modules can be called: [ chain_self_alignments | chain_sequence_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation ]
 # e.g., python SegMantX.py generate_alignments -h
 ```
 
-#### Generate alignments
+#### 1. Generate alignments
 Run SegMantX's **generate_alignments.py** module to compute seeds for the chaining process:
 ```bash
 #Compute a self-sequence alignment:
-python3 SegMantX.py generate_alignments  --query_file tests/NZ_AP022172.1.fasta --blast_output_file tests/NZ_AP022172.1.blast.x7 --alignment_hits_file tests/NZ_AP022172.1.alignment_coordinates.tsv --is_query_circular --self_sequence_alignment
+python3 SegMantX.py generate_alignments --query_file tests/NZ_AP022172.1.fasta --blast_output_file tests/NZ_AP022172.1.blast.x7 --alignment_hits_file tests/NZ_AP022172.1.alignment_coordinates.tsv --is_query_circular --self_sequence_alignment
 
 ##Compute a sequence alignment between two sequences:
 python3 SegMantX.py generate_alignments  --query_file tests/NZ_CP018634.1.fasta --subject_file tests/NZ_CP022004.1.fasta --blast_output_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.blast.x7 --alignment_hits_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv --is_query_circular --is_subject_circular 
@@ -186,13 +207,13 @@ Output of generate alignments:
 | alignment_hits.tsv | Output file restricted to q.start, q.end, s.end, s.start, and percentage sequence identity from BLASTn search, which is sufficient for the chaining modules | 
 
 
-#### Self-sequence alignment chaining
+#### 2. Self-sequence alignment chaining
 Run SegMantX's **chain_self_alignments.py** module for chaining a self-sequence alignment (e.g., towards duplication detection):
 ```bash
 python3 SegMantX.py chain_self_alignments --input_file tests/NZ_AP022172.1.alignment_coordinates.tsv --max_gap 5000 --scaled_gap 1 --fasta_file tests/NZ_AP022172.1.fasta --is_query_circular --output_file tests/NZ_AP022172.1.chains.tsv
 ```
 
-#### Sequence alignment chaining 
+#### 3. Sequence alignment chaining 
 Run SegMantX's **chain_alignments.py** module for chaining a sequence alignment (e.g., towards sequence comparison):
 ```bash
 python3 SegMantX.py chain_alignments --input_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv --fasta_file_query tests/NZ_CP018634.1.fasta --fasta_file_subject tests/NZ_CP022004.1.fasta --max_gap 5000 --scaled_gap 1 --is_query_circular --is_subject_circular --min_length 100 -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv
@@ -204,7 +225,7 @@ Output of chaining modules:
 | chaining_output.tsv | Main output file of the chaining procedure containing chaining coordinates and metrics |  
 | chaining_output.tsv.indices | Output file to trace back original local alignment hits that have been chained | 
 
-#### Visualization
+#### 4. Visualization
 Run SegMantX's **visualize_chains.py** module to visualize chains in an interactive segmentplot:
 ```bash
 #Visualize chaining results of one sequence (i.e., towards duplication detection)
@@ -221,7 +242,7 @@ Output of visualization module:
 ![Example Plot](example_plot.png)
 
 
-#### Get chains as nucleotide sequences
+#### 5. Get chains as nucleotide sequences
 Run SegMantX's **fetch_nucleotide_chains.py** module to extract chains as nucleotide sequences from a fasta file:
 ```bash
 #Get sequences for duplication downstream analysis:
