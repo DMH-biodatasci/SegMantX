@@ -153,15 +153,15 @@ def landing_page():
         "Briefly, SegMantX is organised into five modules and has a recommended workflow:"
     )
     
-    st.image("workflow.png", caption="Workflow iamge", use_column_width=True)
+    st.image("workflow.png", caption="Workflow iamge",  use_container_width=True)
     
     st.markdown(
     """
-    - Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
-    - Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
-    - Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
-    - Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
-    - Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
+    1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
+    2. Self-alignment chaining: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
+    3. Alignment chaining: Chains local alignments between two sequences (e.g., towards sequence comparisons).
+    4. Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
+    5. Fetch chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
     """
     )
     
