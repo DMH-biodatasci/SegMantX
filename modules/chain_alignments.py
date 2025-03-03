@@ -173,9 +173,9 @@ def chain_sequence_alignment(input_file, max_gap=5000, scaled_gap=1, seq_len_que
         seq_len_subject = check_sequence_length(fasta_file_subject)
     
     if isinstance(seq_len_query, str):
-        return print('Flag --is_query_circular has been set. The sequence size is required for chaining a sequence with circular topology. Set parameter --sequence_length_query or --fasta_file_query.')
+        return print('ERROR: Flag --is_query_circular has been set. The sequence size is required for chaining a sequence with circular topology. Set parameter --sequence_length_query or --fasta_file_query.')
     if isinstance(seq_len_subject, str):
-        return print('Flag --is_subject_circular has been set. The sequence size is required for chaining a sequence with circular topology. Set parameter --sequence_length_subject or --fasta_file_subject.')
+        return print('ERROR: Flag --is_subject_circular has been set. The sequence size is required for chaining a sequence with circular topology. Set parameter --sequence_length_subject or --fasta_file_subject.')
     
     #Conditions for streamlit app
     if isinstance(input_file, pd.DataFrame):

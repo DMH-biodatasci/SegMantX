@@ -28,7 +28,17 @@ def check_input(input_file):
         return True
     elif input_file:
         return True
-            
+    
+def show_manual():
+    """Displays the manual when an error occurs."""
+    st.error("An error occurred! Please check the input files and parameters.")
+    st.markdown("""
+    ### **User Manual**
+    - Ensure you have uploaded the correct FASTA file.
+    - Check that all mandatory parameters are provided.
+    - If the issue persists, restart the application.
+    """)
+          
 ####################
 ## Page functions ##
 ####################
@@ -197,20 +207,25 @@ def self_alignment_chaining_page():
     
     if st.sidebar.button("Run self-sequence alignment chaining"):
         if check_value:
-            chaining_df = chain_self_alignments.chain_self_sequence_alignment(
-                input_file=alignment_coordinate_file,
-                max_gap=max_gap,
-                scaled_gap=scaled_gap,
-                seq_len=replicon_size if replicon_size > 0 else None,
-                is_query_circular=sequence_is_circular,
-                min_len=min_len,
-                blast_outfmt7=blast_outfmt7,
-                fasta_file=fasta_file.name,
-                output_file=output_file
-            )
+            try:
+                chaining_df = chain_self_alignments.chain_self_sequence_alignment(
+                    input_file=alignment_coordinate_file,
+                    max_gap=max_gap,
+                    scaled_gap=scaled_gap,
+                    seq_len=replicon_size if replicon_size > 0 else None,
+                    is_query_circular=sequence_is_circular,
+                    min_len=min_len,
+                    blast_outfmt7=blast_outfmt7,
+                    fasta_file=fasta_file.name,
+                    output_file=output_file
+                )
+            except Exception as e:
+                st.error(f"Unexpected error: {e}")
+                show_manual() 
             
             if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
                 st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+                show_manual()
             else:
                 st.dataframe(chaining_df, use_container_width=True)
                 st.session_state["chaining_result"] = chaining_df
@@ -273,22 +288,29 @@ def alignment_chaining_page():
     except UnboundLocalError:
         pass
     
+    
+    
     if st.sidebar.button("Run sequence alignment chaining"):
         if check_value:
-            chaining_df = chain_alignments.chain_sequence_alignment(
-                input_file=alignment_coordinate_file,
-                max_gap=max_gap,
-                scaled_gap=scaled_gap,
-                seq_len_query=seq_len_query if seq_len_query > 0 else None,
-                seq_len_subject=seq_len_subject if seq_len_subject > 0 else None,
-                is_query_circular=is_query_circular,
-                is_subject_circular=is_subject_circular,
-                min_len=min_len,
-                blast_outfmt7=blast_outfmt7,
-                fasta_file_query=fasta_file_query.name,
-                fasta_file_subject=fasta_file_subject.name,
-                output_file=output_file
-            )
+            try:
+                chaining_df = chain_alignments.chain_sequence_alignment(
+                    input_file=alignment_coordinate_file,
+                    max_gap=max_gap,
+                    scaled_gap=scaled_gap,
+                    seq_len_query=seq_len_query if seq_len_query > 0 else None,
+                    seq_len_subject=seq_len_subject if seq_len_subject > 0 else None,
+                    is_query_circular=is_query_circular,
+                    is_subject_circular=is_subject_circular,
+                    min_len=min_len,
+                    blast_outfmt7=blast_outfmt7,
+                    fasta_file_query=fasta_file_query.name,
+                    fasta_file_subject=fasta_file_subject.name,
+                    output_file=output_file
+                )
+                
+            except Exception as e:
+                st.error(f"Unexpected error: {e}")
+                show_manual() 
             
             if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
                 st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")

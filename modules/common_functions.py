@@ -22,7 +22,7 @@ def check_sequence_length(fasta_file):
     Checks if sequence length is available from fasta file.
     '''
     if fasta_file == '' or fasta_file == None:
-        return 'Flag --is_query_circular or --is_subject_circular has been set to True. The sequence size is required for chaining alignments on a circular sequence topology. Set corresponding parameters: --sequence_length_query and/or --sequence_length_subject or --fasta_file_query and/or --fasta_file_subject.'
+        return 'ERROR: Flag --is_query_circular or --is_subject_circular has been set to True. The sequence size is required for chaining alignments on a circular sequence topology. Set corresponding parameters: --sequence_length_query and/or --sequence_length_subject or --fasta_file_query and/or --fasta_file_subject.'
     else:
         return get_sequence_length(fasta_file)
 

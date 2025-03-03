@@ -229,12 +229,12 @@ def chain_self_sequence_alignment(input_file=None, max_gap=5000, scaled_gap=1, s
         try:
             alignment_coordinate_data = pd.read_csv(input_file, sep='\t', header=None)
         except pd.errors.ParserError as e:
-            return print("The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
+            return print("ERROR: The input data is not in the correct format (i.e., it should be a tab-delimited file containing five columns: q.start, q.end, s.start, s.end, perc. identity). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
     else:
         try:
             alignment_coordinate_data = pd.read_csv(input_file, sep='\t', comment='#', header=None)[[6,7,8,9,2]]
         except KeyError:
-            return print("The input data is not in the correct format (i.e., it is not in BLAST output format 7). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
+            return print("ERROR: The input data is not in the correct format (i.e., it is not in BLAST output format 7). Please change the --blast_outfmt7 flag or ensure the correct input data format.")
 
     ################################################
     ## 1. Convert local alignment hit coordinates ##
