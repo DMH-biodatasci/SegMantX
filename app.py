@@ -219,25 +219,25 @@ def self_alignment_chaining_page():
                     fasta_file=fasta_file.name,
                     output_file=output_file
                 )
+            
+                if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                    st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+
+                else:
+                    st.dataframe(chaining_df, use_container_width=True)
+                    st.session_state["chaining_result"] = chaining_df
+
+                    tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                    st.download_button(
+                        label="Download chaining results as .tsv file.",
+                        data=tsv_data,
+                        file_name=output_file,
+                        mime="text/tab-separated-values"
+                    )  
             except Exception as e:
                 st.error(f"Unexpected error: {e}")
                 show_manual() 
-            
-            if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
-                st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
-                show_manual()
-            else:
-                st.dataframe(chaining_df, use_container_width=True)
-                st.session_state["chaining_result"] = chaining_df
-
-                tsv_data = chaining_df.to_csv(sep='\t', index=False)
-
-                st.download_button(
-                    label="Download chaining results as .tsv file.",
-                    data=tsv_data,
-                    file_name=output_file,
-                    mime="text/tab-separated-values"
-                )
         
             try:
                 os.remove(fasta_file.name)
@@ -289,7 +289,6 @@ def alignment_chaining_page():
         pass
     
     
-    
     if st.sidebar.button("Run sequence alignment chaining"):
         if check_value:
             try:
@@ -308,25 +307,25 @@ def alignment_chaining_page():
                     output_file=output_file
                 )
                 
+            
+                if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                    st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+                else:
+                    st.dataframe(chaining_df, use_container_width=True)
+                    st.session_state["chaining_result"] = chaining_df
+
+                    tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                    st.download_button(
+                        label="Download chaining results as .tsv file.",
+                        data=tsv_data,
+                        file_name=output_file,
+                        mime="text/tab-separated-values"
+                    )
+                
             except Exception as e:
-                st.error(f"Unexpected error: {e}")
                 show_manual() 
-            
-            if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
-                st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
-            else:
-                st.dataframe(chaining_df, use_container_width=True)
-                st.session_state["chaining_result"] = chaining_df
-
-                tsv_data = chaining_df.to_csv(sep='\t', index=False)
-
-                st.download_button(
-                    label="Download chaining results as .tsv file.",
-                    data=tsv_data,
-                    file_name=output_file,
-                    mime="text/tab-separated-values"
-                )
-            
+                
             try:
                 os.remove(fasta_file_query.name)
             except UnboundLocalError:
