@@ -97,7 +97,7 @@ def show_manual_self_alignment_chaining():
     - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
     - Some conditional parameters may disappear from the page if 'True' is selected.
     
-    ### **Step 2. Select / Upload alignment data file :**
+    ### **Step 2. Upload alignment data file :**
     - Select an alignment data file from your local computer. 
     - This step is necessary if False was selected in **Step 1**
     - The alignment (or seed) data file from your local computer should fulfill the following requirements:
@@ -114,7 +114,17 @@ def show_manual_self_alignment_chaining():
     - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
     - IMPORTANT: If this option is set to True, it becomes mandatory to provide either the FASTA sequence or the sequence length itself.
     
-    ### **Step 4. Adjust parameters:**
+    ### **Step 5. Provide the sequence length for your sequence(s):**
+        #### Upload fasta file of query:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Automatic sequence length extraction from FASTA file if 'Circular sequence topology' has been set to True
+    - Alternatively, you may provide the sequence length itself.
+    
+    #### Sequence length of query:
+    - Required for correct alignment chaining on sequences with circular sequence topology
+    - Alternatively, you may provide the FASTA file of the query sequence to determine the sequence length automatically.
+    
+    ### **Step 6. Adjust parameters / options:**
     
     #### Max. gap size [bp]:
     - Maximum gap size between alignment hits for chaining
@@ -122,22 +132,13 @@ def show_manual_self_alignment_chaining():
     #### Scaled gap:
     - Minimum scaled gap between alignment hits for chaining. The scaled gap is a threshold metric that chains local alignments with a hit to gap length proportion lower than the selected scaled gap. 
     
-    #### Upload fasta file of query:
-    - Required for correct alignment chaining on sequences with circular sequence topology
-    - Automatic sequence length extraction from FASTA file if 'Circular sequence topology' has been set to True
-    - Alternatively, you may provide the sequence length itself.
-    
-    #### Sequence length of query:
-    - Required for correct alignment chaining on sequences with circular sequence topology
-    - Alternatively, you may provide the FASTA file of the query sequence to determine the sequence length for the module.
-    
     #### Minimum alignment hit length:
     - Minium length of alignment hits to consider them as seeds for chaining
     
-    ### **Step 5. Choose filenames for your output files:**
+    ### **Step 7. Choose filenames for your output files:**
     - **Export chained alignments to**: Choose a filename to save the tab-delimited output table of the chaining procedure.
 
-    ### **Step 6. Click the 'Run self-sequence alignment chaining' button to run it.**
+    ### **Step 8. Click the 'Run self-sequence alignment chaining' button to run it.**
     - A table containing the results will appear
     - The data will be downloaded automatically
     """)
@@ -156,7 +157,7 @@ def show_manual_alignment_chaining():
     - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
     - Some conditional parameters may disappear from the page if 'True' is selected.
     
-    ### **Step 2. Select / Upload alignment data file :**
+    ### **Step 2. Upload alignment data file :**
     - Select an alignment data file from your local computer. 
     - This step is necessary if False was selected in **Step 1**
     - The alignment (or seed) data file from your local computer should fulfill the following requirements:
@@ -173,14 +174,7 @@ def show_manual_alignment_chaining():
     - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
     - IMPORTANT: If this option is set to True, it becomes mandatory to provide either the FASTA sequence or the sequence length itself for the corresponding sequence (i.e., query and/or subject sequences).
     
-    ### **Step 4. Adjust parameters:**
-    
-    #### Max. gap size [bp]:
-    - Maximum gap size between alignment hits for chaining
-    
-    #### Scaled gap:
-    - Minimum scaled gap between alignment hits for chaining. The scaled gap is a threshold metric that chains local alignments with a hit to gap length proportion lower than the selected scaled gap. 
-    
+    ### **Step 5. Provide the sequence length for your sequence(s):**
     #### Upload fasta file of query & subject:
     - Required for correct alignment chaining on sequences with circular sequence topology
     - Automatic sequence length extraction from FASTA file(s) if 'Circular sequence topology' has been set to True
@@ -188,28 +182,25 @@ def show_manual_alignment_chaining():
     
     #### Sequence length of query & subject:
     - Required for correct alignment chaining on sequences with circular sequence topology
-    - Alternatively, you may provide the FASTA file of the query (& subject) sequence to determine the sequence length for the module.
+    - Alternatively, you may provide the FASTA file of the query (& subject) sequence to determine the sequence length automatically.
     
+    ### **Step 6. Adjust parameters / options:**
+    
+    #### Max. gap size [bp]:
+    - Maximum gap size between alignment hits for chaining
+    
+    #### Scaled gap:
+    - Minimum scaled gap between alignment hits for chaining. The scaled gap is a threshold metric that chains local alignments with a hit to gap length proportion lower than the selected scaled gap. 
+        
     #### Minimum alignment hit length:
     - Minium length of alignment hits to consider them as seeds for chaining
     
-    ### **Step 5. Choose filenames for your output files:**
+    ### **Step 7. Choose filenames for your output files:**
     - **Export chained alignments to**: Choose a filename to save the tab-delimited output table of the chaining procedure.
 
-    ### **Step 6. Click the 'Run sequence alignment chaining' button to run it.**
+    ### **Step 8. Click the 'Run sequence alignment chaining' button to run it.**
     - A table containing the results will appear
     - The data will be downloaded automatically
-    """)
-    
-def show_manual_fetch_nucleotide_chains():
-    '''
-    Displays the manual when an error occurs.
-    '''
-    st.markdown("""
-    ### **User Guidance**
-    - Ensure you have uploaded the correct FASTA file.
-    - Check that all mandatory parameters are provided.
-    - If the issue persists, restart the application.
     """)
     
 def show_manual_visualize_chains():
@@ -217,10 +208,87 @@ def show_manual_visualize_chains():
     Displays the manual when an error occurs.
     '''
     st.markdown("""
-    ### **User Guidance**
-    - Ensure you have uploaded the correct FASTA file.
-    - Check that all mandatory parameters are provided.
-    - If the issue persists, restart the application.
+    ## **User guidance**
+    - Use the sidebar menu to upload required files, modify parameters and change output filenames.
+    
+    ### **Step 1. Select True/False for 'Use output loaded in memory from self-alignment chaining or alignment chaining page.'**
+    - True: The input loaded in memory from the self-alignment chaining or alignment chaining page will be used as input (no data upload required).
+    - False: The input data/file(se) to visualize chains for a given sequence need to be uploaded by the user.
+    - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
+    - Some conditional parameters may disappear from the page if 'True' is selected.
+    - CAUTION: If 'True' is selected the most recent results in memory will be used! 
+    
+    ### **Step 2. Upload chained alignments file:**
+    - Select a chained alignment data file from your local computer. 
+    - This step is necessary if False was selected in **Step 1**
+    - The selected file should be the main output of one of the chaining modules (i.e., self-alignment chaining or alignment chaining).
+    
+    ### **Step 3. Select input type:**
+    - Self-alignment chaining: The input data originates from the self-alignment chaining (i.e., query=subject). The same sequence will be used in the visualization for x- and y-axis.
+    - Alignment chaining of two sequences: The input data originates from the alignment chaining (i.e., query is not subject). The query sequence will be used for the x-axis and the subject sequence will be used for the y-axis.
+    
+    ### **Step 4. Provide the sequence length for your sequence(s):**
+    #### Upload fasta file of query & subject:
+    - Required for correct x- and y-axis length and ticks
+    - Automatic sequence length extraction from FASTA file(s) 
+    - Alternatively, you may provide the sequence lengths themselves.
+    
+    #### Sequence length your sequence(s):
+    - Required for correct x- and y-axis length and ticks
+    - Alternatively, you may provide the FASTA file of the query (& subject) sequence to determine the sequence length automatically.
+    
+    ### **Step 5. Adjust parameters / options:**
+    
+    #### Scale:
+    - Select the scale for the x- and y-axis: bp (basepairs), kbp (kilo-basepairs), mbp (mega-basepairs)
+    
+    #### Upload genbank file for feature visualization:
+    - If a genbank file is provided, features (i.e., CDSs and pseudogenes) are visualized as rectangles 
+    - Note, that this will increase the running time for large sequences (i.e., it depends on the amount of features).
+    
+    ### **Step 6. Choose filenames for your output files:**
+    - **Export plot to**: Choose a filename to save an interactive plot (.html file) which can be opened using any browser.
+
+    ### **Step 7. Click the 'Visualize chains' button to run it.**
+    - An interactive segmentplot will appear
+    - The plot will be downloaded automatically, but a download button is provided as well
+    """)
+    
+def show_manual_fetch_nucleotide_chains():
+    '''
+    Displays the manual when an error occurs.
+    '''
+    st.markdown("""
+    ## **User guidance**
+    - Use the sidebar menu to upload required files, modify parameters and change output filenames.
+    
+    ### **Step 1. Select True/False for 'Use output loaded in memory from self-alignment chaining or alignment chaining page.'**
+    - True: The input loaded in memory from the self-alignment chaining or alignment chaining page will be used as input (no data upload required).
+    - False: The input data/file(se) to fetch chains as nucleotide sequences for given sequence(s) need to be uploaded by the user.
+    - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
+    - Some conditional parameters may disappear from the page if 'True' is selected.
+    - CAUTION: If 'True' is selected the most recent results in memory will be used! 
+    
+    ### **Step 2. Upload chained alignments file:**
+    - Select a chained alignment data file from your local computer. 
+    - This step is necessary if False was selected in **Step 1**
+    - The selected file should be the main output of one of the chaining modules (i.e., self-alignment chaining or alignment chaining).
+    
+    ### **Step 3. Select input type:**
+    - Self-alignment chaining: The input data originates from the self-alignment chaining (i.e., query=subject). The chains as nucleotide sequences in FASTA-format will be extracted from one sequence.
+    - Alignment chaining of two sequences: The input data originates from the alignment chaining (i.e., query is not subject). The chains as nucleotide sequences in FASTA-format will be extracted from the query and subject sequence. Hint: Ensure that the query and subject sequences are consistently designated as such throughout the entire analysis.
+        
+    ### **Step 5. Provide FASTA file(s) to extract the chains as nucleotide sequences:**
+    #### Upload FASTA file of query (& subject):
+    - Now the coordinates of the chained alignments will be used as a basis to extract nucleotide sequences (i.e., chains) from the FASTA sequence(s).
+    
+    ### **Step 7. Choose filenames for your output files:**
+    - **Export nucleotide chains to**: Choose a filename to save the FASTA file containing nucleotide chains.
+    - Hint: If the chains of two sequences have been extracted one FASTA file will be created. Corresponding nucleotide chains originating from the query and subject sequences are labeled in the header, for example, 1_query and 1_subject, 2_query, 2_subject ... , n_query, n_subject.
+
+    ### **Step 8. Click the 'Fetch nucleotide chains' button to run it.**
+    - A download button will appear
+    - The FASTA file will be downloaded automatically, but a download button is provided as well
     """)
           
 ####################
@@ -314,8 +382,8 @@ def generate_alignments_page():
     
     if st.sidebar.button("Generate alignments for chaining"):
         try:
-            placeholder.empty()
             if query_fasta_file:
+                placeholder.empty()
                 if duplication_or_comparison == 'Duplication detection':
                     alignment_df = generate_alignments.blastn_self_sequence_alignment(
                         query=query_fasta_file.name,
@@ -367,7 +435,7 @@ def generate_alignments_page():
                 except FileNotFoundError:
                     pass
         except Exception as e:
-            st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+            st.error("An ERROR occured. Please check the user guidance for the module generate alignments.")
             show_manual_generate_alignments()
 
             
@@ -444,7 +512,7 @@ def self_alignment_chaining_page():
                 except FileNotFoundError:
                     pass
             except Exception as e:
-                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+                st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
                 show_manual_self_alignment_chaining() 
         
 
@@ -542,7 +610,7 @@ def alignment_chaining_page():
                     pass
                 
             except Exception as e:
-                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+                st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
                 show_manual_alignment_chaining() 
                  
 
@@ -552,6 +620,10 @@ def fetch_chains_as_sequences_page():
     '''
     st.title("Fetch nucleotide sequences from chained alignments in FASTA format.")
     st.sidebar.header("Parameters for fetching chains as nucleotide sequences:")
+    
+    placeholder = st.empty()
+    with placeholder.container():
+        show_manual_fetch_nucleotide_chains()
     
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from self-alignment chaining or alignment chaining page", [False, True])
     if use_session_data and "chaining_result" in st.session_state:
@@ -584,6 +656,7 @@ def fetch_chains_as_sequences_page():
     if st.sidebar.button("Fetch nucleotide sequences"):
         if check_value:
             try:
+                placeholder.empty()
                 if duplication_or_comparison == "Self-alignment chaining":
                     sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
                                                             fasta_file=fasta_file_query.name, 
@@ -619,7 +692,7 @@ def fetch_chains_as_sequences_page():
                 except FileNotFoundError:
                     pass
             except Exception as e:
-                st.error("An ERROR occured. Please check the manual for the module generate alignments.")
+                st.error("An ERROR occured. Please check the user guidance for the module fetch chains as sequences.")
                 show_manual_fetch_nucleotide_chains() 
             
 
@@ -630,6 +703,10 @@ def visualize_chains_page():
     st.title("Generates a segmentplot of yielded chains for a sequence.")
     st.text("Warning: Chains originating from sequences that are characterized by a circular sequence topology may appear with a steep slope. These chains may look abnormal by visual inspection.")
     st.sidebar.header("Parameters for segmentplot visualization")
+    
+    placeholder = st.empty()
+    with placeholder.container():
+        show_manual_visualize_chains()
     
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from self-alignment chaining or alignment chaining page", [False, True])
     if use_session_data and "chaining_result" in st.session_state:
@@ -685,6 +762,7 @@ def visualize_chains_page():
     if st.sidebar.button("Visualize chains"):
         try:
             if check_input(chaining_data):
+                placeholder.empty()
                 if duplication_or_comparison == "Self-alignment chaining":
                     fig = visualize_chains.segmentplot_of_chains(
                         chained_hits=chaining_data,
@@ -743,8 +821,8 @@ def visualize_chains_page():
                     except FileNotFoundError:
                         pass
         except Exception as e:
-            st.error("An ERROR occured. Please check the manual for the module generate alignments.")
-            show_manual_visualize_chains
+            st.error("An ERROR occured. Please check the user guidance for the module visualize chains.")
+            show_manual_visualize_chains()
 
 ##########################
 ## Main page navigation ##
