@@ -822,6 +822,7 @@ def visualize_chains_page():
                         pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module visualize chains.")
+            st.error(f"An ERROR occurred: {e}")
             show_manual_visualize_chains()
 
 ##########################
