@@ -199,7 +199,8 @@ def chain_hits(indexed_input_df, seq_len=None):
         chained_hits = remove_redundant_hits(chained_hits, seq_len)
     
     #if seq_len != None:
-    chained_hits = duplicate_duplicates(chained_hits)
+    # Deprecated function
+    #chained_hits = duplicate_duplicates(chained_hits)
     return chained_hits
 
 

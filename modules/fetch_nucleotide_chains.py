@@ -17,13 +17,13 @@ def retrieve_unique_chaining_coordinates(chained_hits):
     chained_hits = chained_hits.drop(columns="sorted_coords")
     sub_df_query = chained_hits[["ID", "q.start", "q.end", "q.strand", "chain_topology_query", "alignment_hits_indices"]]
     sub_df_subject = chained_hits[["ID", "s.start", "s.end", "s.strand", "chain_topology_subject", "alignment_hits_indices"]]
-    sub_df_query = sub_df_query.rename(columns={"q.start": "start", "q.end": "end", "q.strand": "strand", "chain_topology_query": "segment_type"})
-    sub_df_subject = sub_df_subject.rename(columns={"s.start": "start", "s.end": "end", "s.strand": "strand", "chain_topology_subject": "segment_type"})
+    sub_df_query = sub_df_query.rename(columns={"q.start": "start", "q.end": "end", "q.strand": "strand", "chain_topology_query": "topology_type"})
+    sub_df_subject = sub_df_subject.rename(columns={"s.start": "start", "s.end": "end", "s.strand": "strand", "chain_topology_subject": "topology_type"})
     sub_df_query["query_subject"] = 'query'
     sub_df_subject["query_subject"] = 'subject'
     concatenated_df = pd.concat([sub_df_query, sub_df_subject], axis=0)
     unique_coords_df = concatenated_df.drop_duplicates(subset=["start", "end", "strand"])
-    unique_coords_df.loc[:, 'segment_type'] = np.where(unique_coords_df['segment_type'] == 'segment', False, True)
+    unique_coords_df.loc[:, 'topology_type'] = np.where(unique_coords_df['topology_type'] == 'linear', False, True)
     unique_coords_df.columns = ["ID", "start", "end", "strand", "chain_exceeds_seq", "alignment_hits_indices", "query_subject"]
     return unique_coords_df
 
@@ -38,7 +38,6 @@ def get_nucleotide_chain(row, sequences, seq_id_origin):
     chain_exceeds_seq = row['chain_exceeds_seq']
     
     full_sequence = sequences.seq
-
     if plus_strand and not chain_exceeds_seq:
         chain_seq = full_sequence[start:end]
     if not plus_strand and not chain_exceeds_seq: 
@@ -54,6 +53,7 @@ def get_nucleotide_chain(row, sequences, seq_id_origin):
             chain_subseq2 = full_sequence[0:start]
             chain_seq = chain_subseq1 + chain_subseq2
             chain_seq = chain_seq.reverse_complement()
+            
     if plus_strand:
         record = SeqRecord(Seq(str(chain_seq)),
                            id=seq_id,
@@ -100,10 +100,10 @@ def split_query_subject_coordinate_dataframes(chained_hits):
     sub_df_query["query_subject"] = 'query'
     sub_df_subject["query_subject"] = 'subject'
 
-    sub_df_query.loc[:, 'topology_type'] = np.where(sub_df_query['topology_type'] == 'segment', False, True)
+    sub_df_query.loc[:, 'topology_type'] = np.where(sub_df_query['topology_type'] == 'linear', False, True)
     sub_df_query.columns = ["ID", "start", "end", "strand", "chain_exceeds_seq", "alignment_hits_indices", "query_subject"]
     
-    sub_df_subject.loc[:, 'topology_type'] = np.where(sub_df_subject['topology_type'] == 'segment', False, True)
+    sub_df_subject.loc[:, 'topology_type'] = np.where(sub_df_subject['topology_type'] == 'linear', False, True)
     sub_df_subject.columns = ["ID", "start", "end", "strand", "chain_exceeds_seq", "alignment_hits_indices", "query_subject"]
     
     return sub_df_query, sub_df_subject

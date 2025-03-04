@@ -693,7 +693,6 @@ def fetch_chains_as_sequences_page():
                     pass
             except Exception as e:
                 st.error("An ERROR occured. Please check the user guidance for the module fetch chains as sequences.")
-                st.error(f"An ERROR occurred: {e}")
                 show_manual_fetch_nucleotide_chains() 
             
 
