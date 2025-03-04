@@ -579,8 +579,8 @@ def alignment_chaining_page():
                     is_subject_circular=is_subject_circular,
                     min_len=min_len,
                     blast_outfmt7=blast_outfmt7,
-                    fasta_file_query=fasta_file_query.name,
-                    fasta_file_subject=fasta_file_subject.name,
+                    fasta_file_query= None if fasta_file_query == None else fasta_file_query.name,
+                    fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
                     output_file=output_file
                 )
                 
@@ -614,7 +614,6 @@ def alignment_chaining_page():
                 
             except Exception as e:
                 st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
-                st.error('{}'.format(e))
                 show_manual_alignment_chaining() 
                  
 
@@ -663,12 +662,12 @@ def fetch_chains_as_sequences_page():
                 placeholder.empty()
                 if duplication_or_comparison == "Self-alignment chaining":
                     sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
-                                                            fasta_file=fasta_file_query.name, 
+                                                            fasta_file= None if fasta_file_query == None else fasta_file_query.name,
                                                             output_fasta=output_file)
                 elif duplication_or_comparison == "Alignment chaining of two sequences":
                     sequences = fetch_nucleotide_chains.get_chained_sequences_from_two_sequences(chained_hits=alignment_coordinate_file, 
-                                                            fasta_file_query=fasta_file_query.name, 
-                                                            fasta_file_subject=fasta_file_subject.name, 
+                                                            fasta_file_query= None if fasta_file_query == None else fasta_file_query.name, 
+                                                            fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
                                                             output_fasta=output_file)
 
                 # Old feature - visualizing the whole fasta file is too memory intensive
@@ -770,7 +769,7 @@ def visualize_chains_page():
                 if duplication_or_comparison == "Self-alignment chaining":
                     fig = visualize_chains.segmentplot_of_chains(
                         chained_hits=chaining_data,
-                        fasta_file_query=fasta_file_query.name,
+                        fasta_file_query= None if fasta_file_query == None else fasta_file_query.name,
                         seq_len_query=seq_len_query,
                         genbank=genbank_name,
                         scale = scale,
@@ -782,9 +781,9 @@ def visualize_chains_page():
                 elif duplication_or_comparison == "Alignment chaining of two sequences":
                     fig = visualize_chains.segmentplot_of_chains(
                         chained_hits=chaining_data,
-                        fasta_file_query=fasta_file_query.name,
+                        fasta_file_query= None if fasta_file_query == None else fasta_file_query.name,
                         seq_len_query=seq_len_query,
-                        fasta_file_subject=fasta_file_subject.name,
+                        fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
                         seq_len_subject=seq_len_subject,
                         genbank=genbank_name,
                         scale = scale,
