@@ -674,7 +674,7 @@ def fetch_chains_as_sequences_page():
 
                 st.download_button(
                     label="Download FASTA file",
-                    data=seq_file.encode('utf-8'),
+                    data=load_fasta(sequences).encode('utf-8'),
                     file_name=output_file,
                     mime='text/plain'
                 )
