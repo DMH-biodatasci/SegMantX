@@ -41,24 +41,24 @@ def show_manual_generate_alignments():
     - **'Duplication detection'**: Computes a self-sequence alignment. The output of the self-sequence alignment may be passed to the self-alignment chaining module to detect duplications. 
     - **'Sequence comparison'**: Performs an alignment between two sequences (query and subject). The output of the sequence alignment between two sequences may be passed to the alignment chaining module to compare sequences.
     
-    ### **Step 2. Select / Upload FASTA file(s):**
-    - **'Duplication detection'** requires a single sequence in FASTA format.
+    ### **Step 2. Upload FASTA file(s):**
+    - **'Duplication detection'** requires a single sequence in FASTA format (query).
     - **'Sequence comparison'** requires two sequences in FASTA format (query and subject).
     
-    ### **Step 3. Select the sequence topology of your sequences:**
+    ### **Step 3. Select the sequence topology of your sequence(s):**
     - Choosing the correct sequence topology ensures that alignment hits on **circular sequences** (such as most plasmids or viral genomes) are correctly chained, even when fragmented due to their linear representation in FASTA files.  
     - This is important for avoiding **discontinuous alignments** that can occur when working with circular sequences in a linear format (i.e., FASTA format).
     
     ### **Step 4. Adjust optional parameters:**
     
-    #### E-value (Controls Alignment Sensitivity):
-    - The **E-value** in BLAST estimates the number of random alignments expected by chance. It helps filter low-confidence matches and retains biologically relevant seeds for chaining.
+    #### E-value (Controls alignment sensitivity):
+    - The **E-value** in BLAST estimates the number of random alignments expected by chance. It helps filtering low-confidence matches and retaining biologically relevant seeds for chaining.
     - Example E-value settings:  
-        - High specificity: `1e-10` (Fewer, more reliable seeds)  
-        - Balanced approach: `1e-5` (Good balance of sensitivity and specificity)  
-        - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously)
+        - High specificity: `1e-9` (Fewer, more reliable seeds) - RECOMMENDED  
+        - 'Balanced approach': `1e-5` (Balance of sensitivity and specificity)  
+        - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously) - NOT RECOMMENDED
     
-    #### Word Size (Defines the Seed Length):
+    #### Word Size (Defines the seed length):
     - The **word size** defines the length of the initial exact match (seed) required for alignment extension.
     - Choose a higher word size to speed up the alignment generation and chaining on larger sequences.
     - Example word size settings:  
@@ -95,7 +95,7 @@ def show_manual_self_alignment_chaining():
     - True: The input loaded in memory from the generate alignments page will be used as input (no data upload required).
     - False: The input data/file for the self-alignment chaining needs to be uploaded by the user.
     - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
-    - Some conditional unnecessary parameters may disappear from the page if 'True' is selected.
+    - Some conditional parameters may disappear from the page if 'True' is selected.
     
     ### **Step 2. Select / Upload alignment data file :**
     - Select an alignment data file from your local computer. 
@@ -103,7 +103,7 @@ def show_manual_self_alignment_chaining():
     - The alignment (or seed) data file from your local computer should fulfill the following requirements:
         1. A tab-delimited file 
         2. Five columns containing: Query start, Query end, Subject start, Subject end, Percentage sequence identity
-    - Alternatively, a BLAST output format 7 file can be used as input - Set 'Input file is BLAST output format 7' to True!
+    - Alternatively, a BLAST output format 7 file can be used as input -> Set 'Input file is BLAST output format 7' to True!
     
     ### **Step 3. Set True/False for 'Input file is BLAST output format 7':**
     - False: if the input data is a tab-delimited file containing five columns (see **Step 2**).
@@ -120,7 +120,7 @@ def show_manual_self_alignment_chaining():
     - Maximum gap size between alignment hits for chaining
     
     #### Scaled gap:
-    - Minimum scaled gap between alignment hits for chaining
+    - Minimum scaled gap between alignment hits for chaining. The scaled gap is a threshold metric that chains local alignments with a hit to gap length proportion lower than the selected scaled gap. 
     
     #### Upload fasta file of query:
     - Required for correct alignment chaining on sequences with circular sequence topology
@@ -154,7 +154,7 @@ def show_manual_alignment_chaining():
     - True: The input loaded in memory from the generate alignments page will be used as input (no data upload required).
     - False: The input data/file for the alignment chaining needs to be uploaded by the user.
     - Note, this parameter will not affect the analysis if there is no data in memory (i.e., input upload is still required).
-    - Some conditional unnecessary parameters may disappear from the page if 'True' is selected.
+    - Some conditional parameters may disappear from the page if 'True' is selected.
     
     ### **Step 2. Select / Upload alignment data file :**
     - Select an alignment data file from your local computer. 
@@ -162,7 +162,7 @@ def show_manual_alignment_chaining():
     - The alignment (or seed) data file from your local computer should fulfill the following requirements:
         1. A tab-delimited file 
         2. Five columns containing: Query start, Query end, Subject start, Subject end, Percentage sequence identity
-    - Alternatively, a BLAST output format 7 file can be used as input - Set 'Input file is BLAST output format 7' to True!
+    - Alternatively, a BLAST output format 7 file can be used as input -> Set 'Input file is BLAST output format 7' to True!
     
     ### **Step 3. Set True/False for 'Input file is BLAST output format 7':**
     - False: if the input data is a tab-delimited file containing five columns (see **Step 2**).
@@ -179,7 +179,7 @@ def show_manual_alignment_chaining():
     - Maximum gap size between alignment hits for chaining
     
     #### Scaled gap:
-    - Minimum scaled gap between alignment hits for chaining
+    - Minimum scaled gap between alignment hits for chaining. The scaled gap is a threshold metric that chains local alignments with a hit to gap length proportion lower than the selected scaled gap. 
     
     #### Upload fasta file of query & subject:
     - Required for correct alignment chaining on sequences with circular sequence topology
@@ -237,7 +237,7 @@ def landing_page():
     
     st.write(
         "SegMantX is a bioinformatics tool designed to support a user-friendly chaining of local sequence alignments. "
-        "This app simplifies the chaining process by providing a graphical user interface."
+        "This app simplifies the chaining process by providing a graphical user interface. Note, that the app only handles the chaining process of a sequence one by one."
     )
     
     st.write(
@@ -260,7 +260,7 @@ def landing_page():
     """
     )
     
-    st.markdown("**Get started by navigating through the menu on the left!**")
+    st.markdown("**Get started by navigating through the sidebar menu on the left!**")
     
     st.write(
         "For further details visit also:"
@@ -279,7 +279,11 @@ def generate_alignments_page():
     Function to provide a page for the 'generate_alignments.py' script of SegMantX.
     '''
     st.title("Generate alignment files for chaining")
-    show_manual_generate_alignments()
+    
+    placeholder = st.empty()
+    with placeholder.container():
+        show_manual_generate_alignments()
+        
     st.sidebar.header("Parameters for alignment computation:")
     duplication_or_comparison = st.sidebar.selectbox("Purpose", ["Duplication detection", "Sequence comparison"])
     st.sidebar.write("Note, that 'duplication detection' computes a self-sequence alignment and 'sequence comparison' performs alignments among two sequences.")
@@ -310,6 +314,7 @@ def generate_alignments_page():
     
     if st.sidebar.button("Generate alignments for chaining"):
         try:
+            placeholder.empty()
             if query_fasta_file:
                 if duplication_or_comparison == 'Duplication detection':
                     alignment_df = generate_alignments.blastn_self_sequence_alignment(
@@ -371,8 +376,12 @@ def self_alignment_chaining_page():
     Function to provide a page for the 'chain_self_alignments.py' script of SegMantX.
     '''
     st.title("Chaining self-sequence alignment")
-    st.write("This module may be used towards duplication detection.")
-    show_manual_self_alignment_chaining()
+    st.write("This module is designed towards duplication detection and requires the output from 'Generate alignments' with the selected purpose 'Duplication detection' as input.")
+    
+    placeholder = st.empty()
+    with placeholder.container():
+        show_manual_self_alignment_chaining()
+
     st.sidebar.header("Parameters for self-sequence alignment chaining:")
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from generate alignments page", [False, True])
     if use_session_data and "alignment_result" in st.session_state:
@@ -400,6 +409,7 @@ def self_alignment_chaining_page():
     if st.sidebar.button("Run self-sequence alignment chaining"):
         if check_value:
             try:
+                placeholder.empty()
                 chaining_df = chain_self_alignments.chain_self_sequence_alignment(
                     input_file=alignment_coordinate_file,
                     max_gap=max_gap,
@@ -443,8 +453,12 @@ def alignment_chaining_page():
     Function to provide a page for the 'chain_alignments.py' script of SegMantX.
     '''
     st.title("Chaining sequence alignment between two sequences")
-    st.write("This module may be used towards sequence comparisons.")
-    show_manual_alignment_chaining()
+    st.write("This module is designed towards sequence comparisons and requires the output from 'Generate alignments' with the selected purpose 'Sequence comparison' as input.")
+    
+    placeholder = st.empty()
+    with placeholder.container():
+        show_manual_alignment_chaining()
+
     st.sidebar.header("Parameters for chaining alignments between two sequences:")
     
     use_session_data = st.sidebar.selectbox("Use output loaded in memory from generate alignments page", [False, True])
@@ -483,6 +497,7 @@ def alignment_chaining_page():
     if st.sidebar.button("Run sequence alignment chaining"):
         if check_value:
             try:
+                placeholder.empty()
                 chaining_df = chain_alignments.chain_sequence_alignment(
                     input_file=alignment_coordinate_file,
                     max_gap=max_gap,
@@ -736,24 +751,24 @@ def visualize_chains_page():
 ##########################
 
 def main():
-    selection = st.sidebar.selectbox("Select Module:", ["Landing page", "Generate alignments", "Self-alignment chaining", "Alignment chaining", "Visualize chains", 'Fetch chains as sequences'])
+    selection = st.sidebar.selectbox("Select Module:", ["Landing page", "1. Generate alignments", "2. Self-alignment chaining", "3. Alignment chaining", "4. Visualize chains", '5. Fetch chains as sequences'])
 
     if selection == "Landing page":
         landing_page()
     
-    elif selection == "Generate alignments":
+    elif selection == "1. Generate alignments":
         generate_alignments_page()
         
-    elif selection == "Self-alignment chaining":
+    elif selection == "2. Self-alignment chaining":
         self_alignment_chaining_page()
 
-    elif selection == "Alignment chaining":
+    elif selection == "3. Alignment chaining":
         alignment_chaining_page()
         
-    elif selection == "Visualize chains":
+    elif selection == "4. Visualize chains":
          visualize_chains_page()
     
-    elif selection == 'Fetch chains as sequences':
+    elif selection == '5. Fetch chains as sequences':
         fetch_chains_as_sequences_page()
 
 if __name__ == "__main__":
