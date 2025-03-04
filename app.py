@@ -80,7 +80,7 @@ def show_manual_generate_alignments():
         
     ### **Step 6. Click the 'Generate alignments for chaining' button to run it.**
     - A table containing the results will appear
-    - The data will be downloaded automatically
+    - The data will be exported automatically
     """)
     
 def show_manual_self_alignment_chaining():
@@ -140,7 +140,7 @@ def show_manual_self_alignment_chaining():
 
     ### **Step 8. Click the 'Run self-sequence alignment chaining' button to run it.**
     - A table containing the results will appear
-    - The data will be downloaded automatically
+    - The data will be exported automatically
     """)
     
 def show_manual_alignment_chaining():
@@ -200,7 +200,7 @@ def show_manual_alignment_chaining():
 
     ### **Step 8. Click the 'Run sequence alignment chaining' button to run it.**
     - A table containing the results will appear
-    - The data will be downloaded automatically
+    - The data will be exported automatically
     """)
     
 def show_manual_visualize_chains():
@@ -251,7 +251,8 @@ def show_manual_visualize_chains():
 
     ### **Step 7. Click the 'Visualize chains' button to run it.**
     - An interactive segmentplot will appear
-    - The plot will be downloaded automatically, but a download button is provided as well
+    - The plot will be exported automatically, but a download button is provided as well
+    - You may resume to the user guidance, when clicking the download button
     """)
     
 def show_manual_fetch_nucleotide_chains():
@@ -288,7 +289,8 @@ def show_manual_fetch_nucleotide_chains():
 
     ### **Step 8. Click the 'Fetch nucleotide chains' button to run it.**
     - A download button will appear
-    - The FASTA file will be downloaded automatically, but a download button is provided as well
+    - The FASTA file will be exported automatically, but a download button is provided as well
+    - You may resume to the user guidance, when clicking the download button
     """)
           
 ####################
@@ -513,6 +515,7 @@ def self_alignment_chaining_page():
                     pass
             except Exception as e:
                 st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
+                st.error('{}'.format(e))
                 show_manual_self_alignment_chaining() 
         
 
@@ -611,6 +614,7 @@ def alignment_chaining_page():
                 
             except Exception as e:
                 st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
+                st.error('{}'.format(e))
                 show_manual_alignment_chaining() 
                  
 
