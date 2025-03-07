@@ -2,9 +2,11 @@
 id: home
 ---
 
-# SegMantX
+# Manual
 
 ...
+
+# SegMantX: Bioinformatics Tool
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 
