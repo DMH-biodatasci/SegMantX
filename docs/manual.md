@@ -1,11 +1,18 @@
 
+- **manual.md** (located in `docs/`):
+
+```markdown
+---
+layout: default
+title: Manual
 ---
 
-### **4. Use GitHub Pages with Jekyll (Optional for Nice Formatting)**
+# SegMantX Manual
 
-GitHub Pages supports **Jekyll**, which can render Markdown files into beautiful, static websites with minimal setup. You can use a theme to make your documentation look polished.
+Welcome to the manual for SegMantX.
 
-1. **Create a `_config.yml` file in the root of your repository**:
-   ```yaml
-   theme: jekyll-theme-cayman  # You can choose any theme available
+## Features
 
+- DNA sequence alignment
+- Supports multiple formats (FASTA, TSV)
+- Customizable alignment options
