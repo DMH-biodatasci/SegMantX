@@ -4,16 +4,7 @@ id: feedback
 
 # Feedback
 
-Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
+Your comments, bug reports, and suggestions for improvements are very welcomed. They will help us to further improve SegMantX. 
 
-## Installation
-
-For a quick installation, see our [manual guide](manual.md).
-
-## Quick Start
-
-Here’s a simple example of how to use SegMantX:
-
-```bash
-python3 SegMantX.py chain_self_alignments --input_file myfile.fasta --output_file result.txt
+If you have any issues using or running SegMantX, please open an issue with a proper description and error report here: Issues[https://github.com/DMH-biodatasci/SegMantX/issues]
 
