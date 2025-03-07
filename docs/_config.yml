@@ -10,6 +10,7 @@ sidebar:
   - installation
   - module_overview
   - label: command_line_manual
+    children:
       - generate_alignments
       - chain_self_alignments
       - chain_alignments
