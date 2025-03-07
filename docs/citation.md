@@ -1,8 +1,8 @@
 ---
-id: app
+id: citation
 ---
 
-# App
+# Citation
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

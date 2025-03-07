@@ -1,8 +1,8 @@
 ---
-id: app
+id: feedback
 ---
 
-# App
+# Feedback
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

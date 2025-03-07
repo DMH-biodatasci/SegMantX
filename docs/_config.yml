@@ -14,3 +14,5 @@ sidebar:
       - fetch_nucleotide_chains
   - app
   - docker
+  - citation
+  - feedback
