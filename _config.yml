@@ -9,12 +9,12 @@ toc: true
 
 # Enable sidebar navigation with links to pages (e.g., index.md, manual.md)
 sidebar:
-  enabled: true
-  nav:
-    - title: "Home"
-      url: "/"
-    - title: "Manual"
-      url: "/manual/"
+    enabled: true
+    nav:
+        - title: "Home"
+        url: "/"
+        - title: "Manual"
+        url: "/manual/"
 
 # Configure the folder where your markdown files are stored
 # Since your markdown files are in the 'docs' folder, you will set the source to 'docs/'
@@ -25,3 +25,4 @@ baseurl: ""
 
 # Markdown rendering settings
 markdown: kramdown
+
