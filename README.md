@@ -5,7 +5,7 @@
 **SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. However, SegMantX provides also utilities for chaining local alignments between two different sequences, for example, for sequence comparisons.
 
 <p align="center">
-  <img src="pipeline_figure.png" alt="Pipeline">
+  <img src="img/segmantx_summary.png" alt="Summary">
 </p>
 Read the caption of this Figure here: ###
 
@@ -131,7 +131,7 @@ python SegMantX.py test_modules
 **SegMantX** is organized into modules. The suggested workflow:
 
 <p align="center">
-  <img src="workflow.png" alt="Pipeline">
+  <img src="img/workflow.png" alt="Workflow">
 </p>
 
 1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 

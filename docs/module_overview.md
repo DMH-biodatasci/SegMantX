@@ -2,18 +2,16 @@
 id: module_overview
 ---
 
-# Module Overview
+## 🧩 SegMantX Workflow & Module Overview
 
-Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
+**SegMantX** is organized into modules. The suggested workflow:
 
-## Installation
+<p align="center">
+  <img src="../img/workflow.png" alt="Workflow">
+</p>
 
-For a quick installation, see our [manual guide](manual.md).
-
-## Quick Start
-
-Here’s a simple example of how to use SegMantX:
-
-```bash
-python3 SegMantX.py chain_self_alignments --input_file myfile.fasta --output_file result.txt
-
+1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
+2. Chain self-alignments: Chains local alignments from self-sequence alignment (e.g., towards duplication detection).
+3. Chaing alignments: Chains local alignments between two sequences (e.g., towards sequence comparisons).
+4. Visualize chains: Generates a segmentplot (i.e., segments of chaining results) to visualize yielded chains for a sequence (self-alignment) or two sequences (alignment).
+5. Fetch nucleotide chains: Extracts yielded chains as nucleotide sequences and saves them as fasta file.
