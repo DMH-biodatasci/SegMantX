@@ -1,5 +1,5 @@
 ---
-id: home
+id: manual
 ---
 
 # Manual
