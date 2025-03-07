@@ -1,28 +1,4 @@
-title: SegMantX
-description: Bioinformatics Tool for DNA Sequence Alignment
+remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 
-# Theme setup
-theme: jekyll-theme-minimal
-
-# Enable the Table of Contents (TOC) for markdown files
-toc: true
-
-# Enable sidebar navigation with links to pages (e.g., index.md, manual.md)
 sidebar:
-    enabled: true
-    nav:
-        - title: "Home"
-        url: "/"
-        - title: "Manual"
-        url: "/manual/"
-
-# Configure the folder where your markdown files are stored
-# Since your markdown files are in the 'docs' folder, you will set the source to 'docs/'
-source: docs
-
-# Base URL (if using GitHub Pages, leave it empty or set it to your custom domain path)
-baseurl: ""
-
-# Markdown rendering settings
-markdown: kramdown
-
+  - getting-started

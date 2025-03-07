@@ -1,7 +1,10 @@
 ---
-layout: default
-title: SegMantX: Bioinformatics Tool
+id: getting-started
 ---
+
+## Some Instructions
+
+...
 
 # SegMantX: Bioinformatics Tool
 
