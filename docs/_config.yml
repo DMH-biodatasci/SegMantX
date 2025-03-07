@@ -3,3 +3,14 @@ remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 sidebar:
   - home
   - manual
+  - quick_start
+  - installation
+  - module_overview
+  - label: Command-line manual
+      - generate_alignments
+      - chain_self_alignments
+      - chain_alignments
+      - visualize_chains
+      - fetch_nucleotide_chains
+  - app
+  - docker

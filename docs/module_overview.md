@@ -1,8 +1,8 @@
 ---
-id: home
+id: module_overview
 ---
 
-# Home
+# Module Overview
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

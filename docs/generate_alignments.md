@@ -1,8 +1,8 @@
 ---
-id: home
+id: generate_alignments
 ---
 
-# Home
+# 1. Generate alignments
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

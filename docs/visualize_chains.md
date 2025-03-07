@@ -1,8 +1,8 @@
 ---
-id: home
+id: visualize_chains
 ---
 
-# Home
+# 1. Visualize chains
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

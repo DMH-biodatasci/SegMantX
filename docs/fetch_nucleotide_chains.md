@@ -1,8 +1,8 @@
 ---
-id: home
+id: fetch_nucleotide_chains
 ---
 
-# Home
+# 1. Fetch nucleotide chains
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

@@ -1,8 +1,8 @@
 ---
-id: home
+id: quick_start
 ---
 
-# Home
+# Quick start
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 
