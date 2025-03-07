@@ -7,7 +7,7 @@ id: module_overview
 **SegMantX** is organized into modules. The suggested workflow:
 
 <p align="center">
-  <img src="{{ site.baseurl }}/img/workflow.png" alt="Workflow">
+  <img src="img/workflow.png" alt="Workflow">
 </p>
 
 1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 

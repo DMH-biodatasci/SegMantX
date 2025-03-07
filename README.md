@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="segmantx_ASCII.png" alt="SegMantX ASCII">
+  <img src="docs/img/segmantx_ASCII.png" alt="SegMantX ASCII">
 </p>
 
 **SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. However, SegMantX provides also utilities for chaining local alignments between two different sequences, for example, for sequence comparisons.
 
 <p align="center">
-  <img src="img/segmantx_summary.png" alt="Summary">
+  <img src="docs/img/segmantx_summary.png" alt="Summary">
 </p>
 Read the caption of this Figure here: ###
 
@@ -131,7 +131,7 @@ python SegMantX.py test_modules
 **SegMantX** is organized into modules. The suggested workflow:
 
 <p align="center">
-  <img src="img/workflow.png" alt="Workflow">
+  <img src="docs/img/workflow.png" alt="Workflow">
 </p>
 
 1. Generate alignments: processes nucleotide sequence(s) to compute local alignments, optionally formatting them for further analysis. 
@@ -242,7 +242,7 @@ Output of visualization module:
 |:----------:|:-----------:|
 | plot.html | An interactive visualization (segment plot) of chains that can be opened in any web browser. | 
 
-![Example Plot](example_plot.png)
+![Example Plot](docs/img/example_plot.png)
 
 
 #### 5. Get chains as nucleotide sequences
