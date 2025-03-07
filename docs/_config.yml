@@ -5,7 +5,6 @@ auto_page_title: true
 
 sidebar:
   - home
-  - manual
   - quick_start
   - installation
   - module_overview
