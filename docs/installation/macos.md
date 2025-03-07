@@ -4,7 +4,7 @@ id: macos
 
 # Installation on MacOS
 
-# Prerequisites
+## Prerequisites
 Before getting started, ensure you Miniconda installed on your machine (i.e., using your terminal conda should be available).
 If your (older) Miniconda/conda version doesn't support the parameter '--platform' - try the platform independent installation[https://dmh-biodatasci.github.io/SegMantX/installation/independent.html].
 

@@ -2,7 +2,7 @@
 id: docker
 ---
 
-# Docker
+## Docker
 
 This proposed installation via Docker ensures a platform-independent availability of SegMantX.
 However, it is less recommended as the syntax for running SegMantX changes and it may be less user-friendly. 

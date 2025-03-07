@@ -4,7 +4,7 @@ id: independent
 
 # Platform-independent installation
 
-# Prerequisites
+## Prerequisites
 Before getting started, ensure you Miniconda installed on your machine (i.e., using your terminal conda should be available).
 
 Warning: This installation procedure may cause issues during the installation on some platforms due to package availability on some operating systems and chip architectures.

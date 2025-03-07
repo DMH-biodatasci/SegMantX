@@ -4,7 +4,7 @@ id: windows
 
 # Installation on Windows
 
-# Prerequisites
+## Prerequisites
 For running SegMantX on Windows, we recommend to install the Windows Subsystem for Linux (WSL). Afterwards, SegMantX can be installed via the linux subsystem.
 
 Before getting started, ensure you Miniconda installed on your machine (i.e., using your terminal conda should be available).
