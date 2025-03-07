@@ -1,14 +1,13 @@
 remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 
 search_enabled: true
-auto_page_title: true
 
 sidebar:
   - home
   - quick_start
   - installation
   - module_overview
-  - label: command_line_manual
+  - label: Command-line manual
     children:
       - generate_alignments
       - chain_self_alignments
