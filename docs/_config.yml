@@ -5,7 +5,13 @@ search_enabled: true
 sidebar:
   - home
   - quick_start
-  - installation
+  - label: Installation
+    children:
+      - linux
+      - macos
+      - windows
+      - independent
+      - docker
   - module_overview
   - label: Command-line manual
     children:
@@ -15,6 +21,5 @@ sidebar:
       - visualize_chains
       - fetch_nucleotide_chains
   - app
-  - docker
   - citation
   - feedback

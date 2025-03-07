@@ -2,7 +2,7 @@
 id: module_overview
 ---
 
-## 🧩 Workflow & Overview
+# Workflow & Overview
 
 **SegMantX** is organized into modules. The suggested workflow:
 
