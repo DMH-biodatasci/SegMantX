@@ -1,8 +1,8 @@
 ---
-id: app
+id: docker
 ---
 
-# 1. App
+# Docker
 
 Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
 

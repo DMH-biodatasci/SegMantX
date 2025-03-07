@@ -6,7 +6,7 @@ sidebar:
   - quick_start
   - installation
   - module_overview
-  - label: Command-line manual
+  - label: command_line_manual
       - generate_alignments
       - chain_self_alignments
       - chain_alignments
