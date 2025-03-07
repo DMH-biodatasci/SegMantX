@@ -49,6 +49,8 @@ cd SegMantX
 conda env create -f SegMantX.yml --platform linux-64
 # Alternatively: conda env create -f SegMantX.yml --platform linux-aarch64
 conda activate SegMantX
+cp SegMantX.py $CONDA_PREFIX/bin
+cp -r modules $CONDA_PREFIX/bin
 ```
 
 ### 2. Installation on MacOS

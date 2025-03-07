@@ -1,0 +1,6 @@
+title: SegMantX
+description: Bioinformatics Tool for DNA Sequence Alignment
+theme: jekyll-theme-minimal # Using a simple built-in Jekyll theme
+markdown: kramdown
+toc: true # Enable the Table of Contents on the right side
+

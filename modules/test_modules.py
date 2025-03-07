@@ -2,7 +2,7 @@
 from Bio import Entrez, SeqIO
 import argparse
 import sys
-from subprocess import run
+import subprocess
 import os
 
 
@@ -36,11 +36,14 @@ def fetch_genbank(accession_number):
         print(f"Error fetching GenBank file: {e}")
 
 
-def main():   
+def main():
+    print("Testing modules of SegMantX using a test dataset ... \n")
     fasta_test_data = ["NZ_CP051709.1", "NZ_AP022172.1", "NC_018218.1", "NZ_CP018634.1", "NZ_CP022004.1"]  # Internal IDs: 4029, 461, ztritici, 10635, 10567
     #response = input("Do you want to download the test data? Please enter 'yes' or 'no': ").strip().lower()
     #response == 'yes'
-    #if response == 'yes':               
+    #if response == 'yes': 
+    
+    print("The download of the test dataset may take a moment... \n")
     for accession in fasta_test_data:              
         fetch_fasta(accession)
         if accession == "NZ_AP022172.1":
@@ -48,10 +51,13 @@ def main():
                 
     with open("test_commands.txt", "r") as f:
         cmd_lines = f.readlines()
+    
+
+    print("Starting to test modules - please wait a few minutes until the error report is displayed ... \n")
     for line in cmd_lines:
         if line.startswith('python3'):
             line = line.rstrip()
-            run(line, shell=True, check=True)
+            subprocess.run(line, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     
     print("Checking alignment coordinates files ...")
     c1, p1 = check_output('tests/NZ_CP051709.1.alignment_coordinates.tsv')

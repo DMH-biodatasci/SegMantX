@@ -115,7 +115,7 @@ def show_manual_self_alignment_chaining():
     - IMPORTANT: If this option is set to True, it becomes mandatory to provide either the FASTA sequence or the sequence length itself.
     
     ### **Step 5. Provide the sequence length for your sequence(s):**
-        #### Upload fasta file of query:
+    #### Upload fasta file of query:
     - Required for correct alignment chaining on sequences with circular sequence topology
     - Automatic sequence length extraction from FASTA file if 'Circular sequence topology' has been set to True
     - Alternatively, you may provide the sequence length itself.
