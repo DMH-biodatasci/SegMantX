@@ -2,18 +2,14 @@
 id: version
 ---
 
-# 1. Version
+# Version
 
-Welcome to SegMantX, a powerful bioinformatics tool for DNA sequence alignment.
-
-## Installation
-
-For a quick installation, see our [manual guide](manual.md).
-
-## Quick Start
-
-Here’s a simple example of how to use SegMantX:
-
+Check out which version of SegMantX you are running:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file myfile.fasta --output_file result.txt
+SegMantX version
+```
 
+SegMantX's version will be displayed, for example:
+```bash
+SegMantX version 1.1.0
+```

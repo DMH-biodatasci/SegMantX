@@ -31,7 +31,7 @@ except ImportError as err:
                  f"Please check that no files are missing from the /modules folder.\n")
     exit()
 
-menu_string = "SegMantX.py [ chain_self_alignments | chain_sequence_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation ]"
+menu_string = "SegMantX.py [ chain_self_alignments | chain_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation ]"
 errorMessage = f"Options: {menu_string}\n"
 
 try:

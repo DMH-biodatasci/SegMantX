@@ -7,14 +7,7 @@ Run the SegMantX app with the following command:
 streamlit run app.py
 ```
 
-or via Docker:
-```bash
-docker build -f Dockerfile_SegMantX_App -t segmantx_app .
-docker run -p 8501:8501 segmantx_app
-# Open a browser and navigate to: http://localhost:8501
-```
-
-Briefly, the app provides a graphical user interface to SegMantX's main modules via the following pages:
+Briefly, the app provides a graphical user interface to SegMantX's main modules. Each page contains a brief description to support the user selecting the correct input data and parameters.
 
 1. **Landing page**: Contains a brief description of the SegMantX app. 
 2. **Generate alignments**: Graphical user interface to apply [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
@@ -23,3 +16,13 @@ Briefly, the app provides a graphical user interface to SegMantX's main modules 
 5. **Visualize chains**: Graphical user interface to apply [visualize_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/visualize_chains.html) 
 6. **Fetch chains**: Graphical user interface to apply [fetch_nucleotide_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/fetch_nucleotide_chains.html) 
 
+
+Alternatviely, the app can also be started by building a Docker container.
+```bash
+# Go to to your SegMantX directory e.g.,
+cd SegMantX
+
+docker build -f Dockerfile_SegMantX_App -t segmantx_app .
+docker run -p 8501:8501 segmantx_app
+# Open a browser and navigate to: http://localhost:8501
+```
