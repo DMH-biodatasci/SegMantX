@@ -57,6 +57,9 @@ def show_manual_generate_alignments():
         - High specificity: `1e-9` (Fewer, more reliable seeds) - RECOMMENDED  
         - 'Balanced approach': `1e-5` (Balance of sensitivity and specificity)  
         - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously) - NOT RECOMMENDED
+        
+    #### Minimum percentage sequence identity
+    - This parameter sets a threshold for sequence alignments hits being considered for chaining according to a percentage sequence identity (i.e., alignment hits below the threshold are excluded).
     
     #### Word Size (Defines the seed length):
     - The **word size** defines the length of the initial exact match (seed) required for alignment extension.
