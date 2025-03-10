@@ -13,7 +13,9 @@ id: quick_start
 
 ## Input data:
 
-**SegMantX** only requires a (genomic) nucleotide sequence in FASTA-format. First, SegMantX's [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html) integrates BLASTn to compute local alignments as seeds for the chaining process. Alternatively, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
+**SegMantX** only requires a (genomic) nucleotide sequence in FASTA-format. First, SegMantX's [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html) integrates BLASTn to compute local alignments as seeds for the chaining process. 
+
+Alternatively, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
 | Query start | Query end | Subject start | Subject end | Percent sequence identity |
 |:-----------:|:---------:|:-------------:|:-----------:|:-------------------------:|
@@ -38,7 +40,7 @@ Hint: The platform-independent installation may be required for older Miniconda 
 - [Linux](https://dmh-biodatasci.github.io/SegMantX/installation/linux.html)
 - [MacOS](https://dmh-biodatasci.github.io/SegMantX/installation/macos.html)
 - [Windows](https://dmh-biodatasci.github.io/SegMantX/installation/windows.html)
-- [platform-independent installation](https://dmh-biodatasci.github.io/SegMantX/installation/independent.html)
+- [Platform-independent installation](https://dmh-biodatasci.github.io/SegMantX/installation/independent.html)
 - [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
 
 
