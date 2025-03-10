@@ -2,8 +2,6 @@
 id: home
 ---
 
-# Home
-
 <p align="center">
   <img src="img/segmantx_ASCII.png" alt="SegMantX ASCII">
 </p>

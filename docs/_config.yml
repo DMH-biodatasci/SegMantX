@@ -20,6 +20,10 @@ sidebar:
       - chain_alignments
       - visualize_chains
       - fetch_nucleotide_chains
+      - test_modules
+      - help
+      - version
+      - citation
   - app
   - citation
   - feedback
