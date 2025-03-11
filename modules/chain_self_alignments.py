@@ -355,7 +355,7 @@ def main():
     parser.add_argument("-SG", "--scaled_gap", type=float, default=1.0, help="Minimum scaled gap between alignment hits for chaining (Default: 1.0).")
     parser.add_argument("-Q", "--is_query_circular", action="store_true", default=False, help="Indicates a circular sequence topology (Default: False).")
     parser.add_argument("-L", "--sequence_length", type=int, default=None, help="Size of the sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using --fasta_file) (Default: None).")
-    parser.add_argument("-f", "--fasta_file", type=str, help="Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_size is not provided manually.")
+    parser.add_argument("-f", "--fasta_file", type=str, help="Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length is not provided manually.")
     parser.add_argument("-o", "--output_file", type=str, default='chaining_output.tsv', help="Filename of the chaining output file (Default: chaining_output.tsv).")
     parser.add_argument("-ml", "--min_length", type=int, default=200, help="Minium length of alignment hits for chaining (default: 200).")
     args = parser.parse_args()

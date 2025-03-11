@@ -293,8 +293,8 @@ def main():
     parser.add_argument("-LS", "--sequence_length_subject", type=int, default=None, help="Size of the subject sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using --fasta_file_subject) (Default: None).")
     parser.add_argument("-o", "--output_file", type=str, default='chaining_output.tsv', help="Filename of the chaining output file (Default: chaining_output.tsv).")
     parser.add_argument("-ml", "--min_length", type=int, default=200, help="Minium length of alignment hits for chaining (default: 200).")
-    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length.")
-    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length.")
+    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length_query is not provided manually.")
+    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length_subject is not provided manually.")
     
     args = parser.parse_args()
   
