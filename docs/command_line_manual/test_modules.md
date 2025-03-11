@@ -7,7 +7,7 @@ id: test_modules
 ## ✅ Verify Installation & Test SegMantX's Modules
 Check if the installation was successful by running:
 ```bash
-cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt' and 'test' directory
+cd SegMantX #Navigate to the SegMantX as this module requires 'test_commands.txt'
 SegMantX test_modules
 ```
 
