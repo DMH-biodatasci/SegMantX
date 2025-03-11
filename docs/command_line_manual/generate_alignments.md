@@ -20,7 +20,7 @@ TGCATATTTGCTCCGGCACTCGTCGAATATAGGAACGTCATGCTTGCACTGGCACCTAAAGTCGCTTGCT
 ...
 ```
 
-## Simple examples:
+## Minimal examples:
 ### I. Self-sequence alignment example towards duplication detection:
 ```bash
 SegMantX generate_alignments --query_file tests/NC_018218.1.fasta --blast_output_file tests/NC_018218.1.blast.x7 --alignment_hits_file tests/NC_018218.1.alignment_coordinates.tsv --self_sequence_alignment

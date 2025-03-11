@@ -4,7 +4,7 @@ id: chain_self_alignments
 
 # Chain self-alignments
 
-The `chain_self_alignments` module is designed for the duplication detection chaining alignment hits from self-sequence alignment. 
+The `chain_self_alignments` module is designed for the duplication detection by chaining alignment hits from self-sequence alignment. 
 
 ## Input data:
 The `chain_self_alignments` alignment module expects alignment hits coordinate data, for example, from SegMantX's `generate_alignments` module:
@@ -30,10 +30,10 @@ NC_018218.1     NC_018218.1     92.299  10245   729     37      32452   42685   
 ...
 ```
 
-## Simple example:
+## Minimal example:
 ### Chaining local alignments of a self-sequence alignment example towards duplication detection:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv
 ```
 - `-i or --input_file`: Input file received from 'generate_alignments' (i.e., five columns: q.start, q.end, s.start, s.end, identity). Alternatively, provide BLAST output format 7 and use --blast_outfmt7 flag).
 - `-o, --output_file`: Filename of the chaining output file (Default: chaining_output.tsv).
@@ -85,7 +85,7 @@ To use a file derived from BLAST in output format 7 as input you can use the fol
 
 Example:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file NC_018218.1.blast.x7 --output_file tests/NC_018218.1.chains.tsv --blast_outfmt7
+SegMantX chain_self_alignments --input_file NC_018218.1.blast.x7 --output_file tests/NC_018218.1.chains.tsv --blast_outfmt7
 ```
 
 ### Maximum gap size
@@ -94,7 +94,7 @@ To set a threshold for the max. gap size (in nucleotides) between alignment hits
         
 To set the maximum gap size to 6000 (in nucleotides):
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --max_gap 6000
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --max_gap 6000
 ```
 
 ### Scaled gap size
@@ -103,7 +103,7 @@ To set a threshold for the scaled gap size between alignment hits for chaining:
         
 To set the scaled gap to 2:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --scaled_gap 2
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --scaled_gap 2
 ```
 
 ### Sequence topology of query
@@ -111,10 +111,12 @@ Choosing the correct sequence topology ensures that alignment hits on circular s
 
 The sequence topology for the chaining can be set to circular using:
 - `-Q or --is_query_circular`: Indicates a circular sequence topology (Default: False).
-        
-To set the scaled gap to 2:
+
+Note, that on circular sequence topologies it is necessary to supply the sequence length to SegMantX (e.g., --sequence_length or --fasta_file). See below to see options how to provide the sequence length to SegMantX.
+
+To set a circular sequence topology for the query:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --is_query_circular
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --is_query_circular --fasta_file tests/NC_018218.1.fasta
 ```
 ### Sequence length
 The sequence length is required for correct alignment chaining on sequences with circular sequence topology.
@@ -125,7 +127,7 @@ To set the sequence length manually:
         
 To set the sequence length manually to 6088797:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --sequence_length 6088797
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --sequence_length 6088797
 ```
 
 To determine the sequence length automatically from FASTA-file:
@@ -134,7 +136,7 @@ To determine the sequence length automatically from FASTA-file:
                         
 To set the sequence length automatically to 6088797 by providing the FASTA-file:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --fasta_file tests/NC_018218.1.fasta
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --fasta_file tests/NC_018218.1.fasta
 ```
                         
 ### Minimum alignment hit length
@@ -143,5 +145,5 @@ To discard alignment hits for chaining according to their length:
         
 To set the minimum alignment hit length to 300:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --min_length 300
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --min_length 300
 ```
