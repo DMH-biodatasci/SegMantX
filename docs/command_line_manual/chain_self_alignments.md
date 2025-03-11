@@ -116,7 +116,7 @@ Note, that on circular sequence topologies it is necessary to supply the sequenc
 
 To set a circular sequence topology for the query:
 ```bash
-SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --is_query_circular --fasta_file tests/NC_018218.1.fasta
+SegMantX chain_self_alignments --input_file tests/NZ_AP022172.1.alignment_coordinates.tsv --output_file tests/NZ_AP022172.1.chains.tsv --is_query_circular --fasta_file tests/NZ_AP022172.1.fasta
 ```
 ### Sequence length
 The sequence length is required for correct alignment chaining on sequences with circular sequence topology.
@@ -125,18 +125,18 @@ To set the sequence length manually:
 - `-L, --sequence_length`: Size of the sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e.,
                         using --fasta_file) (Default: None).
         
-To set the sequence length manually to 6088797:
+To set the sequence length manually to 187669:
 ```bash
-SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --sequence_length 6088797
+SegMantX chain_self_alignments --input_file tests/NZ_AP022172.1.alignment_coordinates.tsv --output_file tests/NZ_AP022172.1.chains.tsv --sequence_length 187669
 ```
 
 To determine the sequence length automatically from FASTA-file:
 - `-f or --fasta_file`: Fasta file to read out the sequence length. Required if the sequence topology is circular and
                         --sequence_size is not provided manually.
                         
-To set the sequence length automatically to 6088797 by providing the FASTA-file:
+To set the sequence length automatically to 187669 by providing the FASTA-file:
 ```bash
-SegMantX chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --fasta_file tests/NC_018218.1.fasta
+SegMantX chain_self_alignments --input_file tests/NZ_AP022172.1.alignment_coordinates.tsv --output_file tests/NZ_AP022172.1.chains.tsv --fasta_file tests/NZ_AP022172.1.fasta
 ```
                         
 ### Minimum alignment hit length

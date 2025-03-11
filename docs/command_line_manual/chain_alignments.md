@@ -128,7 +128,6 @@ SegMantX chain_alignments --input_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.alig
 To determine the sequence length automatically from FASTA-file:
 - `-fq, --fasta_file_query`: Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length_query is not provided manually.
 - `-fs, --fasta_file_subject`: Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length_subject is not provided manually.
-               
                         
 To set the sequence length automatically for the query and subject sequences by providing the FASTA-files:
 ```bash
@@ -141,5 +140,5 @@ To discard alignment hits for chaining according to their length:
         
 To set the minimum alignment hit length to 300:
 ```bash
-python3 SegMantX.py chain_self_alignments --input_file tests/NC_018218.1.alignment_coordinates.tsv --output_file tests/NC_018218.1.chains.tsv --min_length 300
+SegMantX chain_alignments --input_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv --min_length 300
 ```
