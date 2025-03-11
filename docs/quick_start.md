@@ -6,14 +6,14 @@ id: quick_start
 
 ## Purpose:
 
-**SegMantX** is a bioinformatics tool designed for chaining local alignments towards the detection of DNA duplications in genomic sequences. The application purposes of SegMantX are:
+**SegMantX** is bioinformatics tool intially designed for chaining local alignments from a self-sequence alignment towards the detection of DNA duplications in genomic sequences. The application purposes of SegMantX are:
 
-1. Duplication detection
-2. Sequence comparison
+1. Duplication detection by chaining local alignments from self-sequence alignment
+2. Sequence comparison by chaining local alignments from sequence alignment
 
 ## Input data:
 
-**SegMantX** only requires a (genomic) nucleotide sequence in FASTA-format. First, SegMantX's [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html) integrates BLASTn to compute local alignments as seeds for the chaining process. 
+**SegMantX's** [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html) (only) requires a (genomic) nucleotide sequence in FASTA-format. SegMantX's workflow integrates BLASTn to compute local alignments as seeds for the chaining process. 
 
 Alternatively, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
@@ -22,6 +22,8 @@ Alternatively, the generation of local alignments using BLASTn is optional as th
 | 133470      | 147930    | 64534         | 78969       | 95.1                      |
 | ...         | ...       | ...           | ...         | ...                       |
 | 329875      | 330416    | 326586         | 327127     | 93                        |
+
+Hint: Chaining local alignments on sequences that are characterized by a circular sequence topology require alignment (coordinate) input data retrieved from an alignment where circular sequences where concatenated with themselves in FASTA-format.
 
 ## Installation:
 
@@ -47,13 +49,13 @@ Hint: The platform-independent installation may be required for older Miniconda 
 ## ✅ Verify Installation & Test SegMantX's Modules
 Check if the installation was successful by running:
 ```bash
-cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt' and 'test' directory
+cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt'
 SegMantX test_modules
 ```
 
 ## Get started
 
-Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection and (II.) sequence comparison. For a detailed description and manual of individual modules visit:
+Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment. For a detailed description, manual, input and output data of individual modules visit:
 
 Core modules:
 - [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
@@ -72,7 +74,7 @@ Optional modules (and help):
 
 The following workflow demonstrates the duplication detection computing a self-alignment of a (circular) plasmid sequence. Afterwards, the hits in the self-alignment will processed in the chaining module. An interactive plot visualizing resulting segments (or chains) and a FASTA-file containing the nucleotide chains will be created.
 
-Hint: Use --is_query_circular only if your sequence has a circular sequence topology (e.g., circular plasmids)
+Hint: Use --is_query_circular only if your sequence has a circular sequence topology (e.g., circular plasmids etc.)
 
 1. Run SegMantX's **generate_alignments** module to compute seeds for the chaining process:
 ```bash
@@ -122,3 +124,4 @@ SegMantX visualize_chains --input_file  tests/NZ_CP018634.1_vs_NZ_CP022004.1.cha
 #Get sequences for sequence comparison downstream analysis:
 SegMantX fetch_nucleotide_chains --input_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv --fasta_file_query tests/NZ_CP018634.1.fasta  --fasta_file_subject tests/NZ_CP022004.1.fasta --output_file tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.fasta
 ```
+
