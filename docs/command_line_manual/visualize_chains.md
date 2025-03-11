@@ -48,7 +48,7 @@ Output of visualization module:
 
 You can view an example interactive plot below:
 
-<iframe src="../interactive_examplge_segmentplot.html" width="100%" height="600px"></iframe>
+<iframe src="../img/interactive_examplge_segmentplot.html" width="100%" height="600px"></iframe>
 
 ## Further options & parameters:
 
