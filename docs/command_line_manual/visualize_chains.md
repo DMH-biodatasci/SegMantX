@@ -50,9 +50,9 @@ Output of visualization module:
 |:----------:|:-----------:|
 | plot.html | An interactive visualization (segment plot) of chains that can be opened in any web browser. | 
 
-You can view an example interactive plot below:
+You can view an example interactive plot including visualized genomic features below:
 
-<iframe src="../img/interactive_examplge_segmentplot.html" width="50%"></iframe>
+<iframe src="../img/interactive_example_segmentplot_features.html" width="100%"></iframe>
 
 ## Further options & parameters:
 
@@ -95,7 +95,7 @@ To set the maximum gap size to 6000 (in nucleotides):
 SegMantX visualize_chains --input_file tests/NZ_AP022172.1.chains.tsv --output_file tests/NZ_AP022172.1.html --fasta_file_query  tests/NZ_AP022172.1.fasta --query_is_subject --genbank_file tests/NZ_AP022172.1.gbk
 ```
 
-### Figure widht and height
+### Figure width and height
 To set the figure widht and height:
   -W, --width WIDTH     Specifies the figure width.
   -H, --height HEIGHT   Specifies the figure height
