@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/img/polished_mascot_segmantx.png" alt="SegMantX Mascot">
+  <img src="docs/img/polished_mascot_segmantx.png" alt="SegMantX Mascot" style="width: 300px; height: auto;">
 </p>
 
 **SegMantX** is bioinformatics tool intially designed for chaining local alignments from a self-sequence alignment towards the detection of DNA duplications in genomic sequences. The application purposes of SegMantX are:
