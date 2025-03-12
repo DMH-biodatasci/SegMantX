@@ -44,7 +44,7 @@ Output of visualization module:
 
 You can view an example interactive plot including visualized genomic features below:
 
-<iframe src="../img/interactive_example_segmentplot_features.html" width="800" height="600"></iframe>
+<iframe src="../img/interactive_example_segmentplot_features.html" width="1400" height="1000"></iframe>
 
 ## Further options & parameters:
 
