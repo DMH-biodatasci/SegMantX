@@ -84,8 +84,7 @@ Hint: The platform-independent installation may be required for older Miniconda 
 ## Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
 ```bash
-cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt'
-SegMantX test_modules
+SegMantX test_modules #This will download a test dataset in ./tests to test all modules
 ```
 
 ## Quick start
