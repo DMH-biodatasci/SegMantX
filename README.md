@@ -99,7 +99,7 @@ SegMantX test_modules
 
 ## Quick start
 
-Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment. For a detailed description, manual, input and output data of individual modules visit:
+Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment.
 
 ### I. Workflow towards duplication detection
 

@@ -4,6 +4,23 @@ id: quick_start
 
 # Quick start
 
+Below you'll find concise sections and descriptions to get started with using SegMantX.
+
+Use the links below to visit the full manual of SegMantX's modules:
+
+Core modules:
+- [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
+- [chain_self_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_self_alignments.html)
+- [chain_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_alignments.html)
+- [visualize_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/visualize_chains.html)
+- [fetch_nucleotide_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/fetch_nucleotide_chains.html)
+
+Optional modules (and help):
+- [test_modules](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/test_modules.html)
+- [help](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/help.html)
+- [version](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/version.html)
+- [citation](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/citation.html)
+
 ## Purpose:
 
 **SegMantX** is bioinformatics tool intially designed for chaining local alignments from a self-sequence alignment towards the detection of DNA duplications in genomic sequences. The application purposes of SegMantX are:
@@ -46,7 +63,7 @@ Hint: The platform-independent installation may be required for older Miniconda 
 - [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
 
 
-## ✅ Verify Installation & Test SegMantX's Modules
+## Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
 ```bash
 cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt'
@@ -55,20 +72,7 @@ SegMantX test_modules
 
 ## Get started
 
-Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment. For a detailed description, manual, input and output data of individual modules visit:
-
-Core modules:
-- [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
-- [chain_self_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_self_alignments.html)
-- [chain_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_alignments.html)
-- [visualize_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/visualize_chains.html)
-- [fetch_nucleotide_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/fetch_nucleotide_chains.html)
-
-Optional modules (and help):
-- [test_modules](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/test_modules.html)
-- [help](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/help.html)
-- [version](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/version.html)
-- [citation](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/citation.html)
+Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment.
 
 ### I. Workflow towards duplication detection
 
