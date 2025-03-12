@@ -44,7 +44,8 @@ Output of visualization module:
 
 You can view an example interactive plot including visualized genomic features below:
 
-<iframe src="../img/interactive_example_segmentplot_features.html" width="1400" height="600"></iframe>
+<a href="https://raw.githubusercontent.com/DMH-biodatasci/SegMantX/refs/heads/main/docs/img/interactive_example_segmentplot_features.html" download>Click to download interactive example plot</a>
+
 
 ## Further options & parameters:
 
