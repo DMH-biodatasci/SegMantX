@@ -90,7 +90,7 @@ Hint: The platform-independent installation may be required for older Miniconda 
 - [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
 
 
-## ✅ Verify installation & test SegMantX's modules
+## Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
 ```bash
 cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt'

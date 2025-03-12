@@ -4,7 +4,7 @@ id: test_modules
 
 # Test modules
 
-## ✅ Verify Installation & Test SegMantX's Modules
+## Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
 ```bash
 cd SegMantX #Navigate to the SegMantX as this module requires 'test_commands.txt'
