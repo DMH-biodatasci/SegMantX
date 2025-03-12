@@ -9,15 +9,7 @@ The `visualize_chains` module is designed to create an interactive plot visualiz
 ## Input data:
 The `visualize_chains` alignment module expects the tab-delimited ouptut table of one of the chaining modules, for example, from SegMantX's `chain_self_alignments` or `chain_alignments` module:
 
-| ID  | Alignment Hits Indices | Query Start | Query End | Subject Start | Subject End | Mean Percent Identity [%] | Query Strand | Subject Strand | N Alignment Hits | Alignment Hit to Chain Contribution [%] | Chain Topology Query | Chain Topology Subject | Query Length | Subject Length |
-|----|------------------------|------------|----------|--------------|------------|--------------------------|-------------|---------------|----------------|----------------------------------|------------------|-------------------|-------------|--------------|
-| 1  | 18,21,23,25,27        | 90564      | 130134   | 90267        | 50339      | 97.23                    | +           | -             | 5              | 100.0                            | linear           | linear            | 39570       | 39928        |
-| 2  | 2,3,5,7               | 2          | 37303    | 87940        | 50339      | 97.17                    | +           | -             | 4              | 100.0                            | linear           | linear            | 37301       | 37601        |
-| 3  | 19,20,22,24,26        | 90564      | 121100   | 30896        | 1          | 97.26                    | +           | -             | 5              | 100.0                            | linear           | linear            | 30536       | 30895        |
-| 4  | 1,4,6,8               | 2          | 28269    | 28569        | 1          | 97.22                    | +           | -             | 4              | 100.0                            | linear           | linear            | 28267       | 28568        |
-| 5  | 10,13,15,17           | 43965      | 63121    | 50307        | 30888      | 96.67                    | +           | -             | 4              | 91.85111714345375                | linear           | linear            | 19156       | 19419        |
-| ... | ...                    | ...        | ...      | ...          | ...        | ...                      | ...         | ...           | ...            | ...                              | ...              | ...               | ...         | ...          |
-
+[Click here to visit an example table](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NC_018218.1.chains.tsv)
 
 ## Minimal examples:
 ### I. Visualizing chains from self-sequence alignment chaining:
@@ -52,7 +44,7 @@ Output of visualization module:
 
 You can view an example interactive plot including visualized genomic features below:
 
-<iframe src="../img/interactive_example_segmentplot_features.html" width="100%"></iframe>
+<iframe src="../img/interactive_example_segmentplot_features.html" width="100%" height="100%"></iframe>
 
 ## Further options & parameters:
 
