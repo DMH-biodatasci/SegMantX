@@ -38,7 +38,7 @@ Output of sequence alignment chaining module:
 | chaining_output.tsv | Main output file of the chaining procedure containing chaining coordinates and metrics |  
 | chaining_output.tsv.indices | Output file to trace back original local alignment hits that have been chained | 
 
-[Click here to visit an example table for 'chaining_output.tsv'](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.tsv)
+[Click here to visit an example table for 'chaining_output.tsv'](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv)
 
 [Click here to visit an example table for 'chaining_output.tsv.indices'](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.tsv.indices)
 
