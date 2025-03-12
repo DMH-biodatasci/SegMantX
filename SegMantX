@@ -75,6 +75,9 @@ try:
 
     elif module == "test_modules": 
         test_modules.main()
+        
+    elif module == "start_app":
+        start_app.main()
 
     elif module == "help":
         stderr.write("""
