@@ -2,7 +2,7 @@
 id: docker
 ---
 
-## Docker
+## SegMantX via Docker
 
 This proposed installation via Docker ensures a platform-independent availability of SegMantX.
 However, it is less recommended as the syntax for running SegMantX changes and it may be less user-friendly. 
@@ -33,3 +33,13 @@ docker run -it --rm -v /path/to/host:/data segmantx generate_alignments \
 #Instead of: python3 SegMantX generate_alignments --query_file /path/to/host/query_file --blast_output_file /path/to/host/blast_output_file --alignment_hits_file /path/to/host/alignment_hits_output_file --is_query_circular --self_sequence_alignment
 ```
 
+
+Alternatviely, the app can also be started by building a Docker container.
+```bash
+# Go to to your SegMantX directory e.g.,
+cd SegMantX
+
+docker build -f Dockerfile_SegMantX_App -t segmantx_app .
+docker run -p 8501:8501 segmantx_app
+# Open a browser and navigate to: http://localhost:8501
+```

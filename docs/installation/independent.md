@@ -8,7 +8,7 @@ id: independent
 Before getting started, ensure you Miniconda installed on your machine (i.e., using your terminal conda should be available).
 
 Warning: This installation procedure may cause issues during the installation on some platforms due to package availability on some operating systems and chip architectures.
-However, this installation may be necessary using (older) Miniconda/conda versions that don't support the parameter '--platform'.
+However, this installation may be necessary using (older) conda versions that don't support the parameter '--platform'.
 
 ```bash
 # Clone the repository
