@@ -160,7 +160,7 @@ SegMantX fetch_nucleotide_chains --input_file tests/NZ_CP018634.1_vs_NZ_CP022004
 Run the SegMantX app with the following command:
 ```bash
 #Navigate to the SegMantX directory as this module requires 'app.py'
-streamlit run app.py
+SegMantX start_app
 ```
 
 Briefly, the app provides a graphical user interface to SegMantX's main modules. Each page contains a brief description to support the user selecting the correct input data and parameters.

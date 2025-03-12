@@ -7,7 +7,7 @@ id: windows
 ## Prerequisites
 For running SegMantX on Windows, we recommend to install the Windows Subsystem for Linux (WSL). Afterwards, SegMantX can be installed via the linux subsystem.
 
-Before getting started, ensure you Miniconda installed on your machine (i.e., using your terminal conda should be available).
+Before getting started, ensure you have Miniconda installed on your machine (i.e., using your terminal conda should be available).
 If your (older) conda version doesn't support the parameter '--platform', try the [platform independent installation](https://dmh-biodatasci.github.io/SegMantX/installation/independent.html).
 
 ```bash
@@ -23,5 +23,6 @@ conda activate SegMantX
 #Ensure running these commands to make SegMantX globally callable
 cp SegMantX $CONDA_PREFIX/bin
 cp -r modules $CONDA_PREFIX/bin
+cp app.py $CONDA_PREFIX/bin
 ```
 

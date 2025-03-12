@@ -4,7 +4,7 @@ id: app
 # SegMantX as app
 Run the SegMantX app with the following command:
 ```bash
-streamlit run app.py
+SegMantX start_app
 ```
 
 Briefly, the app provides a graphical user interface to SegMantX's main modules. Each page contains a brief description to support the user selecting the correct input data and parameters.
