@@ -135,13 +135,13 @@ def get_chained_sequences_from_two_sequences(chained_hits, fasta_file_query, fas
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Extracts nucleotide sequences from chained alignments (FASTA format).")
+    parser = argparse.ArgumentParser(description="Extracts nucleotide sequences in FASTA-format from chained alignments using the output table from one of SegMantX chaining modules.")
     
     parser.add_argument("module", type=str, help="Name of the module being executed.")
-    parser.add_argument("-i", "--input_file", type=str, required = True, help="Output file from chaining results as input.")
-    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length.")
+    parser.add_argument("-i", "--input_file", type=str, required = True, help="Tab-delimited output file from SegMantX chaining module as input file (required).")
+    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to extract nucleotide chains from (i.e., query chains).")
     parser.add_argument("-o", "--output_file", type=str, default='chains.fasta', help="Output file: Fasta file containing nucleotide chains.")
-    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length.")
+    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to extract nucleotide chains from (i.e., subject chains).")
     
     args = parser.parse_args()
     

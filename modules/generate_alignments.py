@@ -118,7 +118,7 @@ def main():
     
     parser.add_argument("module", type=str, help="Name of the module being executed.")
     parser.add_argument("-q", "--query_file", required=True, type=str, help="Path to the query nucleotide FASTA file (required). ")
-    parser.add_argument("-s", "--subject_file", type=str, default='', help="Path to the subject nucleotide FASTA file.")
+    parser.add_argument("-s", "--subject_file", type=str, default='', help="Path to the subject nucleotide FASTA file (required for sequence comparison).")
     parser.add_argument("-b", "--blast_output_file", type=str, default='', help="Path to the output file for BLASTn results (Default: blast_output.txt).")
     parser.add_argument("-a", "--alignment_hits_file", type=str, default='', help="Path to the output file containing (main) alignment hit data for the chaining process (Default: alignment_hits.tsv).")
     parser.add_argument("-Q", "--is_query_circular", action="store_true", help="Indicates if the query sequence is circular (Default: False).")

@@ -35,7 +35,7 @@ options:
   -q, --query_file QUERY_FILE
                         Path to the query nucleotide FASTA file (required).
   -s, --subject_file SUBJECT_FILE
-                        Path to the subject nucleotide FASTA file.
+                        Path to the subject nucleotide FASTA file (required for sequence comparison).
   -b, --blast_output_file BLAST_OUTPUT_FILE
                         Path to the output file for BLASTn results (Default: blast_output.txt).
   -a, --alignment_hits_file ALIGNMENT_HITS_FILE
@@ -72,7 +72,7 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -i, --input_file INPUT_FILE
-                        Input file received from 'generate_alignments' (i.e., five columns: q.start, q.end, s.start, s.end, identity).
+                        Input file received from 'generate_alignments' (required, i.e., tab-delimited five columns: q.start, q.end, s.start, s.end, identity).
                         Alternatively, provide BLAST output format 7 and use --blast_outfmt7 flag).
   -B, --blast_outfmt7   Indicates if the input file is BLAST output format 7 (Default: False).
   -G, --max_gap MAX_GAP
@@ -80,12 +80,12 @@ options:
   -SG, --scaled_gap SCALED_GAP
                         Minimum scaled gap between alignment hits for chaining (Default: 1.0).
   -Q, --is_query_circular
-                        Indicates a circular sequence topology (Default: False).
+                        Indicates if the query sequence has a circular sequence topology (Default: False).
   -L, --sequence_length SEQUENCE_LENGTH
-                        Size of the sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using
-                        --fasta_file) (Default: None).
+                        Size of the sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using
+                        --fasta_file)) (Default: None).
   -f, --fasta_file FASTA_FILE
-                        Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_size is not
+                        Fasta file to read out the sequence length. Required if the sequence topology is circular and --sequence_length is not
                         provided manually.
   -o, --output_file OUTPUT_FILE
                         Filename of the chaining output file (Default: chaining_output.tsv).
@@ -111,7 +111,7 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -i, --input_file INPUT_FILE
-                        Input file received from 'generate_alignments' (i.e., five columns: q.start, q.end, s.start, s.end, identity).
+                        Input file received from 'generate_alignments' (required, i.e., tab-delimited five columns: q.start, q.end, s.start, s.end, identity).
                         Alternatively, provide BLAST output format 7 and indicate --blast_outfmt7 flag).
   -B, --blast_outfmt7   Indicates if the input file is BLAST output format 7 (Default: False).
   -G, --max_gap MAX_GAP
@@ -119,23 +119,23 @@ options:
   -SG, --scaled_gap SCALED_GAP
                         Minimum scaled gap between alignment hits for chaining (Default: 1.0).
   -Q, --is_query_circular
-                        Indicates if the query sequence is circular (Default: False).
+                        Indicates if the query sequence has a circular sequence topology (Default: False).
   -S, --is_subject_circular
-                        Indicates if the subject sequence is circular (Default: False).
+                        Indicates if the subject sequence has a circular sequence topology (Default: False).
   -LQ, --sequence_length_query SEQUENCE_LENGTH_QUERY
-                        Size of the query sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using
-                        --fasta_file_query) (Default: None).
+                        Size of the query sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using
+                        --fasta_file_query)) (Default: None).
   -LS, --sequence_length_subject SEQUENCE_LENGTH_SUBJECT
-                        Size of the subject sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using
-                        --fasta_file_subject) (Default: None).
+                        Size of the subject sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using
+                        --fasta_file_subject)) (Default: None).
   -o, --output_file OUTPUT_FILE
                         Filename of the chaining output file (Default: chaining_output.tsv).
   -ml, --min_length MIN_LENGTH
                         Minium length of alignment hits for chaining (default: 200).
   -fq, --fasta_file_query FASTA_FILE_QUERY
-                        Fasta file to read out the sequence length.
+                        Fasta file to read out the sequence length of query. Required if the sequence topology of query is circular and --sequence_length_query is not provided manually.
   -fs, --fasta_file_subject FASTA_FILE_SUBJECT
-                        Fasta file to read out the sequence length.
+                        Fasta file to read out the sequence length of subject. Required if the sequence topology of subject is circular and --sequence_length_subject is not provided manually.
 ```
 
 ### 4. Visualize chains
@@ -148,7 +148,7 @@ usage: SegMantX [-h] -i INPUT_FILE [-LQ SEQUENCE_LENGTH_QUERY] [-LS SEQUENCE_LEN
                 [-fq FASTA_FILE_QUERY] [-fs FASTA_FILE_SUBJECT] [-QIS] [-W WIDTH] [-H HEIGHT]
                 module
 
-Generates a dotplot to visualize yielded chains for a sequence.
+Generates a segmentplot (i.e., similar to dotplot) to visualize yielded chains for a sequence.
 
 positional arguments:
   module                Name of the module being executed.
@@ -156,24 +156,24 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -i, --input_file INPUT_FILE
-                        Output file from chaining results as input.
+                        Output file from chaining results as input (required).
   -LQ, --sequence_length_query SEQUENCE_LENGTH_QUERY
-                        Size of the query sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using
-                        --fasta_file_query) (Default: None).
+                        Size of the query sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using
+                        --fasta_file_query)) (Default: None).
   -LS, --sequence_length_subject SEQUENCE_LENGTH_SUBJECT
-                        Size of the subject sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using
-                        --fasta_file_subject) (Default: None).
+                        Size of the subject sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using
+                        --fasta_file_subject)) (Default: None).
   -gf, --genbank_file GENBANK_FILE
-                        Genbank file to visualize features.
+                        Genbank file to visualize features (i.e., CDS & pseudogenes as rectangles).
   -o, --output_file OUTPUT_FILE
                         Output file: Interactive plot (i.e., html file).
   -S, --scale SCALE     Scaling the plot to bp, kbp (default), or mbp options:[bp, kbp, mbp].
   -fq, --fasta_file_query FASTA_FILE_QUERY
-                        Fasta file to read out the sequence length.
+                        Fasta file to read out the sequence length of query. Required if the sequence topology of query is circular and --sequence_length_query is not provided manually.
   -fs, --fasta_file_subject FASTA_FILE_SUBJECT
-                        Fasta file to read out the sequence length.
+                        Fasta file to read out the sequence length of subject. Required if the sequence topology of subject is circular and --sequence_length_subject is not provided manually.
   -QIS, --query_is_subject
-                        Specify this flag if the query sequence is identical to the subject sequence (i.e., chaining result from self-alignment).
+                        Specify this flag if the query sequence is identical to the subject sequence (i.e., chaining result from self-sequence alignment).
   -W, --width WIDTH     Specifies the figure width.
   -H, --height HEIGHT   Specifies the figure height
 ```
@@ -186,7 +186,7 @@ The following will be displayed:
 ```bash
 usage: SegMantX [-h] -i INPUT_FILE [-fq FASTA_FILE_QUERY] [-o OUTPUT_FILE] [-fs FASTA_FILE_SUBJECT] module
 
-Extracts nucleotide sequences from chained alignments (FASTA format).
+Extracts nucleotide sequences in FASTA-format from chained alignments using the output table from one of SegMantX chaining modules.
 
 positional arguments:
   module                Name of the module being executed.
@@ -194,11 +194,11 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -i, --input_file INPUT_FILE
-                        Output file from chaining results as input.
+                        Tab-delimited output file from SegMantX chaining module as input file (required).
   -fq, --fasta_file_query FASTA_FILE_QUERY
-                        Fasta file to read out the sequence length.
+                        Fasta file to extract nucleotide chains from (i.e., query chains).
   -o, --output_file OUTPUT_FILE
                         Output file: Fasta file containing nucleotide chains.
   -fs, --fasta_file_subject FASTA_FILE_SUBJECT
-                        Fasta file to read out the sequence length.
+                        Fasta file to extract nucleotide chains from (i.e., subject chains).
 ```

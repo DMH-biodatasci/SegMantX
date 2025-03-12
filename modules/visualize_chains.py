@@ -267,18 +267,18 @@ def segmentplot_of_chains(chained_hits, seq_len_query=None, seq_len_subject=None
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generates a dotplot to visualize yielded chains for a sequence.")
+    parser = argparse.ArgumentParser(description="Generates a segmentplot (i.e., similar to dotplot) to visualize yielded chains for a sequence.")
     
     parser.add_argument("module", type=str, help="Name of the module being executed.")
-    parser.add_argument("-i", "--input_file", type=str, required=True, help="Output file from chaining results as input.")    
-    parser.add_argument("-LQ", "--sequence_length_query", type=int, default=None, help="Size of the query sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using --fasta_file_query) (Default: None).")
-    parser.add_argument("-LS", "--sequence_length_subject", type=int, default=None, help="Size of the subject sequence (is required with circular sequence topology). Otherwise, provide fasta file (i.e., using --fasta_file_subject) (Default: None).")
-    parser.add_argument("-gf", "--genbank_file", type=str, default=pd.DataFrame(), help="Genbank file to visualize features.")
+    parser.add_argument("-i", "--input_file", type=str, required=True, help="Output file from chaining results as input (required).")    
+    parser.add_argument("-LQ", "--sequence_length_query", type=int, default=None, help="Size of the query sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using --fasta_file_query)) (Default: None).")
+    parser.add_argument("-LS", "--sequence_length_subject", type=int, default=None, help="Size of the subject sequence (is required with circular sequence topology, or, otherwise, provide fasta file (i.e., using --fasta_file_subject)) (Default: None).")
+    parser.add_argument("-gf", "--genbank_file", type=str, default=pd.DataFrame(), help="Genbank file to visualize features (i.e., CDS & pseudogenes as rectangles).")
     parser.add_argument("-o", "--output_file", type=str, default='plot.html', help="Output file: Interactive plot (i.e., html file).")
     parser.add_argument("-S", "--scale", type=str, default='kbp', help="Scaling the plot to bp, kbp (default), or mbp options:[bp, kbp, mbp].")
-    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length.")
-    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length.")
-    parser.add_argument("-QIS", "--query_is_subject", action="store_true", help="Specify this flag if the query sequence is identical to the subject sequence (i.e., chaining result from self-alignment).")
+    parser.add_argument("-fq", "--fasta_file_query", type=str, help="Fasta file to read out the sequence length of query. Required if the sequence topology of query is circular and --sequence_length_query is not provided manually.")
+    parser.add_argument("-fs", "--fasta_file_subject", type=str, help="Fasta file to read out the sequence length of subject. Required if the sequence topology of subject is circular and --sequence_length_subject is not provided manually.")
+    parser.add_argument("-QIS", "--query_is_subject", action="store_true", help="Specify this flag if the query sequence is identical to the subject sequence (i.e., chaining result from self-sequence alignment).")
     parser.add_argument("-W", "--width", type=int, default=1400, help="Specifies the figure width.")
     parser.add_argument("-H", "--height", type=int, default=800, help="Specifies the figure height")
     
