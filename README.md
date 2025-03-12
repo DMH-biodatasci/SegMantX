@@ -59,7 +59,7 @@ Optional modules (and help):
 
 **SegMantX's** [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html) (only) requires a (genomic) nucleotide sequence in FASTA-format. SegMantX's workflow integrates BLASTn to compute local alignments as seeds for the chaining process. 
 
-Alternatively, the generation of local alignments using BLASTn is optional as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
+Alternatively, the generation of local alignments using BLASTn is optional and can be skipped (e.g., see [suggested workflow](https://dmh-biodatasci.github.io/SegMantX/module_overview.html)) as the chaining modules accept any input (i.e., seed or alignment coordinates) that provide the following exemplified data:
 
 | Query start | Query end | Subject start | Subject end | Percent sequence identity |
 |:-----------:|:---------:|:-------------:|:-----------:|:-------------------------:|
@@ -67,21 +67,11 @@ Alternatively, the generation of local alignments using BLASTn is optional as th
 | ...         | ...       | ...           | ...         | ...                       |
 | 329875      | 330416    | 326586         | 327127     | 93                        |
 
-Hint: Chaining local alignments on sequences that are characterized by a circular sequence topology require alignment (coordinate) input data retrieved from an alignment where circular sequences where concatenated with themselves in FASTA-format.
+Hint: Chaining local alignments on sequences that are characterized by a circular sequence topology require alignment (coordinate) input data retrieved from an alignment where circular sequences where concatenated with themselves in FASTA-format. 
 
 ## Installation:
 
-Please clone the SegMantX repository:
-
-```bash
-# Clone the repository
-git clone https://github.com/DMH-biodatasci/SegMantX.git
-cd SegMantX
-```
-
-Afterwards, choose an installation procedure that works for your machine:
-
-Hint: The platform-independent installation may be required for older Miniconda versions.
+If you haven't installed SegMantX, yet, please follow one installation procedure that fits for you:
 
 - [Linux](https://dmh-biodatasci.github.io/SegMantX/installation/linux.html)
 - [MacOS](https://dmh-biodatasci.github.io/SegMantX/installation/macos.html)
@@ -89,6 +79,7 @@ Hint: The platform-independent installation may be required for older Miniconda 
 - [Platform-independent installation](https://dmh-biodatasci.github.io/SegMantX/installation/independent.html)
 - [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
 
+Hint: The platform-independent installation may be required for older Miniconda versions.
 
 ## Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
