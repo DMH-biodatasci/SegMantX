@@ -10,20 +10,24 @@
 <p align="center">
   <img src="docs/img/segmantx_abstract_summary.png" alt="SegMantX abstract summary">
 </p>
-<div align="center">
+<div style="text-align: justify;">
   <small>
-    Illustration of steps in the chaining algorithm. **(I)** The input to the core algorithm is the local alignment data from a replicon against itself (or between two distinct sequences). Colored rectangles show local alignments corresponding to unique putative duplications along the query and subject sequence. **(II)** Pairwise gaps between local alignments are calculated for both query and subject sequences. **(III)** The scaled gap matrices for the query and subject sequences are merged into a weighted adjacency matrix, approximating collinearity among local alignments. **(IV)** Components with positive weights in the adjacency matrix are extracted, capturing local alignments linked by bridged gaps. **(V)** Local alignments connected in the network are chained together, resulting in newly defined coordinates for the detected segmental duplications.
+    Illustration of steps in the chaining algorithm. (I) The input to the core algorithm is the local alignment data from a replicon against itself (or between two distinct sequences). Colored rectangles show local alignments corresponding to unique putative duplications along the query and subject sequence. (II) Pairwise gaps between local alignments are calculated for both query and subject sequences. (III) The scaled gap matrices for the query and subject sequences are merged into a weighted adjacency matrix, approximating collinearity among local alignments. (IV) Components with positive weights in the adjacency matrix are extracted, capturing local alignments linked by bridged gaps. (V) Local alignments connected in the network are chained together, resulting in newly defined coordinates for the detected segmental duplications.
   </small>
 </div>
 
 <p align="center">
   <img src="docs/img/chaining_towards_duplication_detection.png" alt="SegMantX duplication detection">
 </p>
-<div align="center">
+<div style="text-align: justify;">
   <small>
-    **Detection of diverged segmental gene duplications via chaining of local similarity alignments.** (A) Result of sequence similarity alignment of plasmid sequence used both as query and subject with BLASTn (Camacho et al. 2009). The plasmid pWP5-S18-ESBL-09_1 (NZ_AP022172.1) was reported in *E. coli* WP5-S18-ESBL-09 (Sekizuka et al. 2022). Lines in the plot correspond to local alignments where the color gradient depicts the proportion of identical nucleotides in the alignment. Colored rectangles in (A, B) correspond to annotated GenBank features such as coding sequences (CDSs) on the plus strand (blue) and minus strand (red). Annotated pseudogenes (grey) indicated below. **(B)** Results of the chaining algorithm for the same plasmid. Lines in the plot correspond to identified chains (or segments) where the color gradient depicts the mean sequence similarity of local alignments (in proportion of identical nucleotides). **(C)** Comparison of gene content in the large segmental duplication detected in the above plasmid. Connections between CDS in grey gradients indicate amino acid sequence identities of ≥30%. Likely paralogous genes are colored in the same shade.
+    Detection of diverged segmental gene duplications via chaining of local similarity alignments.
+    (A) Result of sequence similarity alignment of plasmid sequence used both as query and subject with BLASTn (Camacho et al. 2009). The plasmid pWP5-S18-ESBL-09_1 (NZ_AP022172.1) was reported in <em>E. coli</em> WP5-S18-ESBL-09 (Sekizuka et al. 2022). Lines in the plot correspond to local alignments where the color gradient depicts the proportion of identical nucleotides in the alignment. Colored rectangles in (A, B) correspond to annotated GenBank features such as coding sequences (CDSs) on the plus strand (blue) and minus strand (red). Annotated pseudogenes (grey) indicated below.  
+    (B) Results of the chaining algorithm for the same plasmid. Lines in the plot correspond to identified chains (or segments) where the color gradient depicts the mean sequence similarity of local alignments (in proportion of identical nucleotides).  
+    (C) Comparison of gene content in the large segmental duplication detected in the above plasmid. Connections between CDS in grey gradients indicate amino acid sequence identities of ≥30%. Likely paralogous genes are colored in the same shade.
   </small>
 </div>
+
 
 ## Citation
 If you use SegMantX in your research, please cite:
@@ -33,6 +37,23 @@ If you use SegMantX in your research, please cite:
 ## Manual
 
 Please visit our [manual pages](https://dmh-biodatasci.github.io/SegMantX/) for a full description of SegMantX.
+
+SegMantX's GitHub page only contains a concise description and quick start.
+
+Use the links below to visit the manual of SegMantX's modules:
+
+Core modules:
+- [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
+- [chain_self_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_self_alignments.html)
+- [chain_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_alignments.html)
+- [visualize_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/visualize_chains.html)
+- [fetch_nucleotide_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/fetch_nucleotide_chains.html)
+
+Optional modules (and help):
+- [test_modules](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/test_modules.html)
+- [help](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/help.html)
+- [version](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/version.html)
+- [citation](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/citation.html)
 
 ## Input data:
 
@@ -69,29 +90,16 @@ Hint: The platform-independent installation may be required for older Miniconda 
 - [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
 
 
-## ✅ Verify Installation & Test SegMantX's Modules
+## ✅ Verify installation & test SegMantX's modules
 Check if the installation was successful by running:
 ```bash
 cd SegMantX #Navigate to the SegMantX directory as this module requires 'test_commands.txt'
 SegMantX test_modules
 ```
 
-## Get started
+## Quick start
 
 Below we show two examples running SegMantX on the test dataset towards the (I.) duplication detection by chaining local alignments from self-sequence alignment and (II.) sequence comparison by chaining local alignments from sequence alignment. For a detailed description, manual, input and output data of individual modules visit:
-
-Core modules:
-- [generate_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/generate_alignments.html)
-- [chain_self_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_self_alignments.html)
-- [chain_alignments](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/chain_alignments.html)
-- [visualize_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/visualize_chains.html)
-- [fetch_nucleotide_chains](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/fetch_nucleotide_chains.html)
-
-Optional modules (and help):
-- [test_modules](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/test_modules.html)
-- [help](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/help.html)
-- [version](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/version.html)
-- [citation](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/citation.html)
 
 ### I. Workflow towards duplication detection
 
