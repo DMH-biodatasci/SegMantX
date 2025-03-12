@@ -48,8 +48,8 @@ def main():
         if accession == "NZ_AP022172.1":
             fetch_genbank(accession)
                 
-    with open("test_commands.txt", "r") as f:
-        cmd_lines = f.readlines()
+    #with open("test_commands.txt", "r") as f:
+    #    cmd_lines = f.readlines()
     
 
     print("Starting to test modules - please wait a few minutes until the error report is displayed ... \n")
