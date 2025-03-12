@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from subprocess import run
+import subprocess
 
 def main():
-    run('streamlit run app.py')
+    subprocess.run('streamlit run app.py', shell=True, check=True)
     return 
 
 if __name__ == "__main__":

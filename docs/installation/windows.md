@@ -21,7 +21,7 @@ conda env create -f SegMantX.yml --platform linux-64
 conda activate SegMantX
 
 #Ensure running these commands to make SegMantX globally callable
-cp SegMantX.py $CONDA_PREFIX/bin
+cp SegMantX $CONDA_PREFIX/bin
 cp -r modules $CONDA_PREFIX/bin
 ```
 
