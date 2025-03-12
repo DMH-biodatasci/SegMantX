@@ -13,14 +13,14 @@ id: home
 2. Sequence comparison by chaining local alignments from sequence alignment
 
 <p align="center">
-  <img src="img/segmantx_abstract_summary.png" alt="SegMantX abstract summary" style="width: 400px; height: auto;">
+  <img src="img/segmantx_abstract_summary.png" alt="SegMantX abstract summary" style="width: 800px; height: auto;">
 </p>
 <div style="text-align: justify;">
     Illustration of steps in the chaining algorithm. (I) The input to the core algorithm is the local alignment data from a replicon against itself (or between two distinct sequences). Colored rectangles show local alignments corresponding to unique putative duplications along the query and subject sequence. (II) Pairwise gaps between local alignments are calculated for both query and subject sequences. (III) The scaled gap matrices for the query and subject sequences are merged into a weighted adjacency matrix, approximating collinearity among local alignments. (IV) Components with positive weights in the adjacency matrix are extracted, capturing local alignments linked by bridged gaps. (V) Local alignments connected in the network are chained together, resulting in newly defined coordinates for the detected segmental duplications.
 </div>
 
 <p align="center">
-  <img src="img/chaining_towards_duplication_detection.png" alt="SegMantX duplication detection" style="width: 400px; height: auto;">
+  <img src="img/chaining_towards_duplication_detection.png" alt="SegMantX duplication detection" style="width: 800px; height: auto;">
 </p>
 <div style="text-align: justify;">
     Detection of diverged segmental gene duplications via chaining of local similarity alignments.
