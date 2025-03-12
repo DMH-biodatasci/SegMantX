@@ -9,7 +9,7 @@ The `visualize_chains` module is designed to create an interactive plot visualiz
 ## Input data:
 The `visualize_chains` alignment module expects the tab-delimited ouptut table of one of the chaining modules, for example, from SegMantX's `chain_self_alignments` or `chain_alignments` module:
 
-[Click here to visit an example table](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NC_018218.1.chains.tsv)
+[Click here to visit an example table](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_AP022172.1.chains.tsv)
 
 ## Minimal examples:
 ### I. Visualizing chains from self-sequence alignment chaining:
