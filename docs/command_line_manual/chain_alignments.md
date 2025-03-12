@@ -15,19 +15,11 @@ The `chain_alignments` alignment module expects alignment hits coordinate data b
 | ...         | ...       | ...           | ...         | ...                       |
 | 329875      | 330416    | 326586         | 327127     | 93                        |
 
+[Click here to visit an example file containing alignments hits coordinate data](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv)
+
 The input data for `chain_alignments` should be supplied in this format as tab-delimited file. Alternatively, a BLAST output format 7 file can be used, for example:
-```bash
-# BLASTN 2.16.0+
-# Query: NZ_CP018634.1 Salmonella enterica subsp. enterica serovar Enteritidis strain 49-2444 plasmid pSE49-2444, complete sequence
-# Database: tmp_subject.fasta
-# Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
-# 46 hits found
-NZ_CP018634.1   NZ_CP022004.1   99.477  23537   120     3       92833   116368  28569   5035    0.0          42780
-NZ_CP018634.1   NZ_CP022004.1   99.477  23537   120     3       2       23537   28569   5035    0.0          42780
-NZ_CP018634.1   NZ_CP022004.1   99.477  23537   120     3       92833   116368  87940   64406   0.0          42780
-NZ_CP018634.1   NZ_CP022004.1   99.477  23537   120     3       2       23537   87940   64406   0.0          42780
-...
-```
+
+[Click here to visit an example file containing a blast output format 7](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.blast.x7)
 
 ## Minimal example:
 ### Chaining local alignments of a sequence alignment example towards sequence comparison:
@@ -46,30 +38,9 @@ Output of sequence alignment chaining module:
 | chaining_output.tsv | Main output file of the chaining procedure containing chaining coordinates and metrics |  
 | chaining_output.tsv.indices | Output file to trace back original local alignment hits that have been chained | 
 
-chaining_output.tsv:
+[Click here to visit an example table for 'chaining_output.tsv'](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.tsv)
 
-| ID  | Alignment Hits Indices | Query Start | Query End | Subject Start | Subject End | Mean Percent Identity [%] | Query Strand | Subject Strand | N Alignment Hits | Alignment Hit to Chain Contribution [%] | Chain Topology Query | Chain Topology Subject | Query Length | Subject Length |
-|----|------------------------|------------|----------|--------------|------------|--------------------------|-------------|---------------|----------------|----------------------------------|------------------|-------------------|-------------|--------------|
-| 1  | 18,21,23,25,27        | 90564      | 130134   | 90267        | 50339      | 97.23                    | +           | -             | 5              | 100.0                            | linear           | linear            | 39570       | 39928        |
-| 2  | 2,3,5,7               | 2          | 37303    | 87940        | 50339      | 97.17                    | +           | -             | 4              | 100.0                            | linear           | linear            | 37301       | 37601        |
-| 3  | 19,20,22,24,26        | 90564      | 121100   | 30896        | 1          | 97.26                    | +           | -             | 5              | 100.0                            | linear           | linear            | 30536       | 30895        |
-| 4  | 1,4,6,8               | 2          | 28269    | 28569        | 1          | 97.22                    | +           | -             | 4              | 100.0                            | linear           | linear            | 28267       | 28568        |
-| 5  | 10,13,15,17           | 43965      | 63121    | 50307        | 30888      | 96.67                    | +           | -             | 4              | 91.85111714345375                | linear           | linear            | 19156       | 19419        |
-| ... | ...                    | ...        | ...      | ...          | ...        | ...                      | ...         | ...           | ...            | ...                              | ...              | ...               | ...         | ...          |
-
-
-chaining_output.tsv.indices:
-
-| alignment_hits_indices | q.start | q.end | s.start | s.end | q.strand | s.strand |
-|------------------------|---------|-------|---------|-------|----------|----------|
-| 1                      | 2       | 23537 | 28569   | 5035  | +        | -        |
-| 2                      | 2       | 23537 | 87940   | 64406 | +        | -        |
-| 3                      | 18630   | 18838 | 64686   | 64894 | +        | +        |
-| 4                      | 18630   | 18838 | 5315    | 5523  | +        | +        |
-| 5                      | 23049   | 23257 | 69105   | 69313 | +        | +        |
-| 6                      | 23049   | 23257 | 9734    | 9942  | +        | +        |
-| ...                    | ...     | ...   | ...     | ...   | ...      | ...      |
-
+[Click here to visit an example table for 'chaining_output.tsv.indices'](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/tbl/NZ_CP018634.1_vs_NZ_CP022004.1.tsv.indices)
 
 ## Further options & parameters:
 
