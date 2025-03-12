@@ -45,6 +45,7 @@ Output of fetching nucleotide chains module:
 |:----------:|:-----------:|
 | chains.fasta | A fasta file containing the nucleotide sequences of yielded chains. | 
 
+
 For example:
 ```bash
 >1_query NZ_CP018634.1:90564-130134 (+)

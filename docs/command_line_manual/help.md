@@ -10,12 +10,12 @@ SegMantX -h
 ```
 The following will be displayed:
 ```bash
-Options: SegMantX.py [ chain_self_alignments | chain_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation ]
+Options: SegMantX.py [ chain_self_alignments | chain_alignments | visualize_chains | fetch_nucleotide_chains | generate_alignments | test_modules | help | version | citation | start_app ]
 ```
 
 ## Options / Parameters for modules using 'help':
 
-### 1. generate_alignments
+### 1. Generate alignments
 ```bash
 SegMantX generate_alignments -h
 ```
@@ -55,7 +55,7 @@ options:
                         Word size for BLASTn search (increase it for large genomes) (Default: 11).
 ```
 
-### 2. chain_self_alignments
+### 2. Chain self-sequence alignments
 ```bash
 SegMantX chain_self_alignments -h
 ```
@@ -93,7 +93,7 @@ options:
                         Minium length of alignment hits for chaining (default: 200).
 ```
 
-### 3. chain_alignments
+### 3. Chain sequence alignments
 ```bash
 SegMantX chain_alignments -h
 ```
@@ -138,7 +138,7 @@ options:
                         Fasta file to read out the sequence length.
 ```
 
-### 4. visualize_chains
+### 4. Visualize chains
 ```bash
 SegMantX visualize_chains -h
 ```
@@ -178,7 +178,7 @@ options:
   -H, --height HEIGHT   Specifies the figure height
 ```
 
-### 5. fetch_nucleotide_chains
+### 5. Fetch nucleotide chains
 ```bash
 SegMantX fetch_nucleotide_chains -h
 ```
