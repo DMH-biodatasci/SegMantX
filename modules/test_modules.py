@@ -5,7 +5,6 @@ import sys
 import subprocess
 import os
 
-
 def check_output(file_path):
     if os.path.exists(file_path):
         print(f"{file_path} ok.")
@@ -54,10 +53,14 @@ def main():
     
 
     print("Starting to test modules - please wait a few minutes until the error report is displayed ... \n")
-    for line in cmd_lines:
-        if line.startswith('python3'):
-            line = line.rstrip()
-            subprocess.run(line, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    #for line in cmd_lines:
+    #    if line.startswith('python3'):
+    #        line = line.rstrip()
+    #        subprocess.run(line, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)       
+    commands = ["SegMantX generate_alignments -q tests/NZ_CP051709.1.fasta -b tests/NZ_CP051709.1.blast.x7 -a tests/NZ_CP051709.1.alignment_coordinates.tsv -Q -SA","SegMantX generate_alignments  -q tests/NZ_AP022172.1.fasta -b tests/NZ_AP022172.1.blast.x7 -a tests/NZ_AP022172.1.alignment_coordinates.tsv -Q -SA","SegMantX generate_alignments  -q tests/NC_018218.1.fasta -b tests/NC_018218.1.blast.x7 -a tests/NC_018218.1.alignment_coordinates.tsv -SA -T 4 -W 28","SegMantX generate_alignments  -q tests/NZ_CP018634.1.fasta -s tests/NZ_CP022004.1.fasta -b tests/NZ_CP018634.1_vs_NZ_CP022004.1.blast.x7 -a tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv -Q -S","SegMantX chain_self_alignments -i tests/NZ_CP051709.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NZ_CP051709.1.fasta -Q -o tests/NZ_CP051709.1.chains.tsv","SegMantX chain_self_alignments -i tests/NZ_AP022172.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NZ_AP022172.1.fasta -Q -o tests/NZ_AP022172.1.chains.tsv","SegMantX chain_self_alignments -i tests/NC_018218.1.alignment_coordinates.tsv -G 5000 -SG 1 -f tests/NC_018218.1.fasta -o tests/NC_018218.1.chains.tsv","SegMantX chain_alignments -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.alignment_coordinates.tsv -fq tests/NZ_CP018634.1.fasta -fs tests/NZ_CP022004.1.fasta -G 5000 -SG 1 -Q -S -ml 100 -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv","SegMantX fetch_nucleotide_chains -i tests/NZ_CP051709.1.chains.tsv -fq tests/NZ_CP051709.1.fasta -o tests/NZ_CP051709.1.chains.fasta","SegMantX fetch_nucleotide_chains -i tests/NZ_AP022172.1.chains.tsv -fq tests/NZ_AP022172.1.fasta -o tests/NZ_AP022172.1.chains.fasta","SegMantX fetch_nucleotide_chains -i tests/NC_018218.1.chains.tsv -fq tests/NC_018218.1.fasta -o tests/NC_018218.1.chains.fasta","SegMantX fetch_nucleotide_chains -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv -fq tests/NZ_CP018634.1.fasta  -fs tests/NZ_CP022004.1.fasta -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.fasta","SegMantX visualize_chains -i tests/NZ_CP051709.1.chains.tsv -S kbp -o tests/NZ_CP051709.1.html -fq tests/NZ_CP051709.1.fasta -QIS","SegMantX visualize_chains -i tests/NZ_AP022172.1.chains.tsv -S kbp -o tests/NZ_AP022172.1.html -fq  tests/NZ_AP022172.1.fasta --query_is_subject -gf tests/NZ_AP022172.1.gbk",
+"SegMantX visualize_chains -i tests/NC_018218.1.chains.tsv -S kbp -o tests/NC_018218.1.html -fq  tests/NC_018218.1.fasta -QIS","SegMantX visualize_chains -i tests/NZ_CP018634.1_vs_NZ_CP022004.1.chains.tsv -S kbp -o tests/NZ_CP018634.1_vs_NZ_CP022004.1.html -fq tests/NZ_CP018634.1.fasta -fs tests/NZ_CP022004.1.fasta"]
+    for command in commands:
+        subprocess.run(command, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     
     print("Checking alignment coordinates files ...")
     c1, p1 = check_output('tests/NZ_CP051709.1.alignment_coordinates.tsv')
