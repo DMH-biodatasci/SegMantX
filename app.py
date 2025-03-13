@@ -526,6 +526,7 @@ def self_alignment_chaining_page():
                     #    pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
+            print('Exception: {}'.format(e))
             show_manual_self_alignment_chaining() 
         
 
