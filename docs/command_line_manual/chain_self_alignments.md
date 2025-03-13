@@ -52,7 +52,7 @@ To use a file derived from BLAST in output format 7 as input you can use the fol
 
 Example:
 ```bash
-SegMantX chain_self_alignments --input_file NC_018218.1.blast.x7 --output_file tests/NC_018218.1.chains.tsv --blast_outfmt7
+SegMantX chain_self_alignments --input_file tests/NC_018218.1.blast.x7 --output_file tests/NC_018218.1.chains.tsv --blast_outfmt7
 ```
 
 ### Maximum gap size
