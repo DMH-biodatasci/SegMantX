@@ -2,7 +2,7 @@
 import subprocess
 
 def main():
-    subprocess.run('streamlit run app.py', shell=True, check=True)
+    subprocess.run('streamlit run $CONDA_PREFIX/bin/app.py', shell=True, check=True)
     return 
 
 if __name__ == "__main__":
