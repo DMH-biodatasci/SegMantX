@@ -318,7 +318,7 @@ def landing_page():
     - GitHub: https://github.com/DMH-biodatasci/SegMantX
     - Manual pages: https://dmh-biodatasci.github.io/SegMantX/
     - DOI: XXXXXXXXXXXXX
-    """
+    """)
     
     st.markdown("""
     ## **Concise description**""")

@@ -53,6 +53,7 @@ Core modules:
 
 Optional modules (and help):
 - [test_modules](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/test_modules.html)
+- [start_app](https://dmh-biodatasci.github.io/SegMantX/app.html)
 - [help](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/help.html)
 - [version](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/version.html)
 - [citation](https://dmh-biodatasci.github.io/SegMantX/command_line_manual/citation.html)
