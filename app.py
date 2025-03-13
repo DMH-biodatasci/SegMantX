@@ -482,47 +482,46 @@ def self_alignment_chaining_page():
         pass
     
     if st.sidebar.button("Run self-sequence alignment chaining"):
-        if check_value:
-            try:
-                placeholder.empty()
-                chaining_df = chain_self_alignments.chain_self_sequence_alignment(
-                    input_file=alignment_coordinate_file,
-                    max_gap=max_gap,
-                    scaled_gap=scaled_gap,
-                    seq_len=replicon_size if replicon_size > 0 else None,
-                    is_query_circular=sequence_is_circular,
-                    min_len=min_len,
-                    blast_outfmt7=blast_outfmt7,
-                    fasta_file=fasta_file.name,
-                    output_file=output_file
-                )
-            
-                if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
-                    st.write(chaining_df)
-                    st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
-
-                else:
-                    st.dataframe(chaining_df, use_container_width=True)
-                    st.session_state["chaining_result"] = chaining_df
-
-                    tsv_data = chaining_df.to_csv(sep='\t', index=False)
-
-                    st.download_button(
-                        label="Download chaining results as .tsv file.",
-                        data=tsv_data,
-                        file_name=output_file,
-                        mime="text/tab-separated-values"
+        try:
+            if check_value:
+                    placeholder.empty()
+                    chaining_df = chain_self_alignments.chain_self_sequence_alignment(
+                        input_file=alignment_coordinate_file,
+                        max_gap=max_gap,
+                        scaled_gap=scaled_gap,
+                        seq_len=replicon_size if replicon_size > 0 else None,
+                        is_query_circular=sequence_is_circular,
+                        min_len=min_len,
+                        blast_outfmt7=blast_outfmt7,
+                        fasta_file=fasta_file.name,
+                        output_file=output_file
                     )
-                try:
-                    os.remove(fasta_file.name)
-                except UnboundLocalError:
-                    pass
-                except FileNotFoundError:
-                    pass
-            except Exception as e:
-                st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
-                st.error('{}'.format(e))
-                show_manual_self_alignment_chaining() 
+
+                    if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                        st.write(chaining_df)
+                        st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+
+                    else:
+                        st.dataframe(chaining_df, use_container_width=True)
+                        st.session_state["chaining_result"] = chaining_df
+
+                        tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                        st.download_button(
+                            label="Download chaining results as .tsv file.",
+                            data=tsv_data,
+                            file_name=output_file,
+                            mime="text/tab-separated-values"
+                        )
+                    try:
+                        os.remove(fasta_file.name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+        except Exception as e:
+            st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
+            show_manual_self_alignment_chaining() 
         
 
 def alignment_chaining_page():
@@ -572,55 +571,55 @@ def alignment_chaining_page():
     
     
     if st.sidebar.button("Run sequence alignment chaining"):
-        if check_value:
-            try:
-                placeholder.empty()
-                chaining_df = chain_alignments.chain_sequence_alignment(
-                    input_file=alignment_coordinate_file,
-                    max_gap=max_gap,
-                    scaled_gap=scaled_gap,
-                    seq_len_query=seq_len_query if seq_len_query > 0 else None,
-                    seq_len_subject=seq_len_subject if seq_len_subject > 0 else None,
-                    is_query_circular=is_query_circular,
-                    is_subject_circular=is_subject_circular,
-                    min_len=min_len,
-                    blast_outfmt7=blast_outfmt7,
-                    fasta_file_query= None if fasta_file_query == None else fasta_file_query.name,
-                    fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
-                    output_file=output_file
-                )
-                
-            
-                if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
-                    st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
-                else:
-                    st.dataframe(chaining_df, use_container_width=True)
-                    st.session_state["chaining_result"] = chaining_df
-
-                    tsv_data = chaining_df.to_csv(sep='\t', index=False)
-
-                    st.download_button(
-                        label="Download chaining results as .tsv file.",
-                        data=tsv_data,
-                        file_name=output_file,
-                        mime="text/tab-separated-values"
+        try:
+            if check_value:
+                    placeholder.empty()
+                    chaining_df = chain_alignments.chain_sequence_alignment(
+                        input_file=alignment_coordinate_file,
+                        max_gap=max_gap,
+                        scaled_gap=scaled_gap,
+                        seq_len_query=seq_len_query if seq_len_query > 0 else None,
+                        seq_len_subject=seq_len_subject if seq_len_subject > 0 else None,
+                        is_query_circular=is_query_circular,
+                        is_subject_circular=is_subject_circular,
+                        min_len=min_len,
+                        blast_outfmt7=blast_outfmt7,
+                        fasta_file_query= None if fasta_file_query == None else fasta_file_query.name,
+                        fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
+                        output_file=output_file
                     )
-                try:
-                    os.remove(fasta_file_query.name)
-                except UnboundLocalError:
-                    pass
-                except FileNotFoundError:
-                    pass
-                try:
-                    os.remove(fasta_file_subject.name)
-                except UnboundLocalError:
-                    pass
-                except FileNotFoundError:
-                    pass
-                
-            except Exception as e:
-                st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
-                show_manual_alignment_chaining() 
+
+
+                    if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                        st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
+                    else:
+                        st.dataframe(chaining_df, use_container_width=True)
+                        st.session_state["chaining_result"] = chaining_df
+
+                        tsv_data = chaining_df.to_csv(sep='\t', index=False)
+
+                        st.download_button(
+                            label="Download chaining results as .tsv file.",
+                            data=tsv_data,
+                            file_name=output_file,
+                            mime="text/tab-separated-values"
+                        )
+                    try:
+                        os.remove(fasta_file_query.name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+                    try:
+                        os.remove(fasta_file_subject.name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+
+        except Exception as e:
+            st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
+            show_manual_alignment_chaining() 
                  
 
 def fetch_chains_as_sequences_page():
@@ -663,46 +662,46 @@ def fetch_chains_as_sequences_page():
     check_value = check_input(alignment_coordinate_file)
     
     if st.sidebar.button("Fetch nucleotide sequences"):
-        if check_value:
-            try:
-                placeholder.empty()
-                if duplication_or_comparison == "Self-alignment chaining":
-                    sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
-                                                            fasta_file= None if fasta_file_query == None else fasta_file_query.name,
-                                                            output_fasta=output_file)
-                elif duplication_or_comparison == "Alignment chaining of two sequences":
-                    sequences = fetch_nucleotide_chains.get_chained_sequences_from_two_sequences(chained_hits=alignment_coordinate_file, 
-                                                            fasta_file_query= None if fasta_file_query == None else fasta_file_query.name, 
-                                                            fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
-                                                            output_fasta=output_file)
+        try:
+            if check_value:
+                    placeholder.empty()
+                    if duplication_or_comparison == "Self-alignment chaining":
+                        sequences = fetch_nucleotide_chains.get_chained_sequences(chained_hits=alignment_coordinate_file, 
+                                                                fasta_file= None if fasta_file_query == None else fasta_file_query.name,
+                                                                output_fasta=output_file)
+                    elif duplication_or_comparison == "Alignment chaining of two sequences":
+                        sequences = fetch_nucleotide_chains.get_chained_sequences_from_two_sequences(chained_hits=alignment_coordinate_file, 
+                                                                fasta_file_query= None if fasta_file_query == None else fasta_file_query.name, 
+                                                                fasta_file_subject= None if fasta_file_subject == None else fasta_file_subject.name,
+                                                                output_fasta=output_file)
 
-                # Old feature - visualizing the whole fasta file is too memory intensive
-                #if sequences != None:
-                #    seq_file = load_fasta(sequences)
-                #    st.text_area("FASTA Content", seq_file, height=600)
+                    # Old feature - visualizing the whole fasta file is too memory intensive
+                    #if sequences != None:
+                    #    seq_file = load_fasta(sequences)
+                    #    st.text_area("FASTA Content", seq_file, height=600)
 
-                st.download_button(
-                    label="Download FASTA file",
-                    data=load_fasta(sequences).encode('utf-8'),
-                    file_name=output_file,
-                    mime='text/plain'
-                )
+                    st.download_button(
+                        label="Download FASTA file",
+                        data=load_fasta(sequences).encode('utf-8'),
+                        file_name=output_file,
+                        mime='text/plain'
+                    )
 
-                try:
-                    os.remove(fasta_file_query.name)
-                except UnboundLocalError:
-                    pass
-                except FileNotFoundError:
-                    pass
-                try:
-                    os.remove(fasta_file_subject.name)
-                except UnboundLocalError:
-                    pass
-                except FileNotFoundError:
-                    pass
-            except Exception as e:
-                st.error("An ERROR occured. Please check the user guidance for the module fetch chains as sequences.")
-                show_manual_fetch_nucleotide_chains() 
+                    try:
+                        os.remove(fasta_file_query.name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+                    try:
+                        os.remove(fasta_file_subject.name)
+                    except UnboundLocalError:
+                        pass
+                    except FileNotFoundError:
+                        pass
+        except Exception as e:
+            st.error("An ERROR occured. Please check the user guidance for the module fetch chains as sequences.")
+            show_manual_fetch_nucleotide_chains() 
             
 
 def visualize_chains_page():
