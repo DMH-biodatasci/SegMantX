@@ -306,12 +306,7 @@ def landing_page():
     '''
     #st.title("SegMantX")
     image_path_mascot = os.path.expandvars("$CONDA_PREFIX/bin/img/polished_mascot_segmantx.png")
-    #st.image(image_path_mascot,  width=300, use_container_width=False)
-    st.markdown(f"""
-        <p align="center">
-          <img src="{image_path_mascot}" width="300" />
-        </p>""", unsafe_allow_html=True)
-
+    st.image(image_path_mascot,  width=300, use_container_width=False)
     st.write("This app employs streamlit to provide a graphical interface of SegMantX.")
     
     st.write(
