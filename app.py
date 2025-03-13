@@ -304,7 +304,9 @@ def landing_page():
     '''
     Creates the landing page of StreamSegMantX.py containing informal text.
     '''
-    st.title("SegMantX")
+    #st.title("SegMantX")
+    image_path_mascot = os.path.expandvars("$CONDA_PREFIX/bin/img/polished_mascot_segmantx.png")
+    st.image(image_path_mascot, caption="Mascot image",  use_container_width=True)
 
     st.write("This app employs streamlit to provide a graphical interface of SegMantX.")
     
@@ -325,7 +327,9 @@ def landing_page():
         "Please read more about SegMantX and the suggested workflow here:"
     )
     
-    st.image("$CONDA_PREFIX/bin/img/workflow.png", caption="Workflow iamge",  use_container_width=True)
+
+    image_path_workflow = os.path.expandvars("$CONDA_PREFIX/bin/img/workflow.png")
+    st.image(image_path_workflow, caption="Workflow image",  use_container_width=True)
     
     st.write(
         "SegMantX: https://dmh-biodatasci.github.io/SegMantX/"
