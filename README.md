@@ -79,7 +79,7 @@ If you haven't installed SegMantX, yet, please follow one installation procedure
 - [MacOS](https://dmh-biodatasci.github.io/SegMantX/installation/macos.html)
 - [Windows](https://dmh-biodatasci.github.io/SegMantX/installation/windows.html)
 - [Platform-independent installation](https://dmh-biodatasci.github.io/SegMantX/installation/independent.html)
-- [Docker](https://dmh-biodatasci.github.io/SegMantX/installation/docker.html)
+- [Docker](https://dmh-biodatasci.github.io/SegMantX/docker.html)
 
 Hint: The platform-independent installation may be required for older Miniconda versions.
 
