@@ -431,16 +431,16 @@ def generate_alignments_page():
 
                 try:
                     os.remove(query_fasta_file.name)
-                except UnboundLocalError:
+                except Exception as e1:
                     pass
-                except FileNotFoundError:
-                    pass
+                #except FileNotFoundError:
+                #    pass
                 try:
                     os.remove(subject_fasta_file.name)
-                except UnboundLocalError:
+                except Exception as e2:
                     pass
-                except FileNotFoundError:
-                    pass
+                #except FileNotFoundError:
+                #    pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module generate alignments.")
             show_manual_generate_alignments()
@@ -515,10 +515,10 @@ def self_alignment_chaining_page():
                         )
                     try:
                         os.remove(fasta_file.name)
-                    except UnboundLocalError:
+                    except Exception as e1:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module self-alignment chaining.")
             show_manual_self_alignment_chaining() 
@@ -606,16 +606,16 @@ def alignment_chaining_page():
                         )
                     try:
                         os.remove(fasta_file_query.name)
-                    except UnboundLocalError:
+                    except Exception as e1:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
                     try:
                         os.remove(fasta_file_subject.name)
-                    except UnboundLocalError:
+                    except Exception as e2:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
 
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module alignment chaining.")
@@ -689,16 +689,16 @@ def fetch_chains_as_sequences_page():
 
                     try:
                         os.remove(fasta_file_query.name)
-                    except UnboundLocalError:
+                    except Exception as e1:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
                     try:
                         os.remove(fasta_file_subject.name)
-                    except UnboundLocalError:
+                    except Exception as e2:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module fetch chains as sequences.")
             show_manual_fetch_nucleotide_chains() 
@@ -811,23 +811,23 @@ def visualize_chains_page():
 
                 try:
                     os.remove(fasta_file_query.name)
-                except UnboundLocalError:
+                except Exception as e1:
                     pass
-                except FileNotFoundError:
-                    pass
+                #except FileNotFoundError:
+                #    pass
                 try:
                     os.remove(fasta_file_subject.name)
-                except UnboundLocalError:
+                except Exception as e2:
                     pass
-                except FileNotFoundError:
-                    pass
+                #except FileNotFoundError:
+                #    pass
                 if genbank_name != None:
                     try:
                         os.remove(genbank_name)
-                    except UnboundLocalError:
+                    except Exception as e3:
                         pass
-                    except FileNotFoundError:
-                        pass
+                    #except FileNotFoundError:
+                    #    pass
         except Exception as e:
             st.error("An ERROR occured. Please check the user guidance for the module visualize chains.")
             show_manual_visualize_chains()
