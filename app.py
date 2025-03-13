@@ -304,10 +304,24 @@ def landing_page():
     '''
     Creates the landing page of StreamSegMantX.py containing informal text.
     '''
-    #st.title("SegMantX")
+    st.title("SegMantX")
     image_path_mascot = os.path.expandvars("$CONDA_PREFIX/bin/img/polished_mascot_segmantx.png")
-    st.image(image_path_mascot,  width=300, use_container_width=False)
+    #st.image(image_path_mascot,  width=300, use_container_width=False)
+    st.sidebar.image(image_path_mascot, use_container_width=True)
     st.write("This app employs streamlit to provide a graphical interface of SegMantX.")
+    
+    st.write(
+        "Please use these links for a detailed description of SegMantX:"
+    )
+    st.markdown(
+    """
+    - GitHub: https://github.com/DMH-biodatasci/SegMantX
+    - Manual pages: https://dmh-biodatasci.github.io/SegMantX/
+    - DOI: XXXXXXXXXXXXX
+    """
+    
+    st.markdown("""
+    ## **Concise description**""")
     
     st.write(
         "SegMantX is a bioinformatics tool designed to support a user-friendly chaining of local sequence alignments. "
@@ -318,6 +332,9 @@ def landing_page():
         "SegMantX embeds BLASTn to generate local alignments as seeds for the chaining process. It's possible to skip the recommended alignment generation step based on BLASTn if the user provides alternative input data as seeds for the chaining process organized in a tab-delimited file containing the following five columns: Query start, Query end, Subject start, Subject end, Percentage sequence identity."
     )
     
+    st.markdown("""
+    ## **SegMantX's suggested workflow**""")
+        
     st.write(
         "Briefly, SegMantX is organised into five modules:"
     )
@@ -335,17 +352,6 @@ def landing_page():
     )
     
     st.markdown("**Get started by navigating through the sidebar menu on the left!**")
-    
-    st.write(
-        "For further details visit also:"
-    )
-    
-    st.markdown(
-    """
-    - GitHub: https://github.com/DMH-biodatasci/SegMantX
-    - Manual pages: https://dmh-biodatasci.github.io/SegMantX/
-    - DOI: XXXXXXXXXXXXX
-    """
     )
     
             
