@@ -498,7 +498,7 @@ def self_alignment_chaining_page():
                         is_query_circular=sequence_is_circular,
                         min_len=min_len,
                         blast_outfmt7=blast_outfmt7,
-                        fasta_file=fasta_file.name,
+                        fasta_file= None if fasta_file == None else fasta_file.name,,
                         output_file=output_file
                     )
 
