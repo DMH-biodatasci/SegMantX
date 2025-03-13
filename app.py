@@ -498,6 +498,7 @@ def self_alignment_chaining_page():
                 )
             
                 if chaining_df is None or isinstance(chaining_df, str) or chaining_df.empty:
+                    st.write(chaining_df)
                     st.write("The input data format is wrong, mandatory parameters/files are missing, or no valid data was found.")
 
                 else:
