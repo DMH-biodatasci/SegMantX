@@ -20,5 +20,5 @@ SHELL ["conda", "run", "-n", "SegMantX", "/bin/bash", "-c"]
 RUN chmod +x SegMantX
 
 # Set the script as the default command-line tool
-ENTRYPOINT ["conda", "run", "-n", "SegMantX", "python", "/app/SegMantX"]
+ENTRYPOINT ["conda", "run", "-n", "SegMantX", "/app/SegMantX"]
 
