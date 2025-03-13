@@ -26,3 +26,4 @@ cp -r modules $CONDA_PREFIX/bin
 cp app.py $CONDA_PREFIX/bin
 ```
 
+Note, we also provide a solution using SegMantX and its app via [Docker](https://dmh-biodatasci.github.io/SegMantX/docker.html). However, it is less recommended as the syntax for running SegMantX changes and it may be less user-friendly.

@@ -12,6 +12,8 @@ id: home
 1. Duplication detection by chaining local alignments from self-sequence alignment
 2. Sequence comparison by chaining local alignments from sequence alignment
 
+Furthermore, SegMantX provide utilities to generate local alignments for chaining, visualize yielded chains in an interactive plot with positional context of the genomic sequence (e.g., see below or [click here to download](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/img/interactive_example_segmentplot_features.html)), and to extract chains as nucleotide sequences in FASTA-format for downstream analysis.
+
 ## Summary graph of the chaining algorithm
 
 <p align="center">
