@@ -352,7 +352,6 @@ def landing_page():
     )
     
     st.markdown("**Get started by navigating through the sidebar menu on the left!**")
-    )
     
             
 def generate_alignments_page():
