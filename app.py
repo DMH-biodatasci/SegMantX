@@ -518,10 +518,13 @@ def self_alignment_chaining_page():
                             file_name=output_file,
                             mime="text/tab-separated-values"
                         )
-                    try:
-                        os.remove(fasta_file.name)
-                    except Exception as e1:
-                        pass
+                    
+                    if fasta_file is not None:
+                        try:
+                            os.remove(fasta_file.name)
+                        except Exception as e1:
+                            pass
+                    
                     #except FileNotFoundError:
                     #    pass
         except Exception as e:
@@ -610,16 +613,20 @@ def alignment_chaining_page():
                             file_name=output_file,
                             mime="text/tab-separated-values"
                         )
-                    try:
-                        os.remove(fasta_file_query.name)
-                    except Exception as e1:
-                        pass
+                    
+                    
+                    if fasta_file_query is not None:
+                        try:
+                            os.remove(fasta_file_query.name)
+                        except Exception as e1:
+                            pass
                     #except FileNotFoundError:
                     #    pass
-                    try:
-                        os.remove(fasta_file_subject.name)
-                    except Exception as e2:
-                        pass
+                    if fasta_file_subject is not None:
+                        try:
+                            os.remove(fasta_file_subject.name)
+                        except Exception as e2:
+                            pass
                     #except FileNotFoundError:
                     #    pass
 
@@ -692,17 +699,19 @@ def fetch_chains_as_sequences_page():
                         file_name=output_file,
                         mime='text/plain'
                     )
-
-                    try:
-                        os.remove(fasta_file_query.name)
-                    except Exception as e1:
-                        pass
+                    
+                    if fasta_file_query is not None:
+                        try:
+                            os.remove(fasta_file_query.name)
+                        except Exception as e1:
+                            pass
                     #except FileNotFoundError:
                     #    pass
-                    try:
-                        os.remove(fasta_file_subject.name)
-                    except Exception as e2:
-                        pass
+                    if fasta_file_subject is not None:
+                        try:
+                            os.remove(fasta_file_subject.name)
+                        except Exception as e2:
+                            pass
                     #except FileNotFoundError:
                     #    pass
         except Exception as e:
@@ -814,17 +823,19 @@ def visualize_chains_page():
                     file_name=output_file,
                     mime="text/html"
                 )
-
-                try:
-                    os.remove(fasta_file_query.name)
-                except Exception as e1:
-                    pass
+                
+                if fasta_file_query is not None:
+                    try:
+                        os.remove(fasta_file_query.name)
+                    except Exception as e1:
+                        pass
                 #except FileNotFoundError:
                 #    pass
-                try:
-                    os.remove(fasta_file_subject.name)
-                except Exception as e2:
-                    pass
+                if fasta_file_subject is not None:
+                    try:
+                        os.remove(fasta_file_subject.name)
+                    except Exception as e2:
+                        pass
                 #except FileNotFoundError:
                 #    pass
                 if genbank_name != None:
