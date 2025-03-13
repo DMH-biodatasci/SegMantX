@@ -17,9 +17,7 @@ cd SegMantX
 conda env create -f SegMantX.yml --platform osx-64 
 conda activate SegMantX
 
-#Ensure running these commands to make SegMantX globally callable
-cp SegMantX $CONDA_PREFIX/bin
-cp -r modules $CONDA_PREFIX/bin
-cp app.py $CONDA_PREFIX/bin
+#Ensure running the post_install.sh script to make SegMantX globally callable
+./post_install.sh
 ```
 Note, we also provide a solution using SegMantX and its app via [Docker](https://dmh-biodatasci.github.io/SegMantX/docker.html). However, it is less recommended as the syntax for running SegMantX changes and it may be less user-friendly.
