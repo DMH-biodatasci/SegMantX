@@ -2,10 +2,12 @@
   <img src="docs/img/polished_mascot_segmantx.png" alt="SegMantX Mascot" style="width: 300px; height: auto;">
 </p>
 
-**SegMantX** is bioinformatics tool intially designed for chaining local alignments from a self-sequence alignment towards the detection of DNA duplications in genomic sequences. The application purposes of SegMantX are:
+**SegMantX** is bioinformatics tool intially designed for chaining local alignments from a self-sequence alignment towards the detection of DNA duplications in genomic sequences. The main application purposes of SegMantX are:
 
 1. Duplication detection by chaining local alignments from self-sequence alignment
 2. Sequence comparison by chaining local alignments from sequence alignment
+
+Furthermore, SegMantX provide utilities to generate local alignments for chaining, visualize yielded chains in an interactive plot with positional context of the genomic sequence (e.g., see below or [click here to download](https://github.com/DMH-biodatasci/SegMantX/blob/main/docs/img/interactive_example_segmentplot_features.html)), and to extract chains as nucleotide sequences in FASTA-format for downstream analysis.
 
 <p align="center">
   <img src="docs/img/segmantx_abstract_summary.png" alt="SegMantX abstract summary">

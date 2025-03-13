@@ -17,8 +17,8 @@ RUN conda env create -f SegMantX.yml && conda clean --all -y
 SHELL ["conda", "run", "-n", "SegMantX", "/bin/bash", "-c"]
 
 # Set executable permissions for the script
-RUN chmod +x SegMantX.py
+RUN chmod +x SegMantX
 
 # Set the script as the default command-line tool
-ENTRYPOINT ["conda", "run", "-n", "SegMantX", "python", "/app/SegMantX.py"]
+ENTRYPOINT ["conda", "run", "-n", "SegMantX", "python", "/app/SegMantX"]
 
