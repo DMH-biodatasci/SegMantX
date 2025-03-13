@@ -306,7 +306,7 @@ def landing_page():
     '''
     #st.title("SegMantX")
     image_path_mascot = os.path.expandvars("$CONDA_PREFIX/bin/img/polished_mascot_segmantx.png")
-    st.image(image_path_mascot, caption="Mascot image",  use_container_width=True)
+    st.image(image_path_mascot, caption="Mascot image",  width=300, use_container_width=False)   
 
     st.write("This app employs streamlit to provide a graphical interface of SegMantX.")
     
@@ -322,22 +322,8 @@ def landing_page():
     st.write(
         "Briefly, SegMantX is organised into five modules:"
     )
-    
-    st.write(
-        "Please read more about SegMantX and the suggested workflow here:"
-    )
-    
-
     image_path_workflow = os.path.expandvars("$CONDA_PREFIX/bin/img/workflow.png")
     st.image(image_path_workflow, caption="Workflow image",  use_container_width=True)
-    
-    st.write(
-        "SegMantX: https://dmh-biodatasci.github.io/SegMantX/"
-    )
-    
-    st.write(
-        "SegMantX: https://dmh-biodatasci.github.io/SegMantX/module_overview.html"
-    )
     
     st.markdown(
     """
@@ -357,7 +343,8 @@ def landing_page():
     
     st.markdown(
     """
-    - GitHub: XXXXXXXXXX
+    - GitHub: https://github.com/DMH-biodatasci/SegMantX
+    - Manual pages: https://dmh-biodatasci.github.io/SegMantX/
     - DOI: XXXXXXXXXXXXX
     """
     )
