@@ -56,7 +56,7 @@ def show_manual_generate_alignments():
     - Example E-value settings:  
         - High specificity: `1e-9` (Fewer, more reliable seeds) - RECOMMENDED  
         - 'Balanced approach': `1e-5` (Balance of sensitivity and specificity)  
-        - Higher sensitivity: `1e-1` (More seeds, but may introduce noise—use cautiously) - NOT RECOMMENDED
+        - Higher sensitivity: `1e-1` (Morfe seeds, but may introduce noise—use cautiously) - NOT RECOMMENDED
         
     #### Minimum percentage sequence identity
     - This parameter sets a threshold for sequence alignments hits being considered for chaining according to a percentage sequence identity (i.e., alignment hits below the threshold are excluded).
@@ -318,10 +318,22 @@ def landing_page():
     )
     
     st.write(
-        "Briefly, SegMantX is organised into five modules and has a recommended workflow:"
+        "Briefly, SegMantX is organised into five modules:"
     )
     
-    st.image("workflow.png", caption="Workflow iamge",  use_container_width=True)
+    st.write(
+        "Please read more about SegMantX and the suggested workflow here:"
+    )
+    
+    st.image("$CONDA_PREFIX/bin/img/workflow.png", caption="Workflow iamge",  use_container_width=True)
+    
+    st.write(
+        "SegMantX: https://dmh-biodatasci.github.io/SegMantX/"
+    )
+    
+    st.write(
+        "SegMantX: https://dmh-biodatasci.github.io/SegMantX/module_overview.html"
+    )
     
     st.markdown(
     """
