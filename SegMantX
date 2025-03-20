@@ -94,9 +94,10 @@ Modules:
         print(f"SegMantX version {__version__}")
 
     elif module == "citation":
-        print(f"Authors "
-              f"SegMantX: Title. Journal. DOI "
-              f"GitHub repository: LINK")
+        print("Dustin Martin Hanke, Tal Dagan")
+        print("SegMantX: a novel tool for detecting DNA duplications uncovers prevalent duplications in plasmids")
+        print("bioRxiv 2025.03.14.643293; doi: https://doi.org/10.1101/2025.03.14.643293")
+        print("GitHub repository: https://github.com/DMH-biodatasci/SegMantX")
         
     else:
         stderr.write(errorMessage)
@@ -113,6 +114,6 @@ if print_citation:
     print("\nReport any unsolved bugs or issues to the GitHub page of SegMantX.")
     print("\n")
     print("Please cite:")
-    print("SegMantX: a novel tool for detecting DNA duplications uncovers prevalent duplications in plasmids")
     print("Dustin Martin Hanke, Tal Dagan")
+    print("SegMantX: a novel tool for detecting DNA duplications uncovers prevalent duplications in plasmids")
     print("bioRxiv 2025.03.14.643293; doi: https://doi.org/10.1101/2025.03.14.643293")
