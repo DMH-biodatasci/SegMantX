@@ -317,7 +317,7 @@ def landing_page():
     """
     - GitHub: https://github.com/DMH-biodatasci/SegMantX
     - Manual pages: https://dmh-biodatasci.github.io/SegMantX/
-    - DOI: XXXXXXXXXXXXX
+    - **Dustin M Hanke, Tal Dagan**, "SegMantX: a novel tool for detecting DNA duplications uncovers prevalent duplications in plasmids", 2025, bioRxiv 2025.03.14.643293, doi: https://doi.org/10.1101/2025.03.14.643293
     """)
     
     st.markdown("""
