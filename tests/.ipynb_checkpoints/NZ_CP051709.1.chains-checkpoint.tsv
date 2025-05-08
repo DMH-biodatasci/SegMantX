@@ -1,0 +1,5 @@
+ID	indices	q.start	q.end	s.start	s.end	mean_identity	q.strand	s.strand	number_of_hits	blast_contribution	chain_topology_query	chain_topology_subject	q_length	s_length
+1	10,11,12	10211	1295	3552	6899	86.63	+	+	3	87.79911373707533	circular	linear	3385	3347
+2	5,7,9	3552	6899	10211	1295	86.66	+	+	3	88.52703913952794	linear	circular	3347	3385
+3	10,11,12	3552	6899	10211	1295	86.63	+	+	3	87.79911373707533	circular	linear	3385	3347
+4	5,7,9	10211	1295	3552	6899	86.66	+	+	3	88.52703913952794	linear	circular	3347	3385

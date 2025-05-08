@@ -1,0 +1,14 @@
+name: SegMantX
+channels:
+  - conda-forge
+  - anaconda
+  - bioconda
+  - defaults
+dependencies:
+  - anaconda::pandas
+  - anaconda::scipy
+  - biopython
+  - plotly::plotly
+  - conda-forge::streamlit
+  - blast
+prefix: SegMantX

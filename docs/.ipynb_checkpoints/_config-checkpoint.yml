@@ -1,0 +1,29 @@
+remote_theme: zendesk/jekyll-theme-zendesk-garden@main
+
+search_enabled: true
+
+sidebar:
+  - home
+  - quick_start
+  - label: Installation
+    children:
+      - linux
+      - macos
+      - windows
+      - independent
+  - module_overview
+  - label: Command-line manual
+    children:
+      - generate_alignments
+      - chain_self_alignments
+      - chain_alignments
+      - visualize_chains
+      - fetch_nucleotide_chains
+      - test_modules
+      - help
+      - version
+      - citation2
+  - app
+  - docker
+  - citation
+  - feedback

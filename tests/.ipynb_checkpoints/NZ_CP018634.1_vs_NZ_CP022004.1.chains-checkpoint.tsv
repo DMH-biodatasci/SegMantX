@@ -1,0 +1,5 @@
+ID	indices	q.start	q.end	s.start	s.end	mean_identity	q.strand	s.strand	number_of_hits	blast_contribution	segment_type_query	segment_type_subject	q_length	s_length
+1	1,2,3,4	2	28269	28569	1	97.22	+	-	4	100.0	segment	segment	28267	28568
+2	6,7,8,9	43965	63121	50307	30888	96.67	+	-	4	91.85111714345375	segment	segment	19156	19419
+3	5	28270	37303	59371	50339	99.62	+	-	1	100.0	segment	segment	9033	9032
+4	10	90564	92831	30896	28630	97.53	+	-	1	100.0	segment	segment	2267	2266

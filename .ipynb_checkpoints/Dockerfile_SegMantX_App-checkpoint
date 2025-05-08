@@ -1,0 +1,27 @@
+# Use a lightweight Miniconda image as the base
+FROM continuumio/miniconda3:latest
+
+# Install git (required for cloning)
+RUN apt-get install -y git 
+
+# Set the working directory inside the container
+WORKDIR /segmantx_app
+
+# Clone the GitHub repository (replace with your actual repo URL)
+RUN git clone https://github.com/DMH-biodatasci/SegMantX.git .
+
+# Create the Conda environment using the provided environment.yml
+RUN conda env create -f SegMantX.yml && conda clean --all -y
+
+# Ensure the environment is activated when the container starts
+SHELL ["conda", "run", "-n", "SegMantX", "/bin/bash", "-c"]
+
+# Set executable permissions for the script
+RUN chmod +x app.py
+
+# Expose the port that Streamlit will run on (default is 8501)
+EXPOSE 8501
+
+# Set the default command to run the Streamlit app
+CMD ["conda", "run", "-n", "SegMantX", "streamlit", "run", "app.py"]
+

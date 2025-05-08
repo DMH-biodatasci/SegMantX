@@ -1,0 +1,3 @@
+ID	alignment_hits_indices	q.start	q.end	s.start	s.end	mean_percent_identity[%]	q.strand	s.strand	n_alignment_hits	alignment_hit_to_chain_contribution[%]	chain_topology_query	chain_topology_subject	q_length	s_length
+1	18,21,23,25,27	90564	37303	30896	50339	97.23	+	-	5	100.0	circular	circular	39570	39928
+2	30,31,34,36	43965	63121	50307	30888	96.67	+	-	4	91.85111714345375	linear	linear	19156	19419

@@ -1,0 +1,24 @@
+# Use a lightweight Miniconda image as the base
+FROM continuumio/miniconda3:latest
+
+# Install git (required for cloning)
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Clone the GitHub repository (replace with your actual repo URL)
+RUN git clone https://github.com/DMH-biodatasci/SegMantX.git .
+
+# Create the Conda environment using the provided environment.yml
+RUN conda env create -f SegMantX.yml && conda clean --all -y
+
+# Ensure the environment is activated when the container starts
+SHELL ["conda", "run", "-n", "SegMantX", "/bin/bash", "-c"]
+
+# Set executable permissions for the script
+RUN chmod +x SegMantX
+
+# Set the script as the default command-line tool
+ENTRYPOINT ["conda", "run", "-n", "SegMantX", "/app/SegMantX"]
+
