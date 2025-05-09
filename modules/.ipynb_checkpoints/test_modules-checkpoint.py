@@ -33,7 +33,13 @@ def fetch_genbank(accession_number):
                 f.write(data)
     except Exception as e:
         print(f"Error fetching GenBank file: {e}")
+        
 
+def remove_test_chaining_output_files(directory):
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path) and not (filename.endswith('.fasta') or filename.endswith('.gbk')):
+            os.remove(file_path)
 
 def main():
     print("Testing modules of SegMantX using a test dataset ... \n")
@@ -44,6 +50,9 @@ def main():
         fetch_fasta(accession)
         if accession == "NZ_AP022172.1":
             fetch_genbank(accession)
+            
+    print("Starting to remove test chaining output files from previous runs (in tests/) ... \n")
+    remove_test_chaining_output_files("tests/")
                 
     print("Starting to test modules - please wait a few minutes until the error report is displayed ... \n")
   
