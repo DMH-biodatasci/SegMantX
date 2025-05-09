@@ -35,7 +35,7 @@ def fetch_genbank(accession_number):
         print(f"Error fetching GenBank file: {e}")
         
 
-def remove_test_chaining_output_files(directory):
+def remove_test_output_files(directory):
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
         if os.path.isfile(file_path) and not (filename.endswith('.fasta') or filename.endswith('.gbk')):
@@ -52,7 +52,7 @@ def main():
             fetch_genbank(accession)
             
     print("Starting to remove test chaining output files from previous runs (in tests/) ... \n")
-    remove_test_chaining_output_files("tests/")
+    remove_test_output_files("tests/")
                 
     print("Starting to test modules - please wait a few minutes until the error report is displayed ... \n")
   
