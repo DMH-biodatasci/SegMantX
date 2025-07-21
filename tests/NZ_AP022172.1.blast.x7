@@ -1,4 +1,4 @@
-# BLASTN 2.14.0+
+# BLASTN 2.16.0+
 # Query: NZ_AP022172.1 Escherichia coli strain WP5-S18-ESBL-09 plasmid pWP5-S18-ESBL-09_1, complete sequence
 # Database: tmp.fasta
 # Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score

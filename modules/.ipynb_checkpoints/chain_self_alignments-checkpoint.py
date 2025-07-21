@@ -152,10 +152,31 @@ def remove_redundant_hits(chained_hits, seq_len_query=None, seq_len_subject=None
         query_chains_coordinates_list.append(get_coords(q_starts[i], q_ends[i], chain_topology_type_query[i], seq_len_query))
         subject_chains_coordinates_list.append(get_coords(s_starts[i], s_ends[i], chain_topology_type_subject[i], seq_len_subject))
     
-    for i in range(len(query_chains_coordinates_list)):
-        for j in range(i+1, len(query_chains_coordinates_list)):
-            query_check = np.all(np.isin(query_chains_coordinates_list[j], query_chains_coordinates_list[i]))
-            subject_check = np.all(np.isin(subject_chains_coordinates_list[j], subject_chains_coordinates_list[i]))
+    ############
+    # Old code #
+    ############
+    #for i in range(len(query_chains_coordinates_list)):
+    #    for j in range(i+1, len(query_chains_coordinates_list)):
+    #        query_check = np.all(np.isin(query_chains_coordinates_list[j], query_chains_coordinates_list[i]))
+    #        subject_check = np.all(np.isin(subject_chains_coordinates_list[j], subject_chains_coordinates_list[i]))
+    #        if query_check and subject_check:
+    #            chains_to_keep[j] = False
+
+    ############
+    # New code #
+    ############
+    query_sets = [set(coords) for coords in query_chains_coordinates_list]
+    subject_sets = [set(coords) for coords in subject_chains_coordinates_list]
+
+    for i in range(len(query_sets)):
+        if not chains_to_keep[i]:
+            continue
+        for j in range(i + 1, len(query_sets)):
+            if not chains_to_keep[j]:
+                continue
+            # Use issubset to check coverage much faster than np.isin + np.all
+            query_check = query_sets[j].issubset(query_sets[i])
+            subject_check = subject_sets[j].issubset(subject_sets[i])
             if query_check and subject_check:
                 chains_to_keep[j] = False
 

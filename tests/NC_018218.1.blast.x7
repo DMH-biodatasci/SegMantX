@@ -1,4 +1,4 @@
-# BLASTN 2.14.0+
+# BLASTN 2.16.0+
 # Query: NC_018218.1 Zymoseptoria tritici IPO323 chromosome 1, whole genome shotgun sequence
 # Database: tests/NC_018218.1.fasta
 # Fields: query acc.ver, subject acc.ver, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score

@@ -6,10 +6,10 @@
   "description": "tests/NC_018218.1.fasta",
   "number-of-letters": 6088797,
   "number-of-sequences": 1,
-  "last-updated": "2025-03-07T10:42:00",
+  "last-updated": "2025-05-09T15:17:00",
   "number-of-volumes": 1,
-  "bytes-total": 1559375,
-  "bytes-to-cache": 1522337,
+  "bytes-total": 1559367,
+  "bytes-to-cache": 1522329,
   "files": [
     "NC_018218.1.fasta.ndb",
     "NC_018218.1.fasta.nhr",
